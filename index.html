@@ -6,6 +6,42 @@
     <title>Comic Project</title>
     <style>
         /* All previous styles remain exactly the same until browse section */
+        .filter-group {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.filter-options {
+    display: none;
+    padding: 10px 0;
+}
+
+.filter-options.active {
+    display: block;
+}
+
+.filter-option {
+    padding: 8px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.filter-option input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.filter-group h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin: 0;
+    font-size: 16px;
+    padding: 5px 0;
+}
+
         body {
             margin: 0;
             padding: 0;
@@ -346,60 +382,87 @@
         <a href="#" style="color: yellow;">JOIN DC3 ></a>
     </div>
 
-    <!-- Browse Characters Section - Updated -->
-    <section class="browse-section">
-        <div class="filters">
-            <input type="text" placeholder="Filter by Keyword" class="filter-input">
-            <div class="filter-group">
-                <h3>UNIVERSE <span>+</span></h3>
-            </div>
-            <div class="filter-group">
-                <h3>ALIGNMENT <span>+</span></h3>
-            </div>
-            <div class="filter-group">
-                <h3>POWERS <span>+</span></h3>
-            </div>
-            <div class="filter-group">
-                <h3>TEAMS <span>+</span></h3>
-            </div>
-            <div class="filter-group">
-                <h3>SPECIES <span>+</span></h3>
+<!-- Browse Characters Section - Updated -->
+<section class="browse-section">
+    <div class="filters">
+        <input type="text" placeholder="Filter by Keyword" class="filter-input">
+        <div class="filter-group">
+            <h3>UNIVERSE <span>+</span></h3>
+        </div>
+        <div class="filter-group">
+            <h3>ALIGNMENT <span>+</span></h3>
+        </div>
+        <div class="filter-group">
+            <h3>POWERS <span>+</span></h3>
+        </div>
+        <div class="filter-group">
+            <h3 onclick="toggleFilter(this)">TEAMS <span>+</span></h3>
+            <div class="filter-options">
+                <label class="filter-option">
+                    <input type="checkbox" name="team" value="heroes">
+                    Heroes
+                </label>
+                <label class="filter-option">
+                    <input type="checkbox" name="team" value="villains">
+                    Villains
+                </label>
             </div>
         </div>
-        <div class="browse-content">
-            <div class="browse-header">
-                <h2>BROWSE CHARACTERS (100)</h2>
-                <div class="view-controls">
-                    <div class="view-toggle">
-                        <button class="list-view">☰</button>
-                        <button class="grid-view active">▦</button>
-                    </div>
-                    <select class="sort-dropdown">
-                        <option>NEWEST</option>
-                        <option>ALPHABETICAL (A-Z)</option>
-                        <option>ALPHABETICAL (Z-A)</option>
-                    </select>
+        <div class="filter-group">
+            <h3>SPECIES <span>+</span></h3>
+        </div>
+    </div>
+    
+    <div class="browse-content">
+        <div class="browse-header">
+            <h2>BROWSE CHARACTERS (100)</h2>
+            <div class="view-controls">
+                <div class="view-toggle">
+                    <button class="list-view">☰</button>
+                    <button class="grid-view active">▦</button>
                 </div>
-            </div>
-            <div class="character-grid">
-                <div class="character-card">
-                    <img src="/api/placeholder/300/300" alt="Batman">
-                    <h3>BATMAN</h3>
-                </div>
-                <div class="character-card">
-                    <img src="/api/placeholder/300/300" alt="Superman">
-                    <h3>SUPERMAN</h3>
-                </div>
-                <div class="character-card">
-                    <img src="/api/placeholder/300/300" alt="Wonder Woman">
-                    <h3>WONDER WOMAN</h3>
-                </div>
-                <div class="character-card">
-                    <img src="/api/placeholder/300/300" alt="Green Lantern">
-                    <h3>GREEN LANTERN</h3>
-                </div>
+                <select class="sort-dropdown">
+                    <option>NEWEST</option>
+                    <option>ALPHABETICAL (A-Z)</option>
+                    <option>ALPHABETICAL (Z-A)</option>
+                </select>
             </div>
         </div>
-    </section>
+        <div class="character-grid">
+            <div class="character-card">
+                <img src="/api/placeholder/300/300" alt="Batman">
+                <h3>BATMAN</h3>
+            </div>
+            <div class="character-card">
+                <img src="/api/placeholder/300/300" alt="Superman">
+                <h3>SUPERMAN</h3>
+            </div>
+            <div class="character-card">
+                <img src="/api/placeholder/300/300" alt="Wonder Woman">
+                <h3>WONDER WOMAN</h3>
+            </div>
+            <div class="character-card">
+                <img src="/api/placeholder/300/300" alt="Green Lantern">
+                <h3>GREEN LANTERN</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Add the script tag here -->
+<script>
+function toggleFilter(element) {
+    const options = element.nextElementSibling;
+    const span = element.querySelector('span');
+    
+    if (options.classList.contains('active')) {
+        options.classList.remove('active');
+        span.textContent = '+';
+    } else {
+        options.classList.add('active');
+        span.textContent = '-';
+    }
+}
+</script>
 </body>
 </html>
