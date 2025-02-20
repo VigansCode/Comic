@@ -379,71 +379,62 @@
         <p>COLLECT EACH COVER.<br>
         UNLOCK EVERY ISSUE.<br>
         BUILD YOUR COLLECTION.</p>
-        <a href="#" style="color: black;">JOIN DC3 ></a>
+        <a href="#" style="color: yellow;">JOIN DC3 ></a>
     </div>
 
-<!-- Browse Characters Section - Updated -->
-<section class="browse-section">
-    <div class="filters">
-        <input type="text" placeholder="Filter by Keyword" class="filter-input">
-        <div class="filter-group">
-            <h3>UNIVERSE <span>+</span></h3>
-        </div>
-        <div class="filter-group">
-            <h3>ALIGNMENT <span>+</span></h3>
-        </div>
-        <div class="filter-group">
-            <h3>POWERS <span>+</span></h3>
-        </div>
-        <div class="filter-group">
-            <h3 onclick="toggleFilter(this)">TEAMS <span>+</span></h3>
-            <div class="filter-options">
-                <label class="filter-option">
-                    <input type="checkbox" name="team" value="heroes">
-                    Heroes
-                </label>
-                <label class="filter-option">
-                    <input type="checkbox" name="team" value="villains">
-                    Villains
-                </label>
-            </div>
-        </div>
-        <div class="filter-group">
-            <h3>SPECIES <span>+</span></h3>
-        </div>
-    </div>
-    
-    <div class="browse-content">
-        <div class="browse-header">
-            <h2>BROWSE CHARACTERS (100)</h2>
-            <div class="view-controls">
-                <div class="view-toggle">
-                    <button class="list-view">☰</button>
-                    <button class="grid-view active">▦</button>
+    <section class="browse-section">
+        <div class="filters">
+            <input type="text" placeholder="Filter by Keyword" class="filter-input">
+            <!-- Add Characters filter -->
+            <div class="filter-group">
+                <h3 onclick="toggleFilter(this)">CHARACTERS <span>+</span></h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" name="character" value="batman">
+                        Batman
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="character" value="superman">
+                        Superman
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="character" value="wonderwoman">
+                        Wonder Woman
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="character" value="flash">
+                        The Flash
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="character" value="greenlantern">
+                        Green Lantern
+                    </label>
                 </div>
-                <select class="sort-dropdown">
-                    <option>NEWEST</option>
-                    <option>ALPHABETICAL (A-Z)</option>
-                    <option>ALPHABETICAL (Z-A)</option>
-                </select>
             </div>
-        </div>
-        <div class="character-grid">
-            <div class="character-card">
-                <img src="/api/placeholder/300/300" alt="Batman">
-                <h3>BATMAN</h3>
+            <div class="filter-group">
+                <h3>UNIVERSE <span>+</span></h3>
             </div>
-            <div class="character-card">
-                <img src="/api/placeholder/300/300" alt="Superman">
-                <h3>SUPERMAN</h3>
+            <div class="filter-group">
+                <h3>ALIGNMENT <span>+</span></h3>
             </div>
-            <div class="character-card">
-                <img src="/api/placeholder/300/300" alt="Wonder Woman">
-                <h3>WONDER WOMAN</h3>
+            <div class="filter-group">
+                <h3>POWERS <span>+</span></h3>
             </div>
-            <div class="character-card">
-                <img src="/api/placeholder/300/300" alt="Green Lantern">
-                <h3>GREEN LANTERN</h3>
+            <div class="filter-group">
+                <h3 onclick="toggleFilter(this)">TEAMS <span>+</span></h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" name="team" value="heroes">
+                        Heroes
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="team" value="villains">
+                        Villains
+                    </label>
+                </div>
+            </div>
+            <div class="filter-group">
+                <h3>SPECIES <span>+</span></h3>
             </div>
         </div>
     </div>
