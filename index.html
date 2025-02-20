@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comic Project</title>
     <style>
+        /* All previous styles remain exactly the same until browse section */
         body {
             margin: 0;
             padding: 0;
@@ -157,7 +158,7 @@
             object-fit: cover;
         }
 
-        /* Browse Comics */
+        /* Browse Characters Section - Updated */
         .browse-section {
             max-width: 1200px;
             margin: 40px auto;
@@ -169,11 +170,85 @@
             width: 250px;
         }
 
-        .comics-browser {
+        .filter-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .filter-group {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .filter-group h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .browse-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .view-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 5px;
+        }
+
+        .view-toggle button {
+            padding: 5px 10px;
+            background: none;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        .view-toggle button.active {
+            background: #eee;
+        }
+
+        .sort-dropdown {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+        }
+
+        .character-grid {
             flex: 1;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
+        }
+
+        .character-card {
+            text-align: center;
+        }
+
+        .character-card img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .character-card h3 {
+            font-size: 16px;
+            margin: 0;
         }
 
         h2 {
@@ -226,17 +301,17 @@
     </section>
 
     <!-- Featured Video -->
-<section class="featured-video">
-    <div class="video-container">
-        <div class="video-player">
-            <img src="/api/placeholder/800/450" alt="Featured Video">
+    <section class="featured-video">
+        <div class="video-container">
+            <div class="video-player">
+                <img src="/api/placeholder/800/450" alt="Featured Video">
+            </div>
+            <div class="video-info">
+                <h2>BATMAN: H2SH - COMIC TRAILER</h2>
+                <p>Hush is back—and so are Jeph Loeb and Jim Lee—in Batman: H2SH! The biggest sequel in comic book history starts this March in Batman #158.</p>
+            </div>
         </div>
-        <div class="video-info">
-            <h2>BATMAN: H2SH - COMIC TRAILER</h2>
-            <p>Hush is back—and so are Jeph Loeb and Jim Lee—in Batman: H2SH! The biggest sequel in comic book history starts this March in Batman #158.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Trailers Section -->
     <section class="trailers-section">
@@ -250,7 +325,6 @@
             <!-- Repeat for other trailers -->
         </div>
     </section>
-    
 
     <!-- Batman Celebration -->
     <section class="comics-grid">
@@ -272,20 +346,59 @@
         <a href="#" style="color: yellow;">JOIN DC3 ></a>
     </div>
 
-    <!-- Browse Comics -->
+    <!-- Browse Characters Section - Updated -->
     <section class="browse-section">
         <div class="filters">
-            <h3>CHARACTERS</h3>
-            <h3>SERIES</h3>
-            <h3>TYPE</h3>
-            <h3>IMPRINTS</h3>
-            <h3>DATE RANGE</h3>
-        </div>
-        <div class="comics-browser">
-            <div class="comic-card">
-                <img src="/api/placeholder/300/450" alt="Batman">
+            <input type="text" placeholder="Filter by Keyword" class="filter-input">
+            <div class="filter-group">
+                <h3>UNIVERSE <span>+</span></h3>
             </div>
-            <!-- Repeat for other comics -->
+            <div class="filter-group">
+                <h3>ALIGNMENT <span>+</span></h3>
+            </div>
+            <div class="filter-group">
+                <h3>POWERS <span>+</span></h3>
+            </div>
+            <div class="filter-group">
+                <h3>TEAMS <span>+</span></h3>
+            </div>
+            <div class="filter-group">
+                <h3>SPECIES <span>+</span></h3>
+            </div>
+        </div>
+        <div class="browse-content">
+            <div class="browse-header">
+                <h2>BROWSE CHARACTERS (100)</h2>
+                <div class="view-controls">
+                    <div class="view-toggle">
+                        <button class="list-view">☰</button>
+                        <button class="grid-view active">▦</button>
+                    </div>
+                    <select class="sort-dropdown">
+                        <option>NEWEST</option>
+                        <option>ALPHABETICAL (A-Z)</option>
+                        <option>ALPHABETICAL (Z-A)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="character-grid">
+                <div class="character-card">
+                    <img src="/api/placeholder/300/300" alt="Batman">
+                    <h3>BATMAN</h3>
+                </div>
+                <div class="character-card">
+                    <img src="/api/placeholder/300/300" alt="Superman">
+                    <h3>SUPERMAN</h3>
+                </div>
+                <div class="character-card">
+                    <img src="/api/placeholder/300/300" alt="Wonder Woman">
+                    <h3>WONDER WOMAN</h3>
+                </div>
+                <div class="character-card">
+                    <img src="/api/placeholder/300/300" alt="Green Lantern">
+                    <h3>GREEN LANTERN</h3>
+                </div>
+            </div>
         </div>
     </section>
 </body>
