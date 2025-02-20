@@ -3,19 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banner Slider</title>
+    <title>Simple Banner</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .slider-container {
+        .banner-container {
             position: relative;
             width: 100%;
             height: 600px;
-            overflow: hidden;
         }
 
         .slide {
@@ -23,211 +16,151 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-            background-size: cover;
-            background-position: center;
+            transition: opacity 0.5s;
+            display: none;
         }
 
         .slide.active {
             opacity: 1;
+            display: block;
+        }
+
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .slide-content {
             position: absolute;
-            bottom: 100px;
-            left: 80px;
+            bottom: 80px;
+            left: 60px;
             color: white;
-            max-width: 600px;
         }
 
         .slide-tag {
-            text-transform: uppercase;
             font-size: 14px;
-            letter-spacing: 1px;
             margin-bottom: 10px;
-            opacity: 0.8;
         }
 
         .slide-title {
-            font-size: 36px;
+            font-size: 32px;
             font-weight: bold;
-            margin-bottom: 15px;
-            text-transform: uppercase;
+            margin-bottom: 10px;
+            max-width: 600px;
         }
 
         .slide-description {
             font-size: 16px;
             margin-bottom: 20px;
-            opacity: 0.9;
-            line-height: 1.4;
+            max-width: 500px;
         }
 
         .slide-button {
             display: inline-block;
-            padding: 12px 24px;
+            padding: 8px 20px;
             background: white;
             color: black;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            text-transform: uppercase;
+            border-radius: 20px;
             font-size: 14px;
         }
 
-        .slider-nav {
+        .nav-dots {
             position: absolute;
             bottom: 20px;
-            left: 80px;
+            left: 60px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .nav-dot {
-            width: 10px;
-            height: 10px;
+        .dot {
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255,255,255,0.5);
             cursor: pointer;
-            transition: background 0.3s ease;
         }
 
-        .nav-dot.active {
+        .dot.active {
             background: white;
         }
 
-        .slider-arrow {
+        .arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
+            background: none;
+            border: none;
             color: white;
             font-size: 24px;
-            transition: background 0.3s ease;
+            cursor: pointer;
+            padding: 20px;
         }
 
-        .slider-arrow:hover {
-            background: rgba(255, 255, 255, 0.3);
+        .prev {
+            left: 0;
         }
 
-        .prev-arrow {
-            left: 20px;
-        }
-
-        .next-arrow {
-            right: 20px;
+        .next {
+            right: 0;
         }
     </style>
 </head>
 <body>
-    <div class="slider-container">
-        <!-- First Slide -->
-        <div class="slide active" style="background-image: url('/api/placeholder/1600/600');">
+    <div class="banner-container">
+        <div class="slide active">
+            <img src="/api/placeholder/1600/600" class="slide-image" alt="Banner 1">
             <div class="slide-content">
-                <div class="slide-tag">Weekend Escape</div>
-                <h2 class="slide-title">Ponder the Nature of the Soul with Vic Stone</h2>
+                <div class="slide-tag">WEEKEND ESCAPE</div>
+                <h2 class="slide-title">PONDER THE NATURE OF THE SOUL WITH VIC STONE</h2>
                 <p class="slide-description">How much can someone lose of themselves and still be human?</p>
-                <a href="#" class="slide-button">We Look at "Cyborg: Homecoming"</a>
+                <a href="#" class="slide-button">WATCH NOW</a>
             </div>
         </div>
 
-        <!-- Second Slide -->
-        <div class="slide" style="background-image: url('/api/placeholder/1600/600');">
+        <div class="slide">
+            <img src="/api/placeholder/1600/600" class="slide-image" alt="Banner 2">
             <div class="slide-content">
-                <div class="slide-tag">Featured Story</div>
-                <h2 class="slide-title">What Your Favorite Green Lantern Says About You</h2>
+                <div class="slide-tag">FEATURED STORY</div>
+                <h2 class="slide-title">WHAT YOUR FAVORITE GREEN LANTERN SAYS ABOUT YOU</h2>
                 <p class="slide-description">No evil escapes their sight, and no revealing observation ours.</p>
-                <a href="#" class="slide-button">Cut to the Corps</a>
+                <a href="#" class="slide-button">READ MORE</a>
             </div>
         </div>
 
-        <!-- Third Slide -->
-        <div class="slide" style="background-image: url('/api/placeholder/1600/600');">
-            <div class="slide-content">
-                <div class="slide-tag">Featured Video</div>
-                <h2 class="slide-title">Batman: H2SH - Comic Trailer</h2>
-                <p class="slide-description">Hush is back—and so are Jeph Loeb and Jim Lee—in Batman: H2SH!</p>
-                <a href="#" class="slide-button">Watch Now</a>
-            </div>
+        <div class="nav-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
         </div>
 
-        <!-- Navigation Dots -->
-        <div class="slider-nav">
-            <div class="nav-dot active"></div>
-            <div class="nav-dot"></div>
-            <div class="nav-dot"></div>
-        </div>
-
-        <!-- Arrow Navigation -->
-        <div class="slider-arrow prev-arrow">❮</div>
-        <div class="slider-arrow next-arrow">❯</div>
+        <button class="arrow prev">❮</button>
+        <button class="arrow next">❯</button>
     </div>
 
     <script>
         const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.nav-dot');
-        const prevArrow = document.querySelector('.prev-arrow');
-        const nextArrow = document.querySelector('.next-arrow');
+        const dots = document.querySelectorAll('.dot');
+        const prev = document.querySelector('.prev');
+        const next = document.querySelector('.next');
         let currentSlide = 0;
-        let slideInterval;
 
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            currentSlide = index;
-            if (currentSlide >= slides.length) currentSlide = 0;
-            if (currentSlide < 0) currentSlide = slides.length - 1;
-
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
             dots[currentSlide].classList.add('active');
         }
 
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-        }
-
-        function startAutoSlide() {
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-
-        function stopAutoSlide() {
-            clearInterval(slideInterval);
-        }
-
-        // Event Listeners
-        prevArrow.addEventListener('click', () => {
-            showSlide(currentSlide - 1);
-            stopAutoSlide();
-            startAutoSlide();
-        });
-
-        nextArrow.addEventListener('click', () => {
-            showSlide(currentSlide + 1);
-            stopAutoSlide();
-            startAutoSlide();
-        });
-
+        prev.addEventListener('click', () => showSlide(currentSlide - 1));
+        next.addEventListener('click', () => showSlide(currentSlide + 1));
         dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showSlide(index);
-                stopAutoSlide();
-                startAutoSlide();
-            });
+            dot.addEventListener('click', () => showSlide(index));
         });
 
-        // Start auto-sliding
-        startAutoSlide();
-
-        // Stop auto-sliding when hovering over the slider
-        document.querySelector('.slider-container').addEventListener('mouseenter', stopAutoSlide);
-        document.querySelector('.slider-container').addEventListener('mouseleave', startAutoSlide);
+        setInterval(() => showSlide(currentSlide + 1), 5000);
     </script>
 </body>
 </html>
