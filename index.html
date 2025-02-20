@@ -4,200 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comic Project</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
     <style>
-        .hero-slider {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/600');
-            background-size: cover;
-            background-position: center;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
-        .comic-card-image {
-            background: url('/api/placeholder/300/400');
-            background-size: cover;
-            background-position: center;
+        .nav {
+            padding: 10px;
         }
-        .news-card-image {
-            background: url('/api/placeholder/400/250');
-            background-size: cover;
-            background-position: center;
+        .nav a {
+            color: blue;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .featured-story {
+            background: gray;
+            padding: 20px;
+        }
+        .read-now {
+            background: none;
+            border: 1px solid black;
+            padding: 5px 10px;
+        }
+        .free-label {
+            display: inline-block;
+            border: 1px solid black;
+            padding: 2px 5px;
+            margin: 2px;
+        }
+        .content-section {
+            padding: 20px;
+        }
+        footer {
+            padding: 20px;
+        }
+        footer ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        footer a {
+            color: blue;
+            text-decoration: none;
         }
     </style>
 </head>
-<body class="min-h-screen bg-gray-100">
-    <!-- Navigation Bar -->
-    <nav class="bg-black text-white p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-6">
-                <div class="text-xl font-bold">LOGO</div>
-                <div class="hidden md:flex space-x-4">
-                    <a href="#" class="hover:text-gray-300">CHARACTERS</a>
-                    <a href="#" class="hover:text-gray-300">COMICS</a>
-                    <a href="#" class="hover:text-gray-300">NEWS</a>
-                    <a href="#" class="hover:text-gray-300">COMMUNITY</a>
-                </div>
-            </div>
-            <div class="flex items-center space-x-4">
-                <button class="hover:text-gray-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                    </svg>
-                </button>
-                <button class="md:hidden hover:text-gray-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </nav>
+<body>
+    <div class="nav">
+        LOGO
+        <a href="#">CHARACTERS</a>
+        <a href="#">COMICS</a>
+        <a href="#">NEWS</a>
+        <a href="#">COMMUNITY</a>
+    </div>
 
-    <!-- Hero Slider -->
-    <div class="hero-slider relative h-96 bg-gray-900">
-        <div class="container mx-auto relative h-full">
-            <div class="absolute inset-0 flex items-center justify-between px-4">
-                <button class="bg-white bg-opacity-10 p-2 rounded-full hover:bg-opacity-20">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                <button class="bg-white bg-opacity-10 p-2 rounded-full hover:bg-opacity-20">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
-            </div>
-            <div class="absolute bottom-8 left-8 text-white">
-                <h2 class="text-3xl font-bold mb-2">FEATURED STORY</h2>
-                <p class="text-lg mb-4">Your amazing comic storyline description here</p>
-                <button class="bg-blue-600 px-6 py-2 rounded-full hover:bg-blue-700">READ NOW</button>
-            </div>
+    <div class="featured-story">
+        <h1>FEATURED STORY</h1>
+        <p>Your amazing comic storyline description here</p>
+        <button class="read-now">READ NOW</button>
+    </div>
+
+    <div class="content-section">
+        <h2>LATEST RELEASES</h2>
+        <div>
+            <h3>Comic Title #1</h3>
+            <p>Issue #1</p>
+        </div>
+        <div>
+            <h3>Comic Title #2</h3>
+            <p>Issue #2</p>
+        </div>
+        <div>
+            <h3>Comic Title #3</h3>
+            <p>Issue #3</p>
+        </div>
+        <div>
+            <h3>Comic Title #4</h3>
+            <p>Issue #4</p>
         </div>
     </div>
 
-    <!-- Latest Comics Grid -->
-    <div class="container mx-auto py-12">
-        <h2 class="text-2xl font-bold mb-8">LATEST RELEASES</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Comic Card 1 -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="comic-card-image h-64"></div>
-                <div class="p-4">
-                    <h3 class="font-bold">Comic Title #1</h3>
-                    <p class="text-sm text-gray-600">Issue #1</p>
-                </div>
-            </div>
-            <!-- Comic Card 2 -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="comic-card-image h-64"></div>
-                <div class="p-4">
-                    <h3 class="font-bold">Comic Title #2</h3>
-                    <p class="text-sm text-gray-600">Issue #2</p>
-                </div>
-            </div>
-            <!-- Comic Card 3 -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="comic-card-image h-64"></div>
-                <div class="p-4">
-                    <h3 class="font-bold">Comic Title #3</h3>
-                    <p class="text-sm text-gray-600">Issue #3</p>
-                </div>
-            </div>
-            <!-- Comic Card 4 -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="comic-card-image h-64"></div>
-                <div class="p-4">
-                    <h3 class="font-bold">Comic Title #4</h3>
-                    <p class="text-sm text-gray-600">Issue #4</p>
-                </div>
-            </div>
+    <div class="content-section">
+        <h2>READ FREE COMICS</h2>
+        <span class="free-label">FREE</span>
+        <div>
+            <h3>Free Comic #1</h3>
         </div>
     </div>
 
-    <!-- Free Comics Section -->
-    <div class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto">
-            <h2 class="text-2xl font-bold mb-8">READ FREE COMICS</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <!-- Free Comic Cards -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden">
-                    <div class="comic-card-image h-48"></div>
-                    <div class="p-4">
-                        <span class="bg-green-500 text-xs px-2 py-1 rounded">FREE</span>
-                        <h3 class="mt-2 font-bold">Free Comic #1</h3>
-                    </div>
-                </div>
-                <!-- Repeat for other free comics -->
-            </div>
-        </div>
+    <div class="content-section">
+        <h2>NEWS & FEATURES</h2>
+        <span>NEWS</span>
+        <h3>Latest News Title #1</h3>
+        <p>Brief description of the news item...</p>
     </div>
 
-    <!-- News & Features -->
-    <div class="container mx-auto py-12">
-        <h2 class="text-2xl font-bold mb-8">NEWS & FEATURES</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- News Card 1 -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="news-card-image h-48"></div>
-                <div class="p-4">
-                    <span class="text-sm text-gray-500">NEWS</span>
-                    <h3 class="font-bold mt-1">Latest News Title #1</h3>
-                    <p class="text-sm text-gray-600 mt-2">Brief description of the news item...</p>
-                </div>
-            </div>
-            <!-- Repeat for other news cards -->
+    <footer>
+        <div>
+            <h3>ABOUT</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Careers</a></li>
+            </ul>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-                <h3 class="font-bold mb-4">ABOUT</h3>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="font-bold mb-4">COMICS</h3>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white">Latest Releases</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Series</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Characters</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="font-bold mb-4">COMMUNITY</h3>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white">Forum</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Fan Art</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="font-bold mb-4">FOLLOW US</h3>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white">Twitter</a>
-                    <a href="#" class="text-gray-400 hover:text-white">Instagram</a>
-                    <a href="#" class="text-gray-400 hover:text-white">Discord</a>
-                </div>
-            </div>
+        <div>
+            <h3>COMICS</h3>
+            <ul>
+                <li><a href="#">Latest Releases</a></li>
+                <li><a href="#">Series</a></li>
+                <li><a href="#">Characters</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>COMMUNITY</h3>
+            <ul>
+                <li><a href="#">Forum</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Fan Art</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>FOLLOW US</h3>
+            <p>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">Discord</a>
+            </p>
         </div>
     </footer>
-
-    <script>
-        // Add any JavaScript functionality here
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu toggle
-            const mobileMenuButton = document.querySelector('.md\\:hidden');
-            const mobileMenu = document.querySelector('.hidden.md\\:flex');
-            
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
-        });
-    </script>
 </body>
 </html>
