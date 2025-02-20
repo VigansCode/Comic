@@ -3,372 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comic Project</title>
+    <title>Banner Slider</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
         }
 
-        body {
-            background-color: #fff;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation */
-        .top-nav {
-            background: #fff;
-            height: 48px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-container {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .nav-container a {
-            color: #000;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        /* Featured Video Section */
-        .featured-video {
-            background: #0282F9;
-            width: 100%;
-            padding: 40px 0;
-        }
-
-        .video-wrapper {
-            display: flex;
-            gap: 40px;
-        }
-
-        .video-player {
-            flex: 1;
+        .slider-container {
             position: relative;
-            background: #000;
-            border-radius: 4px;
+            width: 100%;
+            height: 600px;
             overflow: hidden;
         }
 
-        .video-player img {
+        .slide {
+            position: absolute;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-        }
-
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .video-controls {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 40px;
-            background: rgba(0,0,0,0.7);
-            display: flex;
-            align-items: center;
-            padding: 0 10px;
-        }
-
-        .video-info {
-            flex: 1;
-            color: white;
-            padding: 20px 0;
-        }
-
-        .video-info h2 {
-            font-size: 32px;
-            margin-bottom: 15px;
-            font-weight: 800;
-        }
-
-        .video-tag {
-            color: rgba(255,255,255,0.7);
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        /* Comics Grid */
-        .section-title {
-            font-size: 28px;
-            font-weight: 800;
-            margin: 40px 0 20px;
-        }
-
-        .comics-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .comic-card {
-            position: relative;
-        }
-
-        .comic-card img {
-            width: 100%;
-            aspect-ratio: 2/3;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-
-        .free-tag {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: white;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        /* Trailers Section */
-        .trailers-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .trailer-card {
-            background: white;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .trailer-thumbnail {
-            position: relative;
-            aspect-ratio: 16/9;
-        }
-
-        .trailer-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .trailer-info {
-            padding: 15px;
-            text-align: center;
-        }
-
-        .trailer-type {
-            color: #666;
-            font-size: 12px;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
-
-        .trailer-title {
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        /* Collectible Banner */
-        .collectible-banner {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/400');
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
             background-size: cover;
             background-position: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 100px;
+            left: 80px;
             color: white;
-            padding: 60px 40px;
-            margin: 40px 0;
+            max-width: 600px;
         }
 
-        .collectible-banner h2 {
-            font-size: 42px;
-            margin-bottom: 20px;
-        }
-
-        .collectible-banner p {
-            font-size: 24px;
-            line-height: 1.4;
-            margin-bottom: 20px;
-        }
-
-        .join-button {
-            color: #FFD700;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 20px;
-        }
-
-        /* Browse Section */
-        .browse-comics {
-            display: flex;
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .filters {
-            width: 240px;
-        }
-
-        .filter-group {
-            margin-bottom: 20px;
-        }
-
-        .filter-title {
-            font-weight: 700;
-            font-size: 16px;
+        .slide-tag {
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
             margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            opacity: 0.8;
         }
 
-        .comics-browse-grid {
-            flex: 1;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+        .slide-title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
         }
 
-        .browse-options {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .slide-description {
+            font-size: 16px;
             margin-bottom: 20px;
+            opacity: 0.9;
+            line-height: 1.4;
         }
 
-        .view-toggle {
+        .slide-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: white;
+            color: black;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 80px;
             display: flex;
             gap: 10px;
         }
 
-        .sort-dropdown {
-            padding: 5px 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: white;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+            transition: background 0.3s ease;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .prev-arrow {
+            left: 20px;
+        }
+
+        .next-arrow {
+            right: 20px;
         }
     </style>
 </head>
 <body>
-    <nav class="top-nav">
-        <div class="container nav-container">
-            <a href="#">CHARACTERS</a>
-            <a href="#">COMICS</a>
-            <a href="#">MOVIES & TV</a>
-            <a href="#">GAMES</a>
-            <a href="#">NEWS</a>
-            <a href="#">SHOP</a>
-            <a href="#">MORE</a>
-        </div>
-    </nav>
-
-    <section class="featured-video">
-        <div class="container video-wrapper">
-            <div class="video-player">
-                <img src="/api/placeholder/800/450" alt="Batman H2SH">
-                <div class="play-button">▶</div>
-                <div class="video-controls">
-                    <span>00:00 / 02:15</span>
-                </div>
+    <div class="slider-container">
+        <!-- First Slide -->
+        <div class="slide active" style="background-image: url('/api/placeholder/1600/600');">
+            <div class="slide-content">
+                <div class="slide-tag">Weekend Escape</div>
+                <h2 class="slide-title">Ponder the Nature of the Soul with Vic Stone</h2>
+                <p class="slide-description">How much can someone lose of themselves and still be human?</p>
+                <a href="#" class="slide-button">We Look at "Cyborg: Homecoming"</a>
             </div>
-            <div class="video-info">
-                <div class="video-tag">FEATURED VIDEO</div>
-                <h2>BATMAN: H2SH - COMIC TRAILER</h2>
-                <p>Hush is back—and so are Jeph Loeb and Jim Lee—in Batman: H2SH! The biggest sequel in comic book history starts this March in Batman #158.</p>
-            </div>
-        </div>
-    </section>
-
-    <div class="container">
-        <h2 class="section-title">READ DC GO! COMICS FOR FREE</h2>
-        <div class="comics-grid">
-            <div class="comic-card">
-                <img src="/api/placeholder/300/450" alt="Harley Quinn">
-                <span class="free-tag">FREE</span>
-            </div>
-            <!-- Repeat for 4 more comics -->
         </div>
 
-        <h2 class="section-title">DC COMICS TRAILERS, EXCLUSIVE INTERVIEWS & MORE</h2>
-        <div class="trailers-grid">
-            <div class="trailer-card">
-                <div class="trailer-thumbnail">
-                    <img src="/api/placeholder/300/169" alt="Justice League Unlimited">
-                    <div class="play-button">▶</div>
-                </div>
-                <div class="trailer-info">
-                    <div class="trailer-type">COMIC TRAILER</div>
-                    <div class="trailer-title">JUSTICE LEAGUE UNLIMITED</div>
-                </div>
+        <!-- Second Slide -->
+        <div class="slide" style="background-image: url('/api/placeholder/1600/600');">
+            <div class="slide-content">
+                <div class="slide-tag">Featured Story</div>
+                <h2 class="slide-title">What Your Favorite Green Lantern Says About You</h2>
+                <p class="slide-description">No evil escapes their sight, and no revealing observation ours.</p>
+                <a href="#" class="slide-button">Cut to the Corps</a>
             </div>
-            <!-- Repeat for 3 more trailers -->
         </div>
 
-        <div class="collectible-banner">
-            <h2>DC COLLECTIBLE COMICS</h2>
-            <p>COLLECT EACH COVER.<br>
-            UNLOCK EVERY ISSUE.<br>
-            BUILD YOUR COLLECTION.</p>
-            <a href="#" class="join-button">JOIN DC3 ></a>
+        <!-- Third Slide -->
+        <div class="slide" style="background-image: url('/api/placeholder/1600/600');">
+            <div class="slide-content">
+                <div class="slide-tag">Featured Video</div>
+                <h2 class="slide-title">Batman: H2SH - Comic Trailer</h2>
+                <p class="slide-description">Hush is back—and so are Jeph Loeb and Jim Lee—in Batman: H2SH!</p>
+                <a href="#" class="slide-button">Watch Now</a>
+            </div>
         </div>
 
-        <div class="browse-comics">
-            <div class="filters">
-                <div class="filter-group">
-                    <div class="filter-title">CHARACTERS <span>+</span></div>
-                </div>
-                <div class="filter-group">
-                    <div class="filter-title">SERIES <span>+</span></div>
-                </div>
-                <div class="filter-group">
-                    <div class="filter-title">TYPE <span>+</span></div>
-                </div>
-                <div class="filter-group">
-                    <div class="filter-title">IMPRINTS <span>+</span></div>
-                </div>
-                <div class="filter-group">
-                    <div class="filter-title">DATE RANGE <span>+</span></div>
-                </div>
-            </div>
-            <div class="browse-content">
-                <div class="browse-options">
-                    <div class="view-toggle">
-                        <button>☰</button>
-                        <button>▦</button>
-                    </div>
-                    <select class="sort-dropdown">
-                        <option>NEWEST</option>
-                    </select>
-                </div>
-                <div class="comics-browse-grid">
-                    <div class="comic-card">
-                        <img src="/api/placeholder/300/450" alt="Batman">
-                    </div>
-                    <!-- Repeat for more comics -->
-                </div>
-            </div>
+        <!-- Navigation Dots -->
+        <div class="slider-nav">
+            <div class="nav-dot active"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
         </div>
+
+        <!-- Arrow Navigation -->
+        <div class="slider-arrow prev-arrow">❮</div>
+        <div class="slider-arrow next-arrow">❯</div>
     </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.nav-dot');
+        const prevArrow = document.querySelector('.prev-arrow');
+        const nextArrow = document.querySelector('.next-arrow');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = index;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function startAutoSlide() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(slideInterval);
+        }
+
+        // Event Listeners
+        prevArrow.addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+            stopAutoSlide();
+            startAutoSlide();
+        });
+
+        nextArrow.addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+            stopAutoSlide();
+            startAutoSlide();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                stopAutoSlide();
+                startAutoSlide();
+            });
+        });
+
+        // Start auto-sliding
+        startAutoSlide();
+
+        // Stop auto-sliding when hovering over the slider
+        document.querySelector('.slider-container').addEventListener('mouseenter', stopAutoSlide);
+        document.querySelector('.slider-container').addEventListener('mouseleave', startAutoSlide);
+    </script>
 </body>
 </html>
