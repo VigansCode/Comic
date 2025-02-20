@@ -6,135 +6,226 @@
     <title>Comic Project</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff;
         }
-        .nav {
-            padding: 10px;
+
+        /* Navigation */
+        .top-nav {
+            background: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #eee;
         }
-        .nav a {
-            color: blue;
+
+        .top-nav a {
+            color: #000;
             text-decoration: none;
-            margin-right: 10px;
+            margin-right: 20px;
+            font-weight: bold;
         }
-        .featured-story {
-            background: gray;
+
+        /* Featured Video Section */
+        .featured-video {
+            background: #0282F9;
+            padding: 40px 0;
+            color: white;
+        }
+
+        .video-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 30px;
+        }
+
+        .video-player {
+            flex: 1;
+            background: #000;
+            aspect-ratio: 16/9;
+        }
+
+        .video-info {
+            flex: 1;
             padding: 20px;
         }
-        .read-now {
-            background: none;
-            border: 1px solid black;
-            padding: 5px 10px;
+
+        /* Comics Grid */
+        .comics-grid {
+            max-width: 1200px;
+            margin: 40px auto;
         }
-        .free-label {
-            display: inline-block;
-            border: 1px solid black;
-            padding: 2px 5px;
-            margin: 2px;
+
+        .comics-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
         }
-        .content-section {
-            padding: 20px;
+
+        .comic-card {
+            position: relative;
         }
-        footer {
-            padding: 20px;
+
+        .comic-card img {
+            width: 100%;
+            aspect-ratio: 2/3;
+            object-fit: cover;
         }
-        footer ul {
-            list-style-type: none;
-            padding-left: 0;
+
+        .free-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
         }
-        footer a {
-            color: blue;
-            text-decoration: none;
+
+        /* Trailer Section */
+        .trailers-section {
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .trailer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .trailer-card {
+            text-align: center;
+        }
+
+        .trailer-card img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+
+        /* Browse Comics */
+        .browse-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: flex;
+            gap: 30px;
+        }
+
+        .filters {
+            width: 250px;
+        }
+
+        .comics-browser {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Collectible Banner */
+        .collectible-banner {
+            background: url('/api/placeholder/1200/300') center/cover;
+            color: white;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 1200px;
         }
     </style>
 </head>
 <body>
-    <div class="nav">
-        LOGO
+    <!-- Navigation -->
+    <nav class="top-nav">
         <a href="#">CHARACTERS</a>
         <a href="#">COMICS</a>
+        <a href="#">MOVIES & TV</a>
+        <a href="#">GAMES</a>
         <a href="#">NEWS</a>
-        <a href="#">COMMUNITY</a>
+        <a href="#">SHOP</a>
+    </nav>
+
+    <!-- Featured Video -->
+    <section class="featured-video">
+        <div class="video-container">
+            <div class="video-player">
+                <img src="/api/placeholder/800/450" alt="Featured Video">
+            </div>
+            <div class="video-info">
+                <h2>BATMAN: H2SH - COMIC TRAILER</h2>
+                <p>Hush is back—and so are Jeph Loeb and Jim Lee—in Batman: H2SH! The biggest sequel in comic book history starts this March in Batman #158.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Comics Grid -->
+    <section class="comics-grid">
+        <h2>READ DC GO! COMICS FOR FREE</h2>
+        <div class="comics-row">
+            <div class="comic-card">
+                <img src="/api/placeholder/300/450" alt="Harley Quinn">
+                <span class="free-badge">FREE</span>
+            </div>
+            <!-- Repeat for other comics -->
+        </div>
+    </section>
+
+    <!-- Trailers Section -->
+    <section class="trailers-section">
+        <h2>DC COMICS TRAILERS, EXCLUSIVE INTERVIEWS & MORE</h2>
+        <div class="trailer-grid">
+            <div class="trailer-card">
+                <img src="/api/placeholder/300/169" alt="Justice League Unlimited">
+                <p>COMIC TRAILER</p>
+                <h3>JUSTICE LEAGUE UNLIMITED</h3>
+            </div>
+            <!-- Repeat for other trailers -->
+        </div>
+    </section>
+
+    <!-- Batman Celebration -->
+    <section class="comics-grid">
+        <h2>CELEBRATE BATMAN 85 WITH DCUI</h2>
+        <div class="comics-row">
+            <div class="comic-card">
+                <img src="/api/placeholder/300/450" alt="Batman Story">
+            </div>
+            <!-- Repeat for other comics -->
+        </div>
+    </section>
+
+    <!-- Collectible Banner -->
+    <div class="collectible-banner">
+        <h2>DC COLLECTIBLE COMICS</h2>
+        <p>COLLECT EACH COVER.<br>
+        UNLOCK EVERY ISSUE.<br>
+        BUILD YOUR COLLECTION.</p>
+        <a href="#" style="color: yellow;">JOIN DC3 ></a>
     </div>
 
-    <div class="featured-story">
-        <h1>FEATURED STORY</h1>
-        <p>Your amazing comic storyline description here</p>
-        <button class="read-now">READ NOW</button>
-    </div>
-
-    <div class="content-section">
-        <h2>LATEST RELEASES</h2>
-        <div>
-            <h3>Comic Title #1</h3>
-            <p>Issue #1</p>
+    <!-- Browse Comics -->
+    <section class="browse-section">
+        <div class="filters">
+            <h3>CHARACTERS</h3>
+            <h3>SERIES</h3>
+            <h3>TYPE</h3>
+            <h3>IMPRINTS</h3>
+            <h3>DATE RANGE</h3>
         </div>
-        <div>
-            <h3>Comic Title #2</h3>
-            <p>Issue #2</p>
+        <div class="comics-browser">
+            <div class="comic-card">
+                <img src="/api/placeholder/300/450" alt="Batman">
+            </div>
+            <!-- Repeat for other comics -->
         </div>
-        <div>
-            <h3>Comic Title #3</h3>
-            <p>Issue #3</p>
-        </div>
-        <div>
-            <h3>Comic Title #4</h3>
-            <p>Issue #4</p>
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2>READ FREE COMICS</h2>
-        <span class="free-label">FREE</span>
-        <div>
-            <h3>Free Comic #1</h3>
-        </div>
-    </div>
-
-    <div class="content-section">
-        <h2>NEWS & FEATURES</h2>
-        <span>NEWS</span>
-        <h3>Latest News Title #1</h3>
-        <p>Brief description of the news item...</p>
-    </div>
-
-    <footer>
-        <div>
-            <h3>ABOUT</h3>
-            <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Careers</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h3>COMICS</h3>
-            <ul>
-                <li><a href="#">Latest Releases</a></li>
-                <li><a href="#">Series</a></li>
-                <li><a href="#">Characters</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h3>COMMUNITY</h3>
-            <ul>
-                <li><a href="#">Forum</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Fan Art</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h3>FOLLOW US</h3>
-            <p>
-                <a href="#">Twitter</a>
-                <a href="#">Instagram</a>
-                <a href="#">Discord</a>
-            </p>
-        </div>
-    </footer>
+    </section>
 </body>
-</html>
+</htm
