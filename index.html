@@ -5,61 +5,123 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comic Project</title>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: Arial, sans-serif;
+        }
+
+        body {
             background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         /* Navigation */
         .top-nav {
             background: #fff;
-            padding: 10px 20px;
+            height: 48px;
+            border-bottom: 1px solid #eee;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #eee;
         }
 
-        .top-nav a {
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-container a {
             color: #000;
             text-decoration: none;
-            margin-right: 20px;
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 14px;
         }
 
         /* Featured Video Section */
         .featured-video {
             background: #0282F9;
+            width: 100%;
             padding: 40px 0;
-            color: white;
         }
 
-        .video-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .video-wrapper {
             display: flex;
-            gap: 30px;
+            gap: 40px;
         }
 
         .video-player {
             flex: 1;
+            position: relative;
             background: #000;
-            aspect-ratio: 16/9;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .video-player img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
         }
 
         .video-info {
             flex: 1;
-            padding: 20px;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .video-info h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .video-tag {
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            margin-bottom: 10px;
         }
 
         /* Comics Grid */
-        .comics-grid {
-            max-width: 1200px;
-            margin: 40px auto;
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 40px 0 20px;
         }
 
-        .comics-row {
+        .comics-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 20px;
@@ -74,158 +136,239 @@
             width: 100%;
             aspect-ratio: 2/3;
             object-fit: cover;
+            border-radius: 4px;
         }
 
-        .free-badge {
+        .free-tag {
             position: absolute;
             top: 10px;
             right: 10px;
             background: white;
-            padding: 5px 15px;
+            padding: 4px 16px;
             border-radius: 20px;
-            font-weight: bold;
+            font-size: 12px;
+            font-weight: 700;
         }
 
-        /* Trailer Section */
-        .trailers-section {
-            max-width: 1200px;
-            margin: 40px auto;
-        }
-
-        .trailer-grid {
+        /* Trailers Section */
+        .trailers-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
 
         .trailer-card {
-            text-align: center;
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        .trailer-card img {
-            width: 100%;
+        .trailer-thumbnail {
+            position: relative;
             aspect-ratio: 16/9;
+        }
+
+        .trailer-thumbnail img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
 
-        /* Browse Comics */
-        .browse-section {
-            max-width: 1200px;
-            margin: 40px auto;
+        .trailer-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .trailer-type {
+            color: #666;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .trailer-title {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* Collectible Banner */
+        .collectible-banner {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 60px 40px;
+            margin: 40px 0;
+        }
+
+        .collectible-banner h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .collectible-banner p {
+            font-size: 24px;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .join-button {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        /* Browse Section */
+        .browse-comics {
             display: flex;
             gap: 30px;
+            margin: 40px 0;
         }
 
         .filters {
-            width: 250px;
+            width: 240px;
         }
 
-        .comics-browser {
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .comics-browse-grid {
             flex: 1;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
 
-        h2 {
-            font-size: 24px;
+        .browse-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
         }
 
-        /* Collectible Banner */
-        .collectible-banner {
-            background: url('/api/placeholder/1200/300') center/cover;
-            color: white;
-            padding: 40px;
-            margin: 40px auto;
-            max-width: 1200px;
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+        }
+
+        .sort-dropdown {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="top-nav">
-        <a href="#">CHARACTERS</a>
-        <a href="#">COMICS</a>
-        <a href="#">MOVIES & TV</a>
-        <a href="#">GAMES</a>
-        <a href="#">NEWS</a>
-        <a href="#">SHOP</a>
+        <div class="container nav-container">
+            <a href="#">CHARACTERS</a>
+            <a href="#">COMICS</a>
+            <a href="#">MOVIES & TV</a>
+            <a href="#">GAMES</a>
+            <a href="#">NEWS</a>
+            <a href="#">SHOP</a>
+            <a href="#">MORE</a>
+        </div>
     </nav>
 
-    <!-- Featured Video -->
     <section class="featured-video">
-        <div class="video-container">
+        <div class="container video-wrapper">
             <div class="video-player">
-                <img src="/api/placeholder/800/450" alt="Featured Video">
+                <img src="/api/placeholder/800/450" alt="Batman H2SH">
+                <div class="play-button">▶</div>
+                <div class="video-controls">
+                    <span>00:00 / 02:15</span>
+                </div>
             </div>
             <div class="video-info">
+                <div class="video-tag">FEATURED VIDEO</div>
                 <h2>BATMAN: H2SH - COMIC TRAILER</h2>
                 <p>Hush is back—and so are Jeph Loeb and Jim Lee—in Batman: H2SH! The biggest sequel in comic book history starts this March in Batman #158.</p>
             </div>
         </div>
     </section>
 
-    <!-- Free Comics Grid -->
-    <section class="comics-grid">
-        <h2>READ DC GO! COMICS FOR FREE</h2>
-        <div class="comics-row">
+    <div class="container">
+        <h2 class="section-title">READ DC GO! COMICS FOR FREE</h2>
+        <div class="comics-grid">
             <div class="comic-card">
                 <img src="/api/placeholder/300/450" alt="Harley Quinn">
-                <span class="free-badge">FREE</span>
+                <span class="free-tag">FREE</span>
             </div>
-            <!-- Repeat for other comics -->
+            <!-- Repeat for 4 more comics -->
         </div>
-    </section>
 
-    <!-- Trailers Section -->
-    <section class="trailers-section">
-        <h2>DC COMICS TRAILERS, EXCLUSIVE INTERVIEWS & MORE</h2>
-        <div class="trailer-grid">
+        <h2 class="section-title">DC COMICS TRAILERS, EXCLUSIVE INTERVIEWS & MORE</h2>
+        <div class="trailers-grid">
             <div class="trailer-card">
-                <img src="/api/placeholder/300/169" alt="Justice League Unlimited">
-                <p>COMIC TRAILER</p>
-                <h3>JUSTICE LEAGUE UNLIMITED</h3>
+                <div class="trailer-thumbnail">
+                    <img src="/api/placeholder/300/169" alt="Justice League Unlimited">
+                    <div class="play-button">▶</div>
+                </div>
+                <div class="trailer-info">
+                    <div class="trailer-type">COMIC TRAILER</div>
+                    <div class="trailer-title">JUSTICE LEAGUE UNLIMITED</div>
+                </div>
             </div>
-            <!-- Repeat for other trailers -->
+            <!-- Repeat for 3 more trailers -->
         </div>
-    </section>
 
-    <!-- Batman Celebration -->
-    <section class="comics-grid">
-        <h2>CELEBRATE BATMAN 85 WITH DCUI</h2>
-        <div class="comics-row">
-            <div class="comic-card">
-                <img src="/api/placeholder/300/450" alt="Batman Story">
+        <div class="collectible-banner">
+            <h2>DC COLLECTIBLE COMICS</h2>
+            <p>COLLECT EACH COVER.<br>
+            UNLOCK EVERY ISSUE.<br>
+            BUILD YOUR COLLECTION.</p>
+            <a href="#" class="join-button">JOIN DC3 ></a>
+        </div>
+
+        <div class="browse-comics">
+            <div class="filters">
+                <div class="filter-group">
+                    <div class="filter-title">CHARACTERS <span>+</span></div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-title">SERIES <span>+</span></div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-title">TYPE <span>+</span></div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-title">IMPRINTS <span>+</span></div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-title">DATE RANGE <span>+</span></div>
+                </div>
             </div>
-            <!-- Repeat for other comics -->
+            <div class="browse-content">
+                <div class="browse-options">
+                    <div class="view-toggle">
+                        <button>☰</button>
+                        <button>▦</button>
+                    </div>
+                    <select class="sort-dropdown">
+                        <option>NEWEST</option>
+                    </select>
+                </div>
+                <div class="comics-browse-grid">
+                    <div class="comic-card">
+                        <img src="/api/placeholder/300/450" alt="Batman">
+                    </div>
+                    <!-- Repeat for more comics -->
+                </div>
+            </div>
         </div>
-    </section>
-
-    <!-- Collectible Banner -->
-    <div class="collectible-banner">
-        <h2>DC COLLECTIBLE COMICS</h2>
-        <p>COLLECT EACH COVER.<br>
-        UNLOCK EVERY ISSUE.<br>
-        BUILD YOUR COLLECTION.</p>
-        <a href="#" style="color: yellow;">JOIN DC3 ></a>
     </div>
-
-    <!-- Browse Comics -->
-    <section class="browse-section">
-        <div class="filters">
-            <h3>CHARACTERS</h3>
-            <h3>SERIES</h3>
-            <h3>TYPE</h3>
-            <h3>IMPRINTS</h3>
-            <h3>DATE RANGE</h3>
-        </div>
-        <div class="comics-browser">
-            <div class="comic-card">
-                <img src="/api/placeholder/300/450" alt="Batman">
-            </div>
-            <!-- Repeat for other comics -->
-        </div>
-    </section>
 </body>
-</htm
+</html>
