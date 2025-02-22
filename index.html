@@ -564,13 +564,38 @@
             </div>
             
             <div class="character-grid">
-                <a href="character-detail.html" class="character-card">
+                <a href="#" class="character-card" onclick="showCharacterDetail(event)">
                     <div class="character-image-placeholder"></div>
                     <h3>DR GUFF</h3>
                 </a>
             </div>
         </div>
     </section>
+
+    <!-- Add the character detail section here -->
+<div class="character-detail" id="character-detail" style="display: none;">
+    <div class="character-main">
+        <div class="character-image-placeholder"></div>
+        <div class="character-info">
+            <h1>DR GUFF</h1>
+            <p class="character-description">
+                <!-- Add Dr Guff's description here -->
+            </p>
+        </div>
+    </div>
+
+    <div class="character-facts">
+        <h2>CHARACTER FACTS</h2>
+        <div class="fact-group">
+            <h3>Powers:</h3>
+            <p><!-- List Dr Guff's powers here --></p>
+        </div>
+        <div class="fact-group">
+            <h3>First Appearance:</h3>
+            <p><!-- Add first appearance info here --></p>
+        </div>
+    </div>
+</div>
 
 <!-- Add the script tag here -->
 <script>
@@ -609,6 +634,13 @@
     
     // Optional: Auto-advance every 5 seconds
     setInterval(nextBanner, 5000);
-    </script>
+
+    // Add your new function here
+    function showCharacterDetail(event) {
+        event.preventDefault();
+        document.querySelector('.browse-section').style.display = 'none';
+        document.querySelector('#character-detail').style.display = 'block';
+    }
+</script>
 </body>
 </html>
