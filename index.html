@@ -75,10 +75,17 @@
         }
 
         .banner-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.banner-image.active {
+    opacity: 1;
+}
 
         .banner-content {
             position: absolute;
@@ -315,7 +322,12 @@
 
     <!-- Banner -->
     <div class="banner">
-        <img src="banners/banner1.png" class="banner-image" alt="Banner">
+        <!-- Add all banner images -->
+        <img src="banners/banner1.png" class="banner-image active" alt="Banner 1">
+        <img src="banners/banner2.png" class="banner-image" alt="Banner 2">
+        <img src="banners/banner3.png" class="banner-image" alt="Banner 3">
+        <img src="banners/banner4.png" class="banner-image" alt="Banner 4">
+        
         <div class="banner-content">
             <div class="banner-tag">WHAT YOUR FAVORITE GREEN</div>
             <h2 class="banner-title">LANTERN SAYS ABOUT YOU</h2>
