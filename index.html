@@ -121,6 +121,37 @@
             font-size: 14px;
         }
 
+        /* Banner Navigation Arrows */
+.banner-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.banner-nav:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.banner-prev {
+    left: 20px;
+}
+
+.banner-next {
+    right: 20px;
+}
+
         /* Featured Video Section */
         .featured-video {
             background: #0282F9;
@@ -322,17 +353,19 @@
 
     <!-- Banner -->
     <div class="banner">
-        <!-- Add all banner images -->
+        <!-- Banner images -->
         <img src="banners/banner1.png" class="banner-image active" alt="Banner 1">
         <img src="banners/banner2.png" class="banner-image" alt="Banner 2">
         <img src="banners/banner3.png" class="banner-image" alt="Banner 3">
         <img src="banners/banner4.png" class="banner-image" alt="Banner 4">
         
+        <!-- Navigation Arrows -->
+        <button class="banner-nav banner-prev" onclick="prevBanner()">❮</button>
+        <button class="banner-nav banner-next" onclick="nextBanner()">❯</button>
+        
+        <!-- Banner content -->
         <div class="banner-content">
-            <div class="banner-tag">WHAT YOUR FAVORITE GREEN</div>
-            <h2 class="banner-title">LANTERN SAYS ABOUT YOU</h2>
-            <p class="banner-description">No evil escapes their sight, and no revealing observation ours.</p>
-            <a href="#" class="banner-button">CUT TO THE CORPS</a>
+            <!-- ... content remains the same ... -->
         </div>
     </div>
 
@@ -469,18 +502,41 @@
 
 <!-- Add the script tag here -->
 <script>
-function toggleFilter(element) {
-    const options = element.nextElementSibling;
-    const span = element.querySelector('span');
-    
-    if (options.classList.contains('active')) {
-        options.classList.remove('active');
-        span.textContent = '+';
-    } else {
-        options.classList.add('active');
-        span.textContent = '-';
+    function toggleFilter(element) {
+        const options = element.nextElementSibling;
+        const span = element.querySelector('span');
+        
+        if (options.classList.contains('active')) {
+            options.classList.remove('active');
+            span.textContent = '+';
+        } else {
+            options.classList.add('active');
+            span.textContent = '-';
+        }
     }
-}
-</script>
+    
+    // Add the new banner code here
+    let currentBanner = 0;
+    const banners = document.querySelectorAll('.banner-image');
+    
+    function showBanner(index) {
+        banners[currentBanner].classList.remove('active');
+        currentBanner = index;
+        if (currentBanner >= banners.length) currentBanner = 0;
+        if (currentBanner < 0) currentBanner = banners.length - 1;
+        banners[currentBanner].classList.add('active');
+    }
+    
+    function nextBanner() {
+        showBanner(currentBanner + 1);
+    }
+    
+    function prevBanner() {
+        showBanner(currentBanner - 1);
+    }
+    
+    // Optional: Auto-advance every 5 seconds
+    setInterval(nextBanner, 5000);
+    </script>
 </body>
 </html>
