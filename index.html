@@ -203,19 +203,19 @@
     z-index: 1;
 }
 
-/* Add coming soon only to specific comics */
 .comic-card.coming-soon::after {
     content: 'COMING SOON';
     position: absolute;
-    bottom: 20px;
+    bottom: 0;  /* Moved to bottom */
     left: 0;
     width: 100%;
-    padding: 8px 0;
-    background: rgba(2, 130, 249, 0.85);
+    padding: 4px 0;  /* Reduced padding */
+    background: rgb(2, 130, 249);  /* Solid color */
     color: white;
     text-align: center;
-    font-weight: bold;
-    font-size: 14px;
+    font-weight: 500;  /* Slightly reduced font weight */
+    font-size: 12px;  /* Smaller font size */
+    letter-spacing: 1px;  /* Added letter spacing */
     transform: translateY(100%);
     transition: transform 0.3s ease;
 }
@@ -228,7 +228,7 @@
     width: 100%;
     aspect-ratio: 2/3;
     object-fit: cover;
-    border-radius: 4px; /* Optional: adds slight rounding to the corners */
+    border-radius: 4px;
 }
 
         .free-badge {
