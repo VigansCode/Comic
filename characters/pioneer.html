@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pioneer | Character Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Oswald:wght@400;600&family=Bangers&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto Condensed', sans-serif;
             background-color: #fff;
         }
-        /* Navigation */
+
         .top-nav {
             background: #fff;
             padding: 10px 20px;
@@ -19,68 +20,101 @@
             align-items: center;
             border-bottom: 1px solid #eee;
         }
+
         .top-nav a {
             color: #000;
             text-decoration: none;
             margin-right: 20px;
             font-weight: bold;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.5px;
         }
-        /* Character Detail Styles */
+
         .character-detail {
             max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
         }
+
         .character-main {
             display: flex;
             gap: 40px;
             margin-bottom: 40px;
         }
+
         .character-image-placeholder {
             width: 300px;
             height: 300px;
-            background-color: #eee;
             overflow: hidden;
             border-radius: 4px;
         }
+
         .character-image-placeholder img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 4px;
         }
+
         .character-info {
             flex: 1;
         }
+
         .character-info h1 {
             margin: 0 0 20px 0;
-            font-size: 32px;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 36px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
+
         .character-description {
+            font-family: 'Roboto Condensed', sans-serif;
             font-size: 16px;
             line-height: 1.6;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
+
         .fact-group {
             margin-bottom: 20px;
         }
-        .fact-group h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+
         .fact-group h3 {
             margin: 0 0 10px 0;
-            font-weight: bold;
-            font-size: 18px;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+
         .fact-group p {
             margin: 0;
-            line-height: 1.6;
+            line-height: 1.4;
+        }
+
+        .character-facts h2 {
+            margin-bottom: 20px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .fact-group ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .fact-group ul li {
+            margin-bottom: 8px;
+            line-height: 1.4;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="top-nav">
         <a href="../index.html">CHARACTERS</a>
         <a href="#">COMICS</a>
@@ -97,15 +131,25 @@
             <div class="character-info">
                 <h1>PIONEER</h1>
                 <p class="character-description">
-                    A visionary explorer pushing the boundaries of both technology and human potential, Pioneer stands at the forefront of innovation. With an unwavering determination to break new ground, they lead humanity into uncharted territories of discovery and advancement.
+                    A brilliant tech mogul whose innovations have revolutionized the world, Pioneer stands as humanity's best defense against catastrophic threats. Rising from humble beginnings to become one of the world's most influential tech billionaires, he has dedicated his vast resources and unparalleled technological expertise to protecting humanity. His advanced research and development facility houses some of the most sophisticated technology on the planet, making him uniquely qualified to counter threats like Dr. Guff's viral menace. Despite his immense wealth and power, Pioneer remains driven by a singular purpose: ensuring humanity's survival through technological advancement.
                 </p>
             </div>
         </div>
         <div class="character-facts">
             <h2>CHARACTER FACTS</h2>
             <div class="fact-group">
-                <h3>Powers:</h3>
-                <p>Advanced technological insight, Strategic leadership, Innovative problem-solving, Future vision</p>
+                <h3>Backstory:</h3>
+                <p>Rising from modest beginnings, Pioneer built his tech empire through groundbreaking innovations in artificial intelligence, quantum computing, and advanced robotics. His company's technological breakthroughs have transformed everything from communications to medical science. When Dr. Guff's viral threat emerged, Pioneer recognized the global danger and redirected much of his company's resources toward developing countermeasures. His advanced containment systems and experimental treatment protocols have proven crucial in the ongoing battle against Dr. Guff's infectious agents.</p>
+            </div>
+            <div class="fact-group">
+                <h3>Abilities:</h3>
+                <ul>
+                    <li>Genius-Level Intellect - Possesses extraordinary understanding of multiple scientific disciplines</li>
+                    <li>Advanced Tech Arsenal - Access to cutting-edge weapons and defense systems</li>
+                    <li>Quantum Computing Mastery - Can process and analyze vast amounts of data instantly</li>
+                    <li>Robotic Army - Commands an army of advanced autonomous robots</li>
+                    <li>Predictive Analytics - Uses AI to anticipate and counter threats before they materialize</li>
+                </ul>
             </div>
             <div class="fact-group">
                 <h3>First Appearance:</h3>
