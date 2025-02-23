@@ -192,14 +192,22 @@
         }
 
         .comic-card {
-            position: relative;
-        }
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .comic-card img {
-            width: 100%;
-            aspect-ratio: 2/3;
-            object-fit: cover;
-        }
+.comic-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.comic-card img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 4px; /* Optional: adds slight rounding to the corners */
+}
 
         .free-badge {
             position: absolute;
