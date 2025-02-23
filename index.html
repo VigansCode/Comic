@@ -194,12 +194,34 @@
         .comic-card {
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
 }
 
 .comic-card:hover {
     transform: translateY(-10px) scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     z-index: 1;
+}
+
+/* Add coming soon only to specific comics */
+.comic-card.coming-soon::after {
+    content: 'COMING SOON';
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    padding: 8px 0;
+    background: rgba(2, 130, 249, 0.85);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.comic-card.coming-soon:hover::after {
+    transform: translateY(0);
 }
 
 .comic-card img {
@@ -508,19 +530,19 @@
             <img src="books/sage.png" alt="Sage Comics">
             <span class="free-badge">FREE</span>
         </div>
-        <div class="comic-card">
-            <img src="books/issue1.png.png" alt="Issue #1">
+        <div class="comic-card coming-soon">
+            <img src="books/issue1.png" alt="Issue #1">
             <span class="free-badge">FREE</span>
         </div>
-        <div class="comic-card">
+        <div class="comic-card coming-soon">
             <img src="books/issue2.png" alt="Issue #2">
             <span class="free-badge">FREE</span>
         </div>
-        <div class="comic-card">
+        <div class="comic-card coming-soon">
             <img src="books/issue3.png" alt="Issue #3">
             <span class="free-badge">FREE</span>
         </div>
-        <div class="comic-card">
+        <div class="comic-card coming-soon">
             <img src="books/issue4.png" alt="Issue #4">
             <span class="free-badge">FREE</span>
         </div>
