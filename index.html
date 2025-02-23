@@ -203,24 +203,45 @@
     z-index: 1;
 }
 
-.comic-card.coming-soon::after {
-    content: 'COMING SOON';
+.comic-card.coming-q1::after,
+.comic-card.coming-q2::after,
+.comic-card.coming-q3::after,
+.comic-card.coming-q4::after {
     position: absolute;
-    bottom: 0;  /* Moved to bottom */
+    bottom: 0;
     left: 0;
     width: 100%;
-    padding: 4px 0;  /* Reduced padding */
-    background: rgb(2, 130, 249);  /* Solid color */
+    padding: 4px 0;
+    background: rgb(2, 130, 249);
     color: white;
     text-align: center;
-    font-weight: 500;  /* Slightly reduced font weight */
-    font-size: 12px;  /* Smaller font size */
-    letter-spacing: 1px;  /* Added letter spacing */
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1px;
     transform: translateY(100%);
     transition: transform 0.3s ease;
 }
 
-.comic-card.coming-soon:hover::after {
+.comic-card.coming-q1::after {
+    content: 'COMING Q1';
+}
+
+.comic-card.coming-q2::after {
+    content: 'COMING Q2';
+}
+
+.comic-card.coming-q3::after {
+    content: 'COMING Q3';
+}
+
+.comic-card.coming-q4::after {
+    content: 'COMING Q4';
+}
+
+.comic-card.coming-q1:hover::after,
+.comic-card.coming-q2:hover::after,
+.comic-card.coming-q3:hover::after,
+.comic-card.coming-q4:hover::after {
     transform: translateY(0);
 }
 
@@ -530,19 +551,19 @@
             <img src="books/sage.png" alt="Sage Comics">
             <span class="free-badge">FREE</span>
         </div>
-        <div class="comic-card coming-soon">
+        <div class="comic-card coming-q1">
             <img src="books/issue1.png.png" alt="Issue #1">
             <span class="free-badge">FREE</span>
         </div>
-        <div class="comic-card coming-soon">
+        <div class="comic-card coming-q2">
             <img src="books/issue2.png" alt="Issue #2">
             <span class="free-badge">FREE</span>
         </div>
-        <div class="comic-card coming-soon">
+        <div class="comic-card coming-q3">
             <img src="books/issue3.png" alt="Issue #3">
             <span class="free-badge">FREE</span>
         </div>
-        <div class="comic-card coming-soon">
+        <div class="comic-card coming-q4">
             <img src="books/issue4.png" alt="Issue #4">
             <span class="free-badge">FREE</span>
         </div>
