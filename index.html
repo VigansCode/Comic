@@ -584,7 +584,7 @@
     </section>
 
     <section class="browse-section">
-        <!-- Keep the filters section as is -->
+        <!-- Updated filters section with new characters -->
         <div class="filters">
             <input type="text" placeholder="Filter by Keyword" class="filter-input">
             <div class="filter-group">
@@ -622,14 +622,31 @@
                         <input type="checkbox" name="character" value="cryptopunk">
                         Cryptopunk
                     </label>
+                    <!-- New Characters Added -->
+                    <label class="filter-option">
+                        <input type="checkbox" name="character" value="vex">
+                        Vex
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="character" value="ivybloom">
+                        Ivy Bloom
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="character" value="gullet">
+                        Gullet
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="character" value="kismet">
+                        Kismet
+                    </label>
                 </div>
             </div>
         </div>
     
-        <!-- Add the character display section -->
+        <!-- Updated character display section with new characters -->
         <div class="character-content">
             <div class="browse-header">
-                <h2>BROWSE CHARACTERS (8)</h2>
+                <h2>BROWSE CHARACTERS (12)</h2>
                 <div class="view-controls">
                     <div class="sort-dropdown">
                         <select>
@@ -681,78 +698,103 @@
                         <img src="characterimages/pepe.png" alt="Pepe">
                     </div>
                     <h3>PEPE</h3>
-                    <a href="characters/cryptopunk.html" class="character-card">
-                        <div class="character-image-placeholder">
-                            <img src="characterimages/cryptopunk.png" alt="Cryptopunk">
-                        </div>
-                        <h3>CRYPTOPUNK</h3>
-                    </a>
+                </a>
+                <a href="characters/cryptopunk.html" class="character-card">
+                    <div class="character-image-placeholder">
+                        <img src="characterimages/cryptopunk.png" alt="Cryptopunk">
+                    </div>
+                    <h3>CRYPTOPUNK</h3>
+                </a>
+                <!-- New Characters Added -->
+                <a href="characters/vex.html" class="character-card">
+                    <div class="character-image-placeholder">
+                        <img src="characterimages/Vex.png" alt="Vex">
+                    </div>
+                    <h3>VEX</h3>
+                </a>
+                <a href="characters/ivy bloom.html" class="character-card">
+                    <div class="character-image-placeholder">
+                        <img src="characterimages/Ivy Bloom.png" alt="Ivy Bloom">
+                    </div>
+                    <h3>IVY BLOOM</h3>
+                </a>
+                <a href="characters/gullet.html" class="character-card">
+                    <div class="character-image-placeholder">
+                        <img src="characterimages/Gullet.png" alt="Gullet">
+                    </div>
+                    <h3>GULLET</h3>
+                </a>
+                <a href="characters/kismet.html" class="character-card">
+                    <div class="character-image-placeholder">
+                        <img src="characterimages/Kismet.png" alt="Kismet">
+                    </div>
+                    <h3>KISMET</h3>
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
     <!-- Trailers Section -->
     <section class="trailers-section">
         <h2>DC COMICS TRAILERS, EXCLUSIVE INTERVIEWS & MORE</h2>
-            </div>
     </section>
 
     <!-- Footer -->
-<!-- Footer -->
-<footer class="footer">
-    <div class="footer-content">
-        <img src="/dc-logo.png" alt="DC Logo" class="footer-logo">
-        <div class="footer-links">
-            <a href="#">PRIVACY POLICY</a>
-            <span class="divider">|</span>
-            <a href="#">TERMS</a>
-            <span class="divider">|</span>
-            <a href="#">AD CHOICES</a>
-            <span class="divider">|</span>
-            <a href="#">ACCESSIBILITY</a>
-            <span class="divider">|</span>
-            <a href="#">MANAGE PREFERENCES</a>
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="/dc-logo.png" alt="DC Logo" class="footer-logo">
+            <div class="footer-links">
+                <a href="#">PRIVACY POLICY</a>
+                <span class="divider">|</span>
+                <a href="#">TERMS</a>
+                <span class="divider">|</span>
+                <a href="#">AD CHOICES</a>
+                <span class="divider">|</span>
+                <a href="#">ACCESSIBILITY</a>
+                <span class="divider">|</span>
+                <a href="#">MANAGE PREFERENCES</a>
+            </div>
+            <p class="copyright">© & ™ DC. ALL RIGHTS RESERVED</p>
         </div>
-        <p class="copyright">© & ™ DC. ALL RIGHTS RESERVED</p>
-    </div>
-</footer>
-<!-- Add the script tag here -->
-<script>
-    function toggleFilter(element) {
-        const options = element.nextElementSibling;
-        const span = element.querySelector('span');
-        
-        if (options.classList.contains('active')) {
-            options.classList.remove('active');
-            span.textContent = '+';
-        } else {
-            options.classList.add('active');
-            span.textContent = '-';
+    </footer>
+    
+    <!-- Add the script tag here -->
+    <script>
+        function toggleFilter(element) {
+            const options = element.nextElementSibling;
+            const span = element.querySelector('span');
+            
+            if (options.classList.contains('active')) {
+                options.classList.remove('active');
+                span.textContent = '+';
+            } else {
+                options.classList.add('active');
+                span.textContent = '-';
+            }
         }
-    }
-    
-    // Add the new banner code here
-    let currentBanner = 0;
-    const banners = document.querySelectorAll('.banner-image');
-    
-    function showBanner(index) {
-        banners[currentBanner].classList.remove('active');
-        currentBanner = index;
-        if (currentBanner >= banners.length) currentBanner = 0;
-        if (currentBanner < 0) currentBanner = banners.length - 1;
-        banners[currentBanner].classList.add('active');
-    }
-    
-    function nextBanner() {
-        showBanner(currentBanner + 1);
-    }
-    
-    function prevBanner() {
-        showBanner(currentBanner - 1);
-    }
-    
-    // Optional: Auto-advance every 5 seconds
-    setInterval(nextBanner, 5000);
-
-</script>
+        
+        // Add the new banner code here
+        let currentBanner = 0;
+        const banners = document.querySelectorAll('.banner-image');
+        
+        function showBanner(index) {
+            banners[currentBanner].classList.remove('active');
+            currentBanner = index;
+            if (currentBanner >= banners.length) currentBanner = 0;
+            if (currentBanner < 0) currentBanner = banners.length - 1;
+            banners[currentBanner].classList.add('active');
+        }
+        
+        function nextBanner() {
+            showBanner(currentBanner + 1);
+        }
+        
+        function prevBanner() {
+            showBanner(currentBanner - 1);
+        }
+        
+        // Optional: Auto-advance every 5 seconds
+        setInterval(nextBanner, 5000);
+    </script>
 </body>
 </html>
