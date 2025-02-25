@@ -112,6 +112,44 @@
             margin-bottom: 8px;
             line-height: 1.4;
         }
+        
+        .relationship-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .relationship-image {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+        }
+
+        .relationship-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .relationship-info {
+            padding: 10px 15px;
+        }
+
+        .relationship-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .relationship-description {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -131,7 +169,7 @@
             <div class="character-info">
                 <h1>VEX MALTHORNE</h1>
                 <p class="character-description">
-                    A rugged, battle-scarred bounty hunter with a cyberpunk twist, Vex Malthorne stalks the neon-drenched streets of New Meridian with cold precision. Known for his unique blend of old-world tactics and cutting-edge tech, Vex tracks targets that no one else can find. His signature long, tattered trench coat—laced with pulsing neon-lit circuitry—has become his calling card in the criminal underworld. With half his face concealed behind a cracked metallic mask, his single visible eye holds the intensity of a predator who's seen too much of humanity's darkness. His bionic arm, a custom piece with exposed wiring and an integrated energy blaster, serves as both a reminder of what he's lost and a tool for what he must do. Operating in the shadows between corporate law and street justice, Vex has built a reputation as a man who always completes his contracts—no matter the cost.
+                    A rugged, battle-scarred bounty hunter with a technological edge, Vex Malthorne stalks the neon-lit streets with cold precision. Known for his unique blend of old-world tactics and cutting-edge tech, Vex tracks targets that no one else can find. His signature long, tattered trench coat—embedded with advanced tech—has become his calling card in the criminal underworld. With half his face concealed behind a cracked metallic mask, his single visible eye holds the intensity of a predator who's seen too much of humanity's darkness. His bionic arm, a custom piece with exposed wiring and an integrated energy blaster, serves as both a reminder of what he's lost and a tool for what he must do. Operating in the shadows between law and street justice, Vex has built a reputation as a man who always completes his contracts—no matter the cost.
                 </p>
             </div>
         </div>
@@ -139,21 +177,51 @@
             <h2>CHARACTER FACTS</h2>
             <div class="fact-group">
                 <h3>Backstory:</h3>
-                <p>Once a decorated law enforcement officer in New Meridian's elite Cybercrime Division, Vex Malthorne's life changed forever when a high-stakes raid on a tech-smuggling operation went catastrophically wrong. Double-crossed by someone within his own department, Vex was ambushed, severely injured, and left for dead. He lost his arm, part of his face, and his faith in the system he'd sworn to uphold. After months of painful recovery, he emerged a different man—rebuilt with experimental cybernetics that the department disavowed any knowledge of. Cast out from the force and haunted by unanswered questions, Vex now works as an independent bounty hunter, using his intimate knowledge of both law enforcement and criminal operations to track down high-value targets. His true mission, however, remains finding those responsible for his betrayal. Each contract brings him closer to uncovering the conspiracy that destroyed his old life, while his cybernetic enhancements—constantly upgraded with black market tech—increasingly blur the line between man and machine.</p>
+                <p>Once a decorated law enforcement officer in an elite crime division, Vex Malthorne's life changed forever when a high-stakes raid on a tech-smuggling operation went catastrophically wrong. Double-crossed by someone within his own department, Vex was ambushed, severely injured, and left for dead. He lost his arm, part of his face, and his faith in the system he'd sworn to uphold. After months of painful recovery, he emerged a different man—rebuilt with experimental technologies that the department disavowed any knowledge of. Cast out from the force and haunted by unanswered questions, Vex now works as an independent bounty hunter, using his intimate knowledge of both law enforcement and criminal operations to track down high-value targets. His true mission, however, remains finding those responsible for his betrayal. Each contract brings him closer to uncovering the conspiracy that destroyed his old life, while his technological enhancements—constantly upgraded with black market tech—increasingly blur the line between man and machine.</p>
             </div>
             <div class="fact-group">
                 <h3>Abilities:</h3>
                 <ul>
                     <li>Tactical Combat Mastery - Enhanced reflexes and years of experience make him lethal in close-quarters combat</li>
                     <li>Bionic Weaponry - Advanced energy blaster integrated into his cybernetic arm with multiple fire modes</li>
-                    <li>Neural Enhancement - Cybernetic implants allow heightened sensory perception and rapid information processing</li>
+                    <li>Neural Enhancement - Technological implants allow heightened sensory perception and rapid information processing</li>
                     <li>Tracking Expertise - Combines old-school investigative techniques with cutting-edge surveillance technology</li>
-                    <li>Tech Manipulation - Can interface with and hack most electronic systems through his cybernetic enhancements</li>
+                    <li>Tech Manipulation - Can interface with and hack most electronic systems through his bionic enhancements</li>
                 </ul>
             </div>
             <div class="fact-group">
                 <h3>First Appearance:</h3>
-                <p>NEON HUNTERS #7 (2024)</p>
+                <p>Sage Comics #2 (2024)</p>
+            </div>
+            <div class="fact-group">
+                <h3>Relationships:</h3>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/Vaga.png" alt="Vagabond">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">VAGABOND</div>
+                        <p class="relationship-description">Occasional partner on missions requiring both stealth and firepower, though they maintain a professional distance.</p>
+                    </div>
+                </div>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/Gullet.png" alt="Gullet">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">GULLET</div>
+                        <p class="relationship-description">Has fought alongside him when both were hired for the same high-risk extraction mission requiring overwhelming force.</p>
+                    </div>
+                </div>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/recursion.png" alt="Recursion">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">RECURSION</div>
+                        <p class="relationship-description">Bitter rival who has hunted Vex on multiple occasions, each encounter ending in a stalemate that only intensifies their feud.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
