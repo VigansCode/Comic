@@ -1,4 +1,3 @@
-Guff
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,6 +112,44 @@ Guff
             margin-bottom: 8px;
             line-height: 1.4;
         }
+
+        .relationship-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .relationship-image {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+        }
+
+        .relationship-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .relationship-info {
+            padding: 10px 15px;
+        }
+
+        .relationship-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .relationship-description {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -155,6 +192,36 @@ Guff
             <div class="fact-group">
                 <h3>First Appearance:</h3>
                 <p>Sage Comics #1 (2024)</p>
+            </div>
+            <div class="fact-group">
+                <h3>Relationships:</h3>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/pioneer.png" alt="Pioneer">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">PIONEER</div>
+                        <p class="relationship-description">Former colleague who once sought Dr. Guff's help with genetic research before Guff's transformation.</p>
+                    </div>
+                </div>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/Gullet.png" alt="Gullet">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">GULLET</div>
+                        <p class="relationship-description">Unwitting victim of Dr. Guff's experimental pathogen that mutated his digestive system.</p>
+                    </div>
+                </div>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/backlash.png" alt="Backlash">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">BACKLASH</div>
+                        <p class="relationship-description">Military operative sent to contain Dr. Guff's viral outbreak, gained his powers during the confrontation.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
