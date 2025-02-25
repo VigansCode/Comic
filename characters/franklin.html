@@ -6,7 +6,6 @@
     <title>FranklinIs Bored | Character Details</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Oswald:wght@400;600&family=Bangers&display=swap" rel="stylesheet">
     <style>
-        /* [Previous styling remains exactly the same] */
         body {
             margin: 0;
             padding: 0;
@@ -113,6 +112,44 @@
             margin-bottom: 8px;
             line-height: 1.4;
         }
+        
+        .relationship-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .relationship-image {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+        }
+
+        .relationship-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .relationship-info {
+            padding: 10px 15px;
+        }
+
+        .relationship-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .relationship-description {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -155,6 +192,36 @@
             <div class="fact-group">
                 <h3>First Appearance:</h3>
                 <p>Sage Comics #1 (2024)</p>
+            </div>
+            <div class="fact-group">
+                <h3>Relationships:</h3>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/sam.png" alt="Sam Bankman-Fried">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">SAM BANKMAN-FRIED</div>
+                        <p class="relationship-description">Rival in digital asset accumulation, constantly trying to outmaneuver Sam to access valuable crypto resources.</p>
+                    </div>
+                </div>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/pepe.png" alt="Pepe">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">PEPE</div>
+                        <p class="relationship-description">Digital world ally and occasional partner in cyber operations, though Pepe remains wary of Franklin's tendency to betray partners.</p>
+                    </div>
+                </div>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/babel.png" alt="Babel">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">BABEL</div>
+                        <p class="relationship-description">Unwittingly helped translate code that led to Babel's discovery of the ancient text, now occasionally sells information to Babel.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
