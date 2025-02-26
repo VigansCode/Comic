@@ -150,6 +150,24 @@
             line-height: 1.4;
             margin: 0;
         }
+        
+        /* New styles for relationship links */
+        .relationship-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .relationship-link .relationship-card {
+            margin-bottom: 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .relationship-link:hover .relationship-card {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
@@ -195,33 +213,39 @@
             </div>
             <div class="fact-group">
                 <h3>Relationships:</h3>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/mesmerise.png" alt="Mesmerise">
+                <a href="mesmerise.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/mesmerise.png" alt="Mesmerise">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">MESMERISE</div>
+                            <p class="relationship-description">Frequent collaborator whose portal abilities complement Kismet's mental powers on missions requiring both intelligence and mobility.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">MESMERISE</div>
-                        <p class="relationship-description">Frequent collaborator whose portal abilities complement Kismet's mental powers on missions requiring both intelligence and mobility.</p>
+                </a>
+                <a href="paradigm.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/paradigm.png" alt="Paradigm">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">PARADIGM</div>
+                            <p class="relationship-description">Natural enemy as his perception-altering powers interfere with her telepathy, creating dangerous feedback loops in her mind.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/paradigm.png" alt="Paradigm">
+                </a>
+                <a href="babel.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/babel.png" alt="Babel">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">BABEL</div>
+                            <p class="relationship-description">Fascinated by his linguistic abilities and how they affect minds similarly to her powers; they share research on cognitive influences.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">PARADIGM</div>
-                        <p class="relationship-description">Natural enemy as his perception-altering powers interfere with her telepathy, creating dangerous feedback loops in her mind.</p>
-                    </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/babel.png" alt="Babel">
-                    </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">BABEL</div>
-                        <p class="relationship-description">Fascinated by his linguistic abilities and how they affect minds similarly to her powers; they share research on cognitive influences.</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
