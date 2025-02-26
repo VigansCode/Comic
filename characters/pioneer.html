@@ -150,6 +150,24 @@
             line-height: 1.4;
             margin: 0;
         }
+        
+        /* New styles for relationship links */
+        .relationship-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .relationship-link .relationship-card {
+            margin-bottom: 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .relationship-link:hover .relationship-card {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
@@ -195,33 +213,39 @@
             </div>
             <div class="fact-group">
                 <h3>Relationships:</h3>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/drguff.png" alt="Dr Guff">
+                <a href="dr-guff.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/drguff.png" alt="Dr Guff">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">DR GUFF</div>
+                            <p class="relationship-description">Once consulted him for genetic research before their paths diverged, now Pioneer leads the technological defense against Guff's viral threat.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">DR GUFF</div>
-                        <p class="relationship-description">Once consulted him for genetic research before their paths diverged, now Pioneer leads the technological defense against Guff's viral threat.</p>
+                </a>
+                <a href="mesmerise.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/mesmerise.png" alt="Mesmerise">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">MESMERISE</div>
+                            <p class="relationship-description">Former student who Pioneer mentored before her powers manifested, now occasionally assists with his more sensitive operations.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/mesmerise.png" alt="Mesmerise">
+                </a>
+                <a href="ivy-bloom.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/Ivy Bloom.png" alt="Ivy Bloom">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">IVY BLOOM</div>
+                            <p class="relationship-description">Occasional ally who provides rare botanical compounds for Pioneer's experimental medical treatments and antiviral research.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">MESMERISE</div>
-                        <p class="relationship-description">Former student who Pioneer mentored before her powers manifested, now occasionally assists with his more sensitive operations.</p>
-                    </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/Ivy Bloom.png" alt="Ivy Bloom">
-                    </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">IVY BLOOM</div>
-                        <p class="relationship-description">Occasional ally who provides rare botanical compounds for Pioneer's experimental medical treatments and antiviral research.</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
