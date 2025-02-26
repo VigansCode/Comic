@@ -150,6 +150,24 @@
             line-height: 1.4;
             margin: 0;
         }
+        
+        /* New styles for relationship links */
+        .relationship-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .relationship-link .relationship-card {
+            margin-bottom: 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .relationship-link:hover .relationship-card {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
@@ -195,33 +213,39 @@
             </div>
             <div class="fact-group">
                 <h3>Relationships:</h3>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/franklin.png" alt="FranklinIsBored">
+                <a href="franklinis-bored.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/franklin.png" alt="FranklinIsBored">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">FRANKLINIS BORED</div>
+                            <p class="relationship-description">Digital ally who shares underground network resources, though Pepe remains cautious due to Franklin's notorious betrayals.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">FRANKLINIS BORED</div>
-                        <p class="relationship-description">Digital ally who shares underground network resources, though Pepe remains cautious due to Franklin's notorious betrayals.</p>
+                </a>
+                <a href="cryptopunk.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/cryptopunk.png" alt="Cryptopunk">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">CRYPTOPUNK</div>
+                            <p class="relationship-description">Frequent collaborator in digital black markets who provides technical expertise in exchange for Pepe's network access.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/cryptopunk.png" alt="Cryptopunk">
+                </a>
+                <a href="recursion.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/recursion.png" alt="Recursion">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">RECURSION</div>
+                            <p class="relationship-description">Enemy who has tracked and "killed" Pepe multiple times, only to find him reappearing in different forms across the digital landscape.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">CRYPTOPUNK</div>
-                        <p class="relationship-description">Frequent collaborator in digital black markets who provides technical expertise in exchange for Pepe's network access.</p>
-                    </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/recursion.png" alt="Recursion">
-                    </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">RECURSION</div>
-                        <p class="relationship-description">Enemy who has tracked and "killed" Pepe multiple times, only to find him reappearing in different forms across the digital landscape.</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
