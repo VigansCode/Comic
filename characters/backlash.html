@@ -150,6 +150,24 @@
             line-height: 1.4;
             margin: 0;
         }
+        
+        /* New styles for relationship links */
+        .relationship-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .relationship-link .relationship-card {
+            margin-bottom: 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .relationship-link:hover .relationship-card {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
@@ -195,33 +213,39 @@
             </div>
             <div class="fact-group">
                 <h3>Relationships:</h3>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/drguff.png" alt="Dr Guff">
+                <a href="dr-guff.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/drguff.png" alt="Dr Guff">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">DR GUFF</div>
+                            <p class="relationship-description">Military operative sent to contain Dr. Guff's viral outbreak, gained his powers during the confrontation with experimental weapons.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">DR GUFF</div>
-                        <p class="relationship-description">Military operative sent to contain Dr. Guff's viral outbreak, gained his powers during the confrontation with experimental weapons.</p>
+                </a>
+                <a href="cryptopunk.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/cryptopunk.png" alt="Cryptopunk">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">CRYPTOPUNK</div>
+                            <p class="relationship-description">Occasional bodyguard for Cryptopunk during high-value digital asset deals that require protection in the physical world.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/cryptopunk.png" alt="Cryptopunk">
+                </a>
+                <a href="paradigm.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/paradigm.png" alt="Paradigm">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">PARADIGM</div>
+                            <p class="relationship-description">One of the few opponents whose perception-altering powers provide an effective counter to Backlash's energy absorption abilities.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">CRYPTOPUNK</div>
-                        <p class="relationship-description">Occasional bodyguard for Cryptopunk during high-value digital asset deals that require protection in the physical world.</p>
-                    </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/paradigm.png" alt="Paradigm">
-                    </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">PARADIGM</div>
-                        <p class="relationship-description">One of the few opponents whose perception-altering powers provide an effective counter to Backlash's energy absorption abilities.</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
