@@ -150,6 +150,24 @@
             line-height: 1.4;
             margin: 0;
         }
+        
+        /* New styles for relationship links */
+        .relationship-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .relationship-link .relationship-card {
+            margin-bottom: 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .relationship-link:hover .relationship-card {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
@@ -195,33 +213,39 @@
             </div>
             <div class="fact-group">
                 <h3>Relationships:</h3>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/pepe.png" alt="Pepe">
+                <a href="pepe.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/pepe.png" alt="Pepe">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">PEPE</div>
+                            <p class="relationship-description">Business partner in digital underground markets who provides access to valuable networks and communities.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">PEPE</div>
-                        <p class="relationship-description">Business partner in digital underground markets who provides access to valuable networks and communities.</p>
+                </a>
+                <a href="paradigm.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/paradigm.png" alt="Paradigm">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">PARADIGM</div>
+                            <p class="relationship-description">Former hacking rival before Paradigm gained his perception powers, now they maintain an uneasy alliance.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/paradigm.png" alt="Paradigm">
+                </a>
+                <a href="backlash.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/backlash.png" alt="Backlash">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">BACKLASH</div>
+                            <p class="relationship-description">Has hired Backlash for protection during high-risk deals in the physical world where digital protections aren't enough.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">PARADIGM</div>
-                        <p class="relationship-description">Former hacking rival before Paradigm gained his perception powers, now they maintain an uneasy alliance.</p>
-                    </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/backlash.png" alt="Backlash">
-                    </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">BACKLASH</div>
-                        <p class="relationship-description">Has hired Backlash for protection during high-risk deals in the physical world where digital protections aren't enough.</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
