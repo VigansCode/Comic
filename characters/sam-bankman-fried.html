@@ -150,6 +150,24 @@
             line-height: 1.4;
             margin: 0;
         }
+        
+        /* New styles for relationship links */
+        .relationship-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .relationship-link .relationship-card {
+            margin-bottom: 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .relationship-link:hover .relationship-card {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
@@ -195,33 +213,39 @@
             </div>
             <div class="fact-group">
                 <h3>Relationships:</h3>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/Vaga.png" alt="Vagabond">
+                <a href="vagabond.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/Vaga.png" alt="Vagabond">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">VAGABOND</div>
+                            <p class="relationship-description">Hired Vagabond for corporate espionage during his rise to power, now finds himself targeted by his former ally's investigations.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">VAGABOND</div>
-                        <p class="relationship-description">Hired Vagabond for corporate espionage during his rise to power, now finds himself targeted by his former ally's investigations.</p>
+                </a>
+                <a href="franklinis-bored.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/franklin.png" alt="FranklinIsBored">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">FRANKLINIS BORED</div>
+                            <p class="relationship-description">Digital-world rival competing for the same crypto resources and influence in decentralized markets.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/franklin.png" alt="FranklinIsBored">
+                </a>
+                <a href="paradigm.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/paradigm.png" alt="Paradigm">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">PARADIGM</div>
+                            <p class="relationship-description">Former security consultant who helped Sam build his digital empire before embracing a darker path with his powers.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">FRANKLINIS BORED</div>
-                        <p class="relationship-description">Digital-world rival competing for the same crypto resources and influence in decentralized markets.</p>
-                    </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/paradigm.png" alt="Paradigm">
-                    </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">PARADIGM</div>
-                        <p class="relationship-description">Former security consultant who helped Sam build his digital empire before embracing a darker path with his powers.</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
