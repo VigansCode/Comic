@@ -112,6 +112,44 @@
             margin-bottom: 8px;
             line-height: 1.4;
         }
+        
+        .relationship-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .relationship-image {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+        }
+
+        .relationship-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .relationship-info {
+            padding: 10px 15px;
+        }
+
+        .relationship-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .relationship-description {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -153,7 +191,37 @@
             </div>
             <div class="fact-group">
                 <h3>First Appearance:</h3>
-                <p>MIND HUNTERS #2 (2024)</p>
+                <p>Sage Comics #2 (2024)</p>
+            </div>
+            <div class="fact-group">
+                <h3>Relationships:</h3>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/mesmerise.png" alt="Mesmerise">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">MESMERISE</div>
+                        <p class="relationship-description">Frequent collaborator whose portal abilities complement Kismet's mental powers on missions requiring both intelligence and mobility.</p>
+                    </div>
+                </div>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/paradigm.png" alt="Paradigm">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">PARADIGM</div>
+                        <p class="relationship-description">Natural enemy as his perception-altering powers interfere with her telepathy, creating dangerous feedback loops in her mind.</p>
+                    </div>
+                </div>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/babel.png" alt="Babel">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">BABEL</div>
+                        <p class="relationship-description">Fascinated by his linguistic abilities and how they affect minds similarly to her powers; they share research on cognitive influences.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
