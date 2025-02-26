@@ -112,6 +112,44 @@
             margin-bottom: 8px;
             line-height: 1.4;
         }
+        
+        .relationship-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .relationship-image {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+        }
+
+        .relationship-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .relationship-info {
+            padding: 10px 15px;
+        }
+
+        .relationship-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .relationship-description {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -153,7 +191,37 @@
             </div>
             <div class="fact-group">
                 <h3>First Appearance:</h3>
-                <p>QUANTUM PROTOCOL #2 (2024)</p>
+                <p>Sage Comics #3 (2025)</p>
+            </div>
+            <div class="fact-group">
+                <h3>Relationships:</h3>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/Vex.png" alt="Vex">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">VEX</div>
+                        <p class="relationship-description">Has hunted him across multiple timelines on classified missions, creating a personal vendetta that transcends death itself.</p>
+                    </div>
+                </div>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/pepe.png" alt="Pepe">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">PEPE</div>
+                        <p class="relationship-description">Has repeatedly eliminated him only to find him reappearing in different forms across the digital landscape.</p>
+                    </div>
+                </div>
+                <div class="relationship-card">
+                    <div class="relationship-image">
+                        <img src="../characterimages/babel.png" alt="Babel">
+                    </div>
+                    <div class="relationship-info">
+                        <div class="relationship-name">BABEL</div>
+                        <p class="relationship-description">Fascinated by Babel's linguistic patterns that seemingly transcend normal time, similar to his own quantum existence.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
