@@ -150,6 +150,24 @@
             line-height: 1.4;
             margin: 0;
         }
+        
+        /* New styles for relationship links */
+        .relationship-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .relationship-link .relationship-card {
+            margin-bottom: 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .relationship-link:hover .relationship-card {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
@@ -195,33 +213,39 @@
             </div>
             <div class="fact-group">
                 <h3>Relationships:</h3>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/Vaga.png" alt="Vagabond">
+                <a href="vagabond.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/Vaga.png" alt="Vagabond">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">VAGABOND</div>
+                            <p class="relationship-description">Occasional partner on missions requiring both stealth and firepower, though they maintain a professional distance.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">VAGABOND</div>
-                        <p class="relationship-description">Occasional partner on missions requiring both stealth and firepower, though they maintain a professional distance.</p>
+                </a>
+                <a href="gullet.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/Gullet.png" alt="Gullet">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">GULLET</div>
+                            <p class="relationship-description">Has fought alongside him when both were hired for the same high-risk extraction mission requiring overwhelming force.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/Gullet.png" alt="Gullet">
+                </a>
+                <a href="recursion.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/recursion.png" alt="Recursion">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">RECURSION</div>
+                            <p class="relationship-description">Bitter rival who has hunted Vex on multiple occasions, each encounter ending in a stalemate that only intensifies their feud.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">GULLET</div>
-                        <p class="relationship-description">Has fought alongside him when both were hired for the same high-risk extraction mission requiring overwhelming force.</p>
-                    </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/recursion.png" alt="Recursion">
-                    </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">RECURSION</div>
-                        <p class="relationship-description">Bitter rival who has hunted Vex on multiple occasions, each encounter ending in a stalemate that only intensifies their feud.</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
