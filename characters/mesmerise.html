@@ -150,6 +150,24 @@
             line-height: 1.4;
             margin: 0;
         }
+        
+        /* New styles for relationship links */
+        .relationship-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .relationship-link .relationship-card {
+            margin-bottom: 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .relationship-link:hover .relationship-card {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
@@ -195,33 +213,39 @@
             </div>
             <div class="fact-group">
                 <h3>Relationships:</h3>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/pioneer.png" alt="Pioneer">
+                <a href="pioneer.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/pioneer.png" alt="Pioneer">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">PIONEER</div>
+                            <p class="relationship-description">Former mentor who helped her understand her developing abilities and provided refuge after she escaped her homeland.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">PIONEER</div>
-                        <p class="relationship-description">Former mentor who helped her understand her developing abilities and provided refuge after she escaped her homeland.</p>
+                </a>
+                <a href="vagabond.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/Vaga.png" alt="Vagabond">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">VAGABOND</div>
+                            <p class="relationship-description">Rival who competes for territory in underground information networks, occasionally collaborates when their interests align.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/Vaga.png" alt="Vagabond">
+                </a>
+                <a href="kismet.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/Kismet.png" alt="Kismet">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">KISMET</div>
+                            <p class="relationship-description">Frequent collaborator whose mental powers complement Mesmerise's spatial abilities on missions requiring both stealth and intelligence.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">VAGABOND</div>
-                        <p class="relationship-description">Rival who competes for territory in underground information networks, occasionally collaborates when their interests align.</p>
-                    </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/Kismet.png" alt="Kismet">
-                    </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">KISMET</div>
-                        <p class="relationship-description">Frequent collaborator whose mental powers complement Mesmerise's spatial abilities on missions requiring both stealth and intelligence.</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
