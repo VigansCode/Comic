@@ -150,6 +150,24 @@
             line-height: 1.4;
             margin: 0;
         }
+        
+        /* New styles for relationship links */
+        .relationship-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-bottom: 15px;
+        }
+        
+        .relationship-link .relationship-card {
+            margin-bottom: 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .relationship-link:hover .relationship-card {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body>
@@ -195,42 +213,50 @@
             </div>
             <div class="fact-group">
                 <h3>Relationships:</h3>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/sam.png" alt="Sam Bankman-Fried">
+                <a href="sam-bankman-fried.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/sam.png" alt="Sam Bankman-Fried">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">SAM BANKMAN-FRIED</div>
+                            <p class="relationship-description">Former security consultant who helped Sam build his digital empire before embracing a darker path with his powers.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">SAM BANKMAN-FRIED</div>
-                        <p class="relationship-description">Former security consultant who helped Sam build his digital empire before embracing a darker path with his powers.</p>
+                </a>
+                <a href="cryptopunk.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/cryptopunk.png" alt="Cryptopunk">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">CRYPTOPUNK</div>
+                            <p class="relationship-description">Former hacking rival from before gaining his powers, now maintains an uneasy alliance in the digital underground.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/cryptopunk.png" alt="Cryptopunk">
+                </a>
+                <a href="kismet.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/Kismet.png" alt="Kismet">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">KISMET</div>
+                            <p class="relationship-description">Natural enemy as his perception manipulation powers interfere with her telepathy, creating dangerous feedback loops.</p>
+                        </div>
                     </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">CRYPTOPUNK</div>
-                        <p class="relationship-description">Former hacking rival from before gaining his powers, now maintains an uneasy alliance in the digital underground.</p>
+                </a>
+                <a href="backlash.html" class="relationship-link">
+                    <div class="relationship-card">
+                        <div class="relationship-image">
+                            <img src="../characterimages/backlash.png" alt="Backlash">
+                        </div>
+                        <div class="relationship-info">
+                            <div class="relationship-name">BACKLASH</div>
+                            <p class="relationship-description">One of the few whose powers provide an effective counter to Backlash's abilities, making him a valuable asset against physical threats.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/Kismet.png" alt="Kismet">
-                    </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">KISMET</div>
-                        <p class="relationship-description">Natural enemy as his perception manipulation powers interfere with her telepathy, creating dangerous feedback loops.</p>
-                    </div>
-                </div>
-                <div class="relationship-card">
-                    <div class="relationship-image">
-                        <img src="../characterimages/backlash.png" alt="Backlash">
-                    </div>
-                    <div class="relationship-info">
-                        <div class="relationship-name">BACKLASH</div>
-                        <p class="relationship-description">One of the few whose powers provide an effective counter to Backlash's abilities, making him a valuable asset against physical threats.</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
