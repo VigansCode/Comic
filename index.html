@@ -1149,6 +1149,7 @@ function closeComic() {
 function nextPage() {
     if (currentPage < totalPages - 1) { // Adjust for double-page spread
         const currentSpread = document.querySelector('.comic-page-spread');
+        if (!currentSpread) return;
         
         // Add animation class
         currentSpread.classList.add('flipping');
@@ -1165,6 +1166,7 @@ function nextPage() {
 function prevPage() {
     if (currentPage > 1) {
         const currentSpread = document.querySelector('.comic-page-spread');
+        if (!currentSpread) return;
         
         // Add animation class
         currentSpread.classList.add('flipping');
@@ -1291,19 +1293,39 @@ function loadComicPages(startPageNum) {
     pageNumberDisplay.className = 'page-number-display';
     pageNumberDisplay.textContent = `Pages ${startPageNum}-${Math.min(startPageNum + 1, totalPages)} of ${totalPages}`;
     
-    // Insert the new page spread before navigation elements
-    const navPrev = container.querySelector('.comic-nav.comic-prev');
-    if (navPrev) {
-        container.insertBefore(pageSpread, navPrev);
-    } else {
-        container.appendChild(pageSpread);
+    // Ensure navigation elements exist
+    let navPrev = container.querySelector('.comic-nav.comic-prev');
+    let navNext = container.querySelector('.comic-nav.comic-next');
+    
+    // Create navigation elements if they don't exist
+    if (!navPrev) {
+        navPrev = document.createElement('div');
+        navPrev.className = 'comic-nav comic-prev';
+        navPrev.innerHTML = '❮';
+        navPrev.onclick = prevPage;
+        container.appendChild(navPrev);
     }
+    
+    if (!navNext) {
+        navNext = document.createElement('div');
+        navNext.className = 'comic-nav comic-next';
+        navNext.innerHTML = '❯';
+        navNext.onclick = nextPage;
+        container.appendChild(navNext);
+    }
+    
+    // Insert the new page spread before navigation elements
+    container.insertBefore(pageSpread, navPrev);
     
     // Add page number display to container
     container.appendChild(pageNumberDisplay);
     
     // Update current page tracker
     currentPage = startPageNum;
+    
+    // Show/hide navigation based on current page
+    navPrev.style.visibility = currentPage > 1 ? 'visible' : 'hidden';
+    navNext.style.visibility = currentPage < totalPages - 1 ? 'visible' : 'hidden';
     
     // Preload adjacent spreads
     preloadAdjacentPages(startPageNum);
