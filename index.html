@@ -1010,11 +1010,11 @@
     // Create new page
     const newPage = document.createElement('img');
     
-    // Set the path to your comic page with correct case sensitivity
+    // Use the correct path matching your GitHub structure
     if (pageNum === 1) {
-        newPage.src = "Comic/Comic-Pages/Cover.png";
+        newPage.src = "Comic-Pages/Cover.png"; // CORRECTED PATH
     } else {
-        newPage.src = `Comic/Comic-Pages/Page-${pageNum-1}.png`;
+        newPage.src = `Comic-Pages/Page-${pageNum-1}.png`; // CORRECTED PATH
     }
     
     // Add error handling
