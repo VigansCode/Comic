@@ -1083,142 +1083,32 @@ function closeComic() {
 // Function to navigate to next pages with animation
 function nextPage() {
     if (currentPage < totalPages - 1) {
-        // First create the next pages in the background
-        const nextPages = document.createElement('div');
-        nextPages.className = 'comic-page-spread next-pages';
-        nextPages.style.position = 'absolute';
-        nextPages.style.top = '0';
-        nextPages.style.left = '0';
-        nextPages.style.width = '100%';
-        nextPages.style.height = '100%';
-        nextPages.style.zIndex = '1';
+        const currentSpread = document.querySelector('.comic-page-spread');
+        if (!currentSpread) return;
         
-        // Setup pages (similar to loadComicPages but simplified)
-        const leftPage = document.createElement('img');
-        leftPage.className = 'comic-page left-page';
-        const rightPage = document.createElement('img');
-        rightPage.className = 'comic-page right-page';
-        
-        const leftPageIndex = currentPage + 2;
-        const rightPageIndex = currentPage + 3;
-        
-        // Set sources
-        if (leftPageIndex === 8 || leftPageIndex === 9) {
-            leftPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${leftPageIndex} ADD TEXT.png`;
-        } else {
-            leftPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${leftPageIndex} DONE.png`;
-        }
-        
-        if (rightPageIndex <= totalPages) {
-            if (rightPageIndex === 8 || rightPageIndex === 9) {
-                rightPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${rightPageIndex} ADD TEXT.png`;
-            } else {
-                rightPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${rightPageIndex} DONE.png`;
-            }
-        } else {
-            rightPage.style.backgroundColor = '#f5f5f5';
-        }
-        
-        nextPages.appendChild(leftPage);
-        nextPages.appendChild(rightPage);
-        
-        // Add to container
-        const container = document.querySelector('.comic-container');
-        container.appendChild(nextPages);
-        
-        // Start the animation on the current pages
-        const currentSpread = document.querySelector('.comic-page-spread:not(.next-pages)');
+        // Add animation class
         currentSpread.classList.add('flipping-next');
-        currentSpread.style.zIndex = '2';
         
-        // When animation is nearly complete, show the next pages and hide current ones
+        // Create the next spread BEFORE the animation finishes
         setTimeout(() => {
-            // Update page numbers for next pages
-            const newPageNum = currentPage + 2;
-            
-            // Remove old pages and load new ones in normal position
-            currentSpread.remove();
-            nextPages.remove();
-            
-            // Now load the pages properly with all the normal tracking
-            loadComicPages(newPageNum);
-        }, 750);
+            loadComicPages(currentPage + 2);
+        }, 400); // Load before animation is complete (700ms)
     }
 }
 
 // Function to navigate to previous pages with animation
 function prevPage() {
     if (currentPage > 1) {
-        // First create the previous pages in the background
-        const prevPages = document.createElement('div');
-        prevPages.className = 'comic-page-spread prev-pages';
-        prevPages.style.position = 'absolute';
-        prevPages.style.top = '0';
-        prevPages.style.left = '0';
-        prevPages.style.width = '100%';
-        prevPages.style.height = '100%';
-        prevPages.style.zIndex = '1';
+        const currentSpread = document.querySelector('.comic-page-spread');
+        if (!currentSpread) return;
         
-        // Setup pages
-        if (currentPage - 2 === 1) {
-            // Cover page special case
-            const blankPage = document.createElement('div');
-            blankPage.className = 'comic-page left-page';
-            blankPage.style.backgroundColor = '#f5f5f5';
-            
-            const rightPage = document.createElement('img');
-            rightPage.className = 'comic-page right-page';
-            rightPage.src = "https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Cover.png";
-            
-            prevPages.appendChild(blankPage);
-            prevPages.appendChild(rightPage);
-        } else {
-            const leftPage = document.createElement('img');
-            leftPage.className = 'comic-page left-page';
-            const rightPage = document.createElement('img');
-            rightPage.className = 'comic-page right-page';
-            
-            const leftPageIndex = currentPage - 2;
-            const rightPageIndex = currentPage - 1;
-            
-            // Set sources
-            if (leftPageIndex === 8 || leftPageIndex === 9) {
-                leftPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${leftPageIndex} ADD TEXT.png`;
-            } else {
-                leftPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${leftPageIndex} DONE.png`;
-            }
-            
-            if (rightPageIndex === 8 || rightPageIndex === 9) {
-                rightPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${rightPageIndex} ADD TEXT.png`;
-            } else {
-                rightPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${rightPageIndex} DONE.png`;
-            }
-            
-            prevPages.appendChild(leftPage);
-            prevPages.appendChild(rightPage);
-        }
-        
-        // Add to container
-        const container = document.querySelector('.comic-container');
-        container.appendChild(prevPages);
-        
-        // Start the animation on the current pages
-        const currentSpread = document.querySelector('.comic-page-spread:not(.prev-pages)');
+        // Add appropriate animation class
         currentSpread.classList.add('flipping-prev');
-        currentSpread.style.zIndex = '2';
         
-        // When animation is nearly complete, show the prev pages and hide current ones
+        // Create the previous spread BEFORE the animation finishes
         setTimeout(() => {
-            // Update page numbers for previous pages
-            const newPageNum = currentPage - 2;
-            
-            // Remove old pages and load new ones in normal position
-            currentSpread.remove();
-            prevPages.remove();
-            
-            // Now load the pages properly with all the normal tracking
-            loadComicPages(newPageNum);
-        }, 750);
+            loadComicPages(currentPage - 2);
+        }, 400); // Load before animation is complete (700ms)
     }
 }
 
