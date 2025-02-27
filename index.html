@@ -91,14 +91,14 @@
 
         /* Floating peanut style elements */
         .floating-element {
-            position: absolute;
-            width: 30px;
-            height: 50px;
-            background-image: url('peanut.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            pointer-events: none;
-        }
+    position: absolute;
+    width: 30px;
+    height: 50px;
+    background-image: url('path-to-your-peanut-image.png'); /* Update this path */
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
 
         .filter-group {
     margin-bottom: 15px;
@@ -663,10 +663,10 @@
     </div>
 </section>
 
-    <!-- Comic Viewer Overlay -->
-    <div class="comic-overlay" id="comicOverlay">
-        <div class="comic-container">
-            <button class="comic-close" onclick="closeComic()">×</button>
+<!-- Comic Viewer Overlay -->
+<div class="comic-overlay" id="comicOverlay">
+    <div class="comic-container">
+        <button class="comic-close" onclick="closeComic()">×</button>
             
             <!-- Comic Pages - These will be generated dynamically in the final implementation -->
             <img src="/api/placeholder/600/800" class="comic-page active" data-page="1" alt="Comic Page 1">
@@ -924,51 +924,176 @@
             }
         }
         
-        // Add the new banner code here
-// Your existing banner code
-let currentBanner = 0;
-const banners = document.querySelectorAll('.banner-image');
-
-function showBanner(index) {
-    banners[currentBanner].classList.remove('active');
-    currentBanner = index;
-    if (currentBanner >= banners.length) currentBanner = 0;
-    if (currentBanner < 0) currentBanner = banners.length - 1;
-    banners[currentBanner].classList.add('active');
-}
-
-function nextBanner() {
-    showBanner(currentBanner + 1);
-}
-
-function prevBanner() {
-    showBanner(currentBanner - 1);
-}
-
-// Optional: Auto-advance every 5 seconds
-setInterval(nextBanner, 5000);
-
-// NEW CODE STARTS HERE - Comic viewer functionality
-let currentPage = 1;
-const totalPages = 32; // Adjust based on actual number of pages
-
-// Function to open the comic viewer
-function openComic() {
-    document.getElementById('comicOverlay').style.display = 'flex';
-    // Reset to first page when opening
-    showPage(1);
-    // Add some floating peanut elements for effect (similar to your images)
-    addFloatingElements();
-}
-
-// Function to close the comic viewer
-function closeComic() {
-    document.getElementById('comicOverlay').style.display = 'none';
-    // Remove floating elements
-    document.querySelectorAll('.floating-element').forEach(el => el.remove());
-}
-
-// ... [rest of the comic viewer code goes here] ...
-</script>
+        // Banner code
+        let currentBanner = 0;
+        const banners = document.querySelectorAll('.banner-image');
+    
+        function showBanner(index) {
+            banners[currentBanner].classList.remove('active');
+            currentBanner = index;
+            if (currentBanner >= banners.length) currentBanner = 0;
+            if (currentBanner < 0) currentBanner = banners.length - 1;
+            banners[currentBanner].classList.add('active');
+        }
+    
+        function nextBanner() {
+            showBanner(currentBanner + 1);
+        }
+    
+        function prevBanner() {
+            showBanner(currentBanner - 1);
+        }
+    
+        // Optional: Auto-advance every 5 seconds
+        setInterval(nextBanner, 5000);
+    
+        // Comic viewer functionality
+        let currentPage = 1;
+        const totalPages = 32; // Adjust based on actual number of pages
+    
+        // Function to open the comic viewer
+        function openComic() {
+            document.getElementById('comicOverlay').style.display = 'flex';
+            // Reset to first page when opening
+            showPage(1);
+            // Add some floating peanut elements for effect
+            addFloatingElements();
+        }
+    
+        // Function to close the comic viewer
+        function closeComic() {
+            document.getElementById('comicOverlay').style.display = 'none';
+            // Remove floating elements
+            document.querySelectorAll('.floating-element').forEach(el => el.remove());
+        }
+    
+        // Function to navigate to next page
+        function nextPage() {
+            if (currentPage < totalPages) {
+                showPage(currentPage + 1);
+            }
+        }
+    
+        // Function to navigate to previous page
+        function prevPage() {
+            if (currentPage > 1) {
+                showPage(currentPage - 1);
+            }
+        }
+    
+        // Function to show specific page
+        function showPage(pageNum) {
+            // Hide all pages
+            document.querySelectorAll('.comic-page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show the current page
+            const pageToShow = document.querySelector(`.comic-page[data-page="${pageNum}"]`);
+            if (pageToShow) {
+                pageToShow.classList.add('active');
+                currentPage = pageNum;
+            } else {
+                // If the page doesn't exist in DOM yet, load it
+                loadComicPage(pageNum);
+            }
+        }
+    
+        // Function to load comic pages dynamically
+        function loadComicPage(pageNum) {
+            const container = document.querySelector('.comic-container');
+            const allPages = document.querySelectorAll('.comic-page');
+            
+            // Remove all existing pages
+            allPages.forEach(page => page.remove());
+            
+            // Create new page
+            const newPage = document.createElement('img');
+            
+            // Set the path to your comic page
+            if (pageNum === 1) {
+                newPage.src = "Comic/Comic-Pages/Cover.png";
+            } else {
+                newPage.src = `Comic/Comic-Pages/Page-${pageNum-1}.png`; // Adjust the path as needed
+            }
+            
+            newPage.className = 'comic-page active';
+            newPage.dataset.page = pageNum;
+            newPage.alt = `Comic Page ${pageNum}`;
+            
+            // Insert before navigation elements
+            container.insertBefore(newPage, container.querySelector('.comic-nav.comic-prev'));
+            
+            currentPage = pageNum;
+        }
+    
+        // Function to add floating peanut elements
+        function addFloatingElements() {
+            // Add 5 floating peanut elements
+            for (let i = 0; i < 5; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                
+                // Random positions
+                element.style.left = `${Math.random() * 80 + 10}%`;
+                element.style.top = `${Math.random() * 80 + 10}%`;
+                
+                // Add to overlay
+                document.getElementById('comicOverlay').appendChild(element);
+                
+                // Animate the element
+                animateElement(element);
+            }
+        }
+    
+        // Function to animate floating elements
+        function animateElement(element) {
+            // Random starting positions
+            let x = parseInt(element.style.left);
+            let y = parseInt(element.style.top);
+            
+            // Random speeds
+            const xSpeed = Math.random() * 0.3 - 0.15;
+            const ySpeed = Math.random() * 0.3 - 0.15;
+            
+            // Set up animation loop
+            function move() {
+                // Update position
+                x += xSpeed;
+                y += ySpeed;
+                
+                // Keep within bounds
+                if (x < 0) x = 0;
+                if (x > 90) x = 90;
+                if (y < 0) y = 0;
+                if (y > 90) y = 90;
+                
+                // Apply position
+                element.style.left = `${x}%`;
+                element.style.top = `${y}%`;
+                
+                // Continue animation if overlay is still open
+                if (document.getElementById('comicOverlay').style.display !== 'none') {
+                    requestAnimationFrame(move);
+                }
+            }
+            
+            // Start animation
+            move();
+        }
+    
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('comicOverlay').style.display === 'flex') {
+                if (e.key === 'ArrowRight') {
+                    nextPage();
+                } else if (e.key === 'ArrowLeft') {
+                    prevPage();
+                } else if (e.key === 'Escape') {
+                    closeComic();
+                }
+            }
+        });
+    </script>
 </body>
 </html>
