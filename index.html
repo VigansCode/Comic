@@ -954,8 +954,8 @@
         // Function to open the comic viewer
         function openComic() {
             document.getElementById('comicOverlay').style.display = 'flex';
-            // Reset to first page when opening
-            showPage(1);
+            // Load the first page directly instead of using showPage
+            loadComicPage(1);
             // Add some floating peanut elements for effect
             addFloatingElements();
         }
@@ -970,68 +970,76 @@
         // Function to navigate to next page
         function nextPage() {
             if (currentPage < totalPages) {
-                showPage(currentPage + 1);
+                loadComicPage(currentPage + 1);
             }
         }
     
         // Function to navigate to previous page
         function prevPage() {
             if (currentPage > 1) {
-                showPage(currentPage - 1);
+                loadComicPage(currentPage - 1);
             }
         }
     
-        // Function to show specific page
+        // Function to show specific page (not used directly anymore)
         function showPage(pageNum) {
-            // Hide all pages
-            document.querySelectorAll('.comic-page').forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Show the current page
-            const pageToShow = document.querySelector(`.comic-page[data-page="${pageNum}"]`);
-            if (pageToShow) {
-                pageToShow.classList.add('active');
-                currentPage = pageNum;
-            } else {
-                // If the page doesn't exist in DOM yet, load it
-                loadComicPage(pageNum);
-            }
+            // Load the page directly
+            loadComicPage(pageNum);
         }
     
         // Function to load comic pages dynamically
         function loadComicPage(pageNum) {
-    const container = document.querySelector('.comic-container');
-    const allPages = document.querySelectorAll('.comic-page');
-    
-    // Remove all existing pages
-    allPages.forEach(page => page.remove());
-    
-    // Create new page
-    const newPage = document.createElement('img');
-    
-// Use the correct path matching your GitHub structure
-if (pageNum === 1) {
-    newPage.src = "https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Cover.png";
-} else {
-    newPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page-${pageNum-1}.png`;
-}
-    
-    // Add error handling
-    newPage.onerror = function() {
-        console.error(`Failed to load image: ${newPage.src}`);
-        this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect width='300' height='400' fill='%23eee'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif'%3EImage Not Found%3C/text%3E%3C/svg%3E";
-    };
-    
-    newPage.className = 'comic-page active';
-    newPage.dataset.page = pageNum;
-    newPage.alt = `Comic Page ${pageNum}`;
-    
-    // Insert before navigation elements
-    container.insertBefore(newPage, container.querySelector('.comic-nav.comic-prev'));
-    
-    currentPage = pageNum;
-}
+            console.log("Loading page", pageNum); // Debugging
+            
+            const container = document.querySelector('.comic-container');
+            if (!container) {
+                console.error("Comic container not found");
+                return;
+            }
+            
+            // Remove all existing pages
+            const allPages = document.querySelectorAll('.comic-page');
+            allPages.forEach(page => page.remove());
+            
+            // Create new page
+            const newPage = document.createElement('img');
+            
+            // Use the correct path matching your GitHub structure
+            if (pageNum === 1) {
+                newPage.src = "https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Cover.png";
+            } else {
+                newPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page-${pageNum-1}.png`;
+            }
+            
+            // Add load event to confirm image loaded
+            newPage.onload = function() {
+                console.log("Image loaded successfully:", newPage.src);
+            };
+            
+            // Add error handling
+            newPage.onerror = function() {
+                console.error(`Failed to load image: ${newPage.src}`);
+                this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect width='300' height='400' fill='%23eee'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif'%3EImage Not Found%3C/text%3E%3C/svg%3E";
+            };
+            
+            newPage.className = 'comic-page active';
+            newPage.dataset.page = pageNum;
+            newPage.alt = `Comic Page ${pageNum}`;
+            
+            // Get navigation elements
+            const prevNav = container.querySelector('.comic-nav.comic-prev');
+            
+            // Check if navigation elements exist
+            if (prevNav) {
+                // Insert before navigation element
+                container.insertBefore(newPage, prevNav);
+            } else {
+                // If navigation elements don't exist, just append
+                container.appendChild(newPage);
+            }
+            
+            currentPage = pageNum;
+        }
     
         // Function to add floating peanut elements
         function addFloatingElements() {
@@ -1099,6 +1107,15 @@ if (pageNum === 1) {
                     closeComic();
                 }
             }
+        });
+
+        // Make sure DOM is loaded before initializing
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize any comic triggers
+            const comicTriggers = document.querySelectorAll('.comic-trigger');
+            comicTriggers.forEach(trigger => {
+                trigger.addEventListener('click', openComic);
+            });
         });
     </script>
 </body>
