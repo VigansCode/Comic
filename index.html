@@ -727,17 +727,10 @@
 <div class="comic-overlay" id="comicOverlay">
     <div class="comic-container">
         <button class="comic-close" onclick="closeComic()">×</button>
-            
-            <!-- Comic Pages - These will be generated dynamically in the final implementation -->
-            <img src="/api/placeholder/600/800" class="comic-page active" data-page="1" alt="Comic Page 1">
-            <img src="/api/placeholder/600/800" class="comic-page" data-page="2" alt="Comic Page 2">
-            <img src="/api/placeholder/600/800" class="comic-page" data-page="3" alt="Comic Page 3">
-            <!-- Add more pages as needed -->
-            
-            <div class="comic-nav comic-prev" onclick="prevPage()">❮</div>
-            <div class="comic-nav comic-next" onclick="nextPage()">❯</div>
-        </div>
+        <!-- Comic Pages will be added dynamically by JavaScript -->
+        <!-- Navigation elements will also be managed by JavaScript -->
     </div>
+</div>
 
 
 
@@ -1028,92 +1021,6 @@ function openComic() {
     // Add open class to fade in the overlay
     overlay.classList.add('open');
     
-    // Load the first page
-    loadComicPage(1);
-    
-    // Delay the zoom animation slightly for better effect
-    setTimeout(() => {
-        container.classList.add('zoomed');
-    }, 100);
-}
-
-// Function to close the comic viewer with animation
-function closeComic() {
-    const overlay = document.getElementById('comicOverlay');
-    const container = document.querySelector('.comic-container');
-    
-    // Remove the zoomed class first
-    container.classList.remove('zoomed');
-    
-    // Then remove the open class to fade out
-    overlay.classList.remove('open');
-    
-    // Remove floating elements
-    document.querySelectorAll('.floating-element').forEach(el => el.remove());
-    
-    // Wait for animations to complete before hiding
-    setTimeout(() => {
-        overlay.style.display = 'none';
-        // Reset classes for next opening
-        container.classList.remove('zoomed');
-    }, 400);
-}
-    
-        // Function to navigate to next page
-        function nextPage() {
-    if (currentPage < totalPages - 1) { // Adjust for double-page spread
-        const currentSpread = document.querySelector('.comic-page-spread');
-        
-        // Add animation class
-        currentSpread.classList.add('flipping');
-        
-        // After animation completes, load the next page
-        setTimeout(() => {
-            // Go to next spread (2 pages ahead)
-            loadComicPages(currentPage + 2);
-        }, 500);
-    }
-}
-    
-        // Function to navigate to previous page
-        function prevPage() {
-    if (currentPage > 1) {
-        const currentSpread = document.querySelector('.comic-page-spread');
-        
-        // Add animation class
-        currentSpread.classList.add('flipping');
-        
-        // After animation completes, load the previous page
-        setTimeout(() => {
-            // Go to previous spread (2 pages back)
-            loadComicPages(currentPage - 2);
-        }, 500);
-    }
-}
-    
-        // Function to show specific page (not used directly anymore)
-        function showPage(pageNum) {
-            // Load the page directly
-            loadComicPage(pageNum);
-        }
-    
-// Function to open the comic viewer with animation
-function openComic() {
-    const overlay = document.getElementById('comicOverlay');
-    const container = document.querySelector('.comic-container');
-    
-    // First make it visible but with opacity 0
-    overlay.style.display = 'flex';
-    
-    // Add some floating peanut elements for effect
-    addFloatingElements();
-    
-    // Trigger reflow
-    void overlay.offsetWidth;
-    
-    // Add open class to fade in the overlay
-    overlay.classList.add('open');
-    
     // Load the first page spread
     loadComicPages(1);
     
@@ -1143,6 +1050,44 @@ function closeComic() {
         // Reset classes for next opening
         container.classList.remove('zoomed');
     }, 400);
+}
+
+// Function to navigate to next page
+function nextPage() {
+    if (currentPage < totalPages - 1) { // Adjust for double-page spread
+        const currentSpread = document.querySelector('.comic-page-spread');
+        
+        // Add animation class
+        currentSpread.classList.add('flipping');
+        
+        // After animation completes, load the next page
+        setTimeout(() => {
+            // Go to next spread (2 pages ahead)
+            loadComicPages(currentPage + 2);
+        }, 500);
+    }
+}
+
+// Function to navigate to previous page
+function prevPage() {
+    if (currentPage > 1) {
+        const currentSpread = document.querySelector('.comic-page-spread');
+        
+        // Add animation class
+        currentSpread.classList.add('flipping');
+        
+        // After animation completes, load the previous page
+        setTimeout(() => {
+            // Go to previous spread (2 pages back)
+            loadComicPages(currentPage - 2);
+        }, 500);
+    }
+}
+
+// Function to show specific page (not used directly anymore)
+function showPage(pageNum) {
+    // Load the page directly
+    loadComicPages(pageNum);
 }
 
 // Function to navigate to next pages with animation
