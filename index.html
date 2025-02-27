@@ -98,22 +98,23 @@
     }
 }
 
-        .comic-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+.comic-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.5); /* Make more visible */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000; /* Change to black for visibility */
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 1001; /* Ensure they're above other elements */
+}
 
         .comic-nav:hover {
             background-color: rgba(255, 255, 255, 0.5);
@@ -728,7 +729,8 @@
     <div class="comic-container">
         <button class="comic-close" onclick="closeComic()">×</button>
         <!-- Comic Pages will be added dynamically by JavaScript -->
-        <!-- Navigation elements will also be managed by JavaScript -->
+        <div class="comic-nav comic-prev" onclick="prevPage()" style="z-index: 1001;">❮</div>
+        <div class="comic-nav comic-next" onclick="nextPage()" style="z-index: 1001;">❯</div>
     </div>
 </div>
 
@@ -1050,44 +1052,6 @@ function closeComic() {
         // Reset classes for next opening
         container.classList.remove('zoomed');
     }, 400);
-}
-
-// Function to navigate to next page
-function nextPage() {
-    if (currentPage < totalPages - 1) { // Adjust for double-page spread
-        const currentSpread = document.querySelector('.comic-page-spread');
-        
-        // Add animation class
-        currentSpread.classList.add('flipping');
-        
-        // After animation completes, load the next page
-        setTimeout(() => {
-            // Go to next spread (2 pages ahead)
-            loadComicPages(currentPage + 2);
-        }, 500);
-    }
-}
-
-// Function to navigate to previous page
-function prevPage() {
-    if (currentPage > 1) {
-        const currentSpread = document.querySelector('.comic-page-spread');
-        
-        // Add animation class
-        currentSpread.classList.add('flipping');
-        
-        // After animation completes, load the previous page
-        setTimeout(() => {
-            // Go to previous spread (2 pages back)
-            loadComicPages(currentPage - 2);
-        }, 500);
-    }
-}
-
-// Function to show specific page (not used directly anymore)
-function showPage(pageNum) {
-    // Load the page directly
-    loadComicPages(pageNum);
 }
 
 // Function to navigate to next pages with animation
