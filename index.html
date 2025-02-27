@@ -1105,14 +1105,10 @@ function prevPage() {
         // Add appropriate animation class
         currentSpread.classList.add('flipping-prev');
         
-        // Play page flip sound if needed
-        // const flipSound = new Audio('page-flip.mp3');
-        // flipSound.play();
-        
-        // After animation completes, load the previous pages
+        // Create the previous spread BEFORE the animation finishes
         setTimeout(() => {
             loadComicPages(currentPage - 2);
-        }, 700);
+        }, 400); // Load before animation is complete (700ms)
     }
 }
 
