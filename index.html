@@ -52,8 +52,14 @@
     backface-visibility: hidden;
 }
 
-.comic-page-spread.flipping {
-    animation: flipSpread 0.6s ease-in-out forwards;
+.comic-page-spread.flipping-next {
+    animation: flipNext 0.8s ease-in-out forwards;
+    transform-origin: left center;
+}
+
+.comic-page-spread.flipping-prev {
+    animation: flipPrev 0.8s ease-in-out forwards;
+    transform-origin: right center;
 }
 
 .comic-page {
@@ -84,17 +90,49 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes flipSpread {
+@keyframes flipNext {
     0% {
         transform: perspective(2000px) rotateY(0);
         opacity: 1;
+        z-index: 2;
+    }
+    25% {
+        transform: perspective(2000px) rotateY(-30deg);
+        opacity: 1;
+        z-index: 2;
     }
     50% {
-        opacity: 0.5;
+        transform: perspective(2000px) rotateY(-120deg);
+        opacity: 0.7;
+        z-index: 1;
     }
     100% {
-        transform: perspective(2000px) rotateY(-15deg);
+        transform: perspective(2000px) rotateY(-180deg);
         opacity: 0;
+        z-index: 0;
+    }
+}
+
+@keyframes flipPrev {
+    0% {
+        transform: perspective(2000px) rotateY(0);
+        opacity: 1;
+        z-index: 2;
+    }
+    25% {
+        transform: perspective(2000px) rotateY(30deg);
+        opacity: 1;
+        z-index: 2;
+    }
+    50% {
+        transform: perspective(2000px) rotateY(120deg);
+        opacity: 0.7;
+        z-index: 1;
+    }
+    100% {
+        transform: perspective(2000px) rotateY(180deg);
+        opacity: 0;
+        z-index: 0;
     }
 }
 
@@ -1056,18 +1094,21 @@ function closeComic() {
 
 // Function to navigate to next pages with animation
 function nextPage() {
-    if (currentPage < totalPages - 1) { // Adjust for double-page spread
+    if (currentPage < totalPages - 1) {
         const currentSpread = document.querySelector('.comic-page-spread');
         if (!currentSpread) return;
         
-        // Add animation class
-        currentSpread.classList.add('flipping');
+        // Add appropriate animation class
+        currentSpread.classList.add('flipping-next');
         
-        // After animation completes, load the next page
+        // Play page flip sound if needed
+        // const flipSound = new Audio('page-flip.mp3');
+        // flipSound.play();
+        
+        // After animation completes, load the next pages
         setTimeout(() => {
-            // Go to next spread (2 pages ahead)
             loadComicPages(currentPage + 2);
-        }, 500);
+        }, 700);
     }
 }
 
@@ -1077,14 +1118,17 @@ function prevPage() {
         const currentSpread = document.querySelector('.comic-page-spread');
         if (!currentSpread) return;
         
-        // Add animation class
-        currentSpread.classList.add('flipping');
+        // Add appropriate animation class
+        currentSpread.classList.add('flipping-prev');
         
-        // After animation completes, load the previous page
+        // Play page flip sound if needed
+        // const flipSound = new Audio('page-flip.mp3');
+        // flipSound.play();
+        
+        // After animation completes, load the previous pages
         setTimeout(() => {
-            // Go to previous spread (2 pages back)
             loadComicPages(currentPage - 2);
-        }, 500);
+        }, 700);
     }
 }
 
