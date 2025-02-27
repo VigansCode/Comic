@@ -8,25 +8,37 @@
     <style>
         /* All previous styles remain exactly the same until browse section */
         .comic-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
 
-        .comic-container {
-            position: relative;
-            max-width: 80%;
-            max-height: 80%;
-            background-color: white;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-        }
+.comic-overlay.open {
+    opacity: 1;
+}
+
+.comic-container {
+    position: relative;
+    max-width: 80%;
+    max-height: 80%;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transform: scale(0.5);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.comic-container.zoomed {
+    transform: scale(1);
+}
 
         .comic-page {
             display: none;
@@ -951,21 +963,53 @@
         let currentPage = 1;
         const totalPages = 32; // Adjust based on actual number of pages
     
-        // Function to open the comic viewer
-        function openComic() {
-            document.getElementById('comicOverlay').style.display = 'flex';
-            // Load the first page directly instead of using showPage
-            loadComicPage(1);
-            // Add some floating peanut elements for effect
-            addFloatingElements();
-        }
+// Function to open the comic viewer with animation
+function openComic() {
+    const overlay = document.getElementById('comicOverlay');
+    const container = document.querySelector('.comic-container');
     
-        // Function to close the comic viewer
-        function closeComic() {
-            document.getElementById('comicOverlay').style.display = 'none';
-            // Remove floating elements
-            document.querySelectorAll('.floating-element').forEach(el => el.remove());
-        }
+    // First make it visible but with opacity 0
+    overlay.style.display = 'flex';
+    
+    // Add some floating peanut elements for effect
+    addFloatingElements();
+    
+    // Trigger reflow
+    void overlay.offsetWidth;
+    
+    // Add open class to fade in the overlay
+    overlay.classList.add('open');
+    
+    // Load the first page
+    loadComicPage(1);
+    
+    // Delay the zoom animation slightly for better effect
+    setTimeout(() => {
+        container.classList.add('zoomed');
+    }, 100);
+}
+
+// Function to close the comic viewer with animation
+function closeComic() {
+    const overlay = document.getElementById('comicOverlay');
+    const container = document.querySelector('.comic-container');
+    
+    // Remove the zoomed class first
+    container.classList.remove('zoomed');
+    
+    // Then remove the open class to fade out
+    overlay.classList.remove('open');
+    
+    // Remove floating elements
+    document.querySelectorAll('.floating-element').forEach(el => el.remove());
+    
+    // Wait for animations to complete before hiding
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        // Reset classes for next opening
+        container.classList.remove('zoomed');
+    }, 400);
+}
     
         // Function to navigate to next page
         function nextPage() {
