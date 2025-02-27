@@ -1133,9 +1133,9 @@ function loadComicPage(pageNum) {
     }
     
     currentPage = pageNum;
-}
-
-preloadAdjacentPages(pageNum);
+    
+    // Preload adjacent pages
+    preloadAdjacentPages(pageNum);
 }
 
 // Function to preload adjacent pages
