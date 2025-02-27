@@ -1010,12 +1010,12 @@
     // Create new page
     const newPage = document.createElement('img');
     
-    // Use the correct path matching your GitHub structure
-    if (pageNum === 1) {
-        newPage.src = "Comic-Pages/Cover.png"; // CORRECTED PATH
-    } else {
-        newPage.src = `Comic-Pages/Page-${pageNum-1}.png`; // CORRECTED PATH
-    }
+// Use the correct path matching your GitHub structure
+if (pageNum === 1) {
+    newPage.src = "Comic-Pages/Cover.png"; // CORRECTED PATH
+} else {
+    newPage.src = `Comic-Pages/Page-${pageNum-1}.png`; // CORRECTED PATH
+}
     
     // Add error handling
     newPage.onerror = function() {
