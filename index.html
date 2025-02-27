@@ -28,57 +28,72 @@
 
 .comic-container {
     position: relative;
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 90%;
+    max-height: 90%;
     background-color: white;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     transform: scale(0.5);
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .comic-container.zoomed {
     transform: scale(1);
 }
 
-.comic-page {
-    display: none;
-    max-width: 100%;
-    max-height: 80vh;
-    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-    transform-origin: center left;
+.comic-page-spread {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform-origin: center;
     backface-visibility: hidden;
 }
 
-.comic-page.active {
+.comic-page-spread.flipping {
+    animation: flipSpread 0.6s ease-in-out forwards;
+}
+
+.comic-page {
+    flex: 1;
+    display: none;
+    max-height: 85vh;
+    object-fit: contain;
+}
+
+.comic-page.left-page, .comic-page.right-page {
     display: block;
+    border: 1px solid #ddd;
 }
 
-.comic-page.flipping-next {
-    animation: flipNext 0.5s ease-in-out forwards;
+.comic-page.left-page {
+    border-right: none;
 }
 
-.comic-page.flipping-prev {
-    animation: flipPrev 0.5s ease-in-out forwards;
+.page-number-display {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes flipNext {
+@keyframes flipSpread {
     0% {
-        transform: perspective(1200px) rotateY(0);
+        transform: perspective(2000px) rotateY(0);
         opacity: 1;
     }
-    100% {
-        transform: perspective(1200px) rotateY(-180deg);
-        opacity: 0;
-    }
-}
-
-@keyframes flipPrev {
-    0% {
-        transform: perspective(1200px) rotateY(0);
-        opacity: 1;
+    50% {
+        opacity: 0.5;
     }
     100% {
-        transform: perspective(1200px) rotateY(180deg);
+        transform: perspective(2000px) rotateY(-15deg);
         opacity: 0;
     }
 }
@@ -1046,17 +1061,35 @@ function closeComic() {
     
         // Function to navigate to next page
         function nextPage() {
-            if (currentPage < totalPages) {
-                loadComicPage(currentPage + 1);
-            }
-        }
+    if (currentPage < totalPages - 1) { // Adjust for double-page spread
+        const currentSpread = document.querySelector('.comic-page-spread');
+        
+        // Add animation class
+        currentSpread.classList.add('flipping');
+        
+        // After animation completes, load the next page
+        setTimeout(() => {
+            // Go to next spread (2 pages ahead)
+            loadComicPages(currentPage + 2);
+        }, 500);
+    }
+}
     
         // Function to navigate to previous page
         function prevPage() {
-            if (currentPage > 1) {
-                loadComicPage(currentPage - 1);
-            }
-        }
+    if (currentPage > 1) {
+        const currentSpread = document.querySelector('.comic-page-spread');
+        
+        // Add animation class
+        currentSpread.classList.add('flipping');
+        
+        // After animation completes, load the previous page
+        setTimeout(() => {
+            // Go to previous spread (2 pages back)
+            loadComicPages(currentPage - 2);
+        }, 500);
+    }
+}
     
         // Function to show specific page (not used directly anymore)
         function showPage(pageNum) {
@@ -1064,9 +1097,95 @@ function closeComic() {
             loadComicPage(pageNum);
         }
     
-// Function to load comic pages dynamically
-function loadComicPage(pageNum) {
-    console.log("Loading page", pageNum); // Debugging
+// Function to open the comic viewer with animation
+function openComic() {
+    const overlay = document.getElementById('comicOverlay');
+    const container = document.querySelector('.comic-container');
+    
+    // First make it visible but with opacity 0
+    overlay.style.display = 'flex';
+    
+    // Add some floating peanut elements for effect
+    addFloatingElements();
+    
+    // Trigger reflow
+    void overlay.offsetWidth;
+    
+    // Add open class to fade in the overlay
+    overlay.classList.add('open');
+    
+    // Load the first page spread
+    loadComicPages(1);
+    
+    // Delay the zoom animation slightly for better effect
+    setTimeout(() => {
+        container.classList.add('zoomed');
+    }, 100);
+}
+
+// Function to close the comic viewer with animation
+function closeComic() {
+    const overlay = document.getElementById('comicOverlay');
+    const container = document.querySelector('.comic-container');
+    
+    // Remove the zoomed class first
+    container.classList.remove('zoomed');
+    
+    // Then remove the open class to fade out
+    overlay.classList.remove('open');
+    
+    // Remove floating elements
+    document.querySelectorAll('.floating-element').forEach(el => el.remove());
+    
+    // Wait for animations to complete before hiding
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        // Reset classes for next opening
+        container.classList.remove('zoomed');
+    }, 400);
+}
+
+// Function to navigate to next pages with animation
+function nextPage() {
+    if (currentPage < totalPages - 1) { // Adjust for double-page spread
+        const currentSpread = document.querySelector('.comic-page-spread');
+        
+        // Add animation class
+        currentSpread.classList.add('flipping');
+        
+        // After animation completes, load the next page
+        setTimeout(() => {
+            // Go to next spread (2 pages ahead)
+            loadComicPages(currentPage + 2);
+        }, 500);
+    }
+}
+
+// Function to navigate to previous pages with animation
+function prevPage() {
+    if (currentPage > 1) {
+        const currentSpread = document.querySelector('.comic-page-spread');
+        
+        // Add animation class
+        currentSpread.classList.add('flipping');
+        
+        // After animation completes, load the previous page
+        setTimeout(() => {
+            // Go to previous spread (2 pages back)
+            loadComicPages(currentPage - 2);
+        }, 500);
+    }
+}
+
+// Function to show specific page (not used directly anymore)
+function showPage(pageNum) {
+    // Load the page directly
+    loadComicPages(pageNum);
+}
+
+// Function to load comic pages as spreads (two pages side by side)
+function loadComicPages(startPageNum) {
+    console.log("Loading pages starting from", startPageNum); // Debugging
     
     const container = document.querySelector('.comic-container');
     if (!container) {
@@ -1074,189 +1193,267 @@ function loadComicPage(pageNum) {
         return;
     }
     
-    // Remove all existing pages
-    const allPages = document.querySelectorAll('.comic-page');
-    allPages.forEach(page => page.remove());
+    // Remove all existing page spreads
+    const allSpreads = document.querySelectorAll('.comic-page-spread');
+    allSpreads.forEach(spread => spread.remove());
     
-    // Create new page
-    const newPage = document.createElement('img');
+    // Remove any existing page number displays
+    const existingPageNumbers = document.querySelectorAll('.page-number-display');
+    existingPageNumbers.forEach(display => display.remove());
     
-    // Use the correct path matching your GitHub structure
-    if (pageNum === 1) {
-        newPage.src = "https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Cover.png";
-    } else {
-        // Adjusted to match your naming convention: "Page X DONE.png" or "Page X ADD TEXT.png"
-        const pageIndex = pageNum - 1;
+    // Create new page spread container
+    const pageSpread = document.createElement('div');
+    pageSpread.className = 'comic-page-spread';
+    
+    // Handle cover page specially (show only on right side)
+    if (startPageNum === 1) {
+        // Create blank left page for aesthetic
+        const blankPage = document.createElement('div');
+        blankPage.className = 'comic-page left-page';
+        blankPage.style.backgroundColor = '#f5f5f5';
         
-        // Special case for pages 8 and 9 which are named differently
-        if (pageIndex === 8 || pageIndex === 9) {
-            newPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${pageIndex} ADD TEXT.png`;
+        // Create right page (Cover)
+        const rightPage = document.createElement('img');
+        rightPage.className = 'comic-page right-page';
+        rightPage.src = "https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Cover.png";
+        rightPage.alt = "Comic Cover";
+        
+        rightPage.onload = function() {
+            console.log("Cover loaded successfully");
+        };
+        
+        rightPage.onerror = function() {
+            console.error("Failed to load cover image");
+            this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect width='300' height='400' fill='%23eee'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif'%3EImage Not Found%3C/text%3E%3C/svg%3E";
+        };
+        
+        // Add pages to spread
+        pageSpread.appendChild(blankPage);
+        pageSpread.appendChild(rightPage);
+    } else {
+        // Create left page
+        const leftPage = document.createElement('img');
+        leftPage.className = 'comic-page left-page';
+        
+        // Create right page
+        const rightPage = document.createElement('img');
+        rightPage.className = 'comic-page right-page';
+        
+        // Handle page paths and special cases
+        const leftPageIndex = startPageNum - 1;
+        const rightPageIndex = startPageNum;
+        
+        // Left page source
+        if (leftPageIndex === 8 || leftPageIndex === 9) {
+            leftPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${leftPageIndex} ADD TEXT.png`;
         } else {
-            newPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${pageIndex} DONE.png`;
+            leftPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${leftPageIndex} DONE.png`;
         }
-    }
-    
-    // Add load event to confirm image loaded
-    newPage.onload = function() {
-        console.log("Image loaded successfully:", newPage.src);
-        // Add a slight animation for the new page coming in
-        newPage.style.opacity = "0";
-        newPage.style.transform = "scale(0.95)";
         
-        setTimeout(() => {
-            newPage.style.transition = "opacity 0.3s ease, transform 0.3s ease";
-            newPage.style.opacity = "1";
-            newPage.style.transform = "scale(1)";
-        }, 50);
-    };
-    
-    // Add error handling
-    newPage.onerror = function() {
-        console.error(`Failed to load image: ${newPage.src}`);
-        this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect width='300' height='400' fill='%23eee'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif'%3EImage Not Found%3C/text%3E%3C/svg%3E";
-    };
-    
-    newPage.className = 'comic-page active';
-    newPage.dataset.page = pageNum;
-    newPage.alt = `Comic Page ${pageNum}`;
-    
-    // Get navigation elements
-    const prevNav = container.querySelector('.comic-nav.comic-prev');
-    
-    // Check if navigation elements exist
-    if (prevNav) {
-        // Insert before navigation element
-        container.insertBefore(newPage, prevNav);
-    } else {
-        // If navigation elements don't exist, just append
-        container.appendChild(newPage);
+        // Right page source (if not beyond total)
+        if (rightPageIndex <= totalPages) {
+            if (rightPageIndex === 8 || rightPageIndex === 9) {
+                rightPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${rightPageIndex} ADD TEXT.png`;
+            } else {
+                rightPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${rightPageIndex} DONE.png`;
+            }
+        } else {
+            // Create empty page if we've reached the end
+            rightPage.style.backgroundColor = '#f5f5f5';
+        }
+        
+        // Handle image loading and errors
+        leftPage.onload = function() {
+            console.log(`Left page ${leftPageIndex} loaded successfully`);
+        };
+        
+        leftPage.onerror = function() {
+            console.error(`Failed to load left page ${leftPageIndex}`);
+            this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect width='300' height='400' fill='%23eee'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif'%3EImage Not Found%3C/text%3E%3C/svg%3E";
+        };
+        
+        rightPage.onload = function() {
+            console.log(`Right page ${rightPageIndex} loaded successfully`);
+        };
+        
+        rightPage.onerror = function() {
+            console.error(`Failed to load right page ${rightPageIndex}`);
+            this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='400'%3E%3Crect width='300' height='400' fill='%23eee'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif'%3EImage Not Found%3C/text%3E%3C/svg%3E";
+        };
+        
+        // Add pages to spread
+        pageSpread.appendChild(leftPage);
+        pageSpread.appendChild(rightPage);
     }
     
-    currentPage = pageNum;
+    // Add page number display
+    const pageNumberDisplay = document.createElement('div');
+    pageNumberDisplay.className = 'page-number-display';
+    pageNumberDisplay.textContent = `Pages ${startPageNum}-${Math.min(startPageNum + 1, totalPages)} of ${totalPages}`;
     
-    // Preload adjacent pages
-    preloadAdjacentPages(pageNum);
+    // Insert the new page spread before navigation elements
+    const navPrev = container.querySelector('.comic-nav.comic-prev');
+    if (navPrev) {
+        container.insertBefore(pageSpread, navPrev);
+    } else {
+        container.appendChild(pageSpread);
+    }
+    
+    // Add page number display to container
+    container.appendChild(pageNumberDisplay);
+    
+    // Update current page tracker
+    currentPage = startPageNum;
+    
+    // Preload adjacent spreads
+    preloadAdjacentPages(startPageNum);
 }
 
 // Function to preload adjacent pages
 function preloadAdjacentPages(currentPageNum) {
-    // Preload next page if it exists
-    if (currentPageNum < totalPages) {
-        const nextPageNum = currentPageNum + 1;
-        let nextPageUrl;
+    // Preload next spread if it exists
+    if (currentPageNum < totalPages - 1) {
+        const nextPageNum1 = currentPageNum + 2;
+        const nextPageNum2 = currentPageNum + 3;
         
-        if (nextPageNum === 1) {
-            nextPageUrl = "https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Cover.png";
-        } else {
-            const pageIndex = nextPageNum - 1;
-            if (pageIndex === 8 || pageIndex === 9) {
-                nextPageUrl = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${pageIndex} ADD TEXT.png`;
-            } else {
-                nextPageUrl = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${pageIndex} DONE.png`;
-            }
+        // Next left page
+        let nextPage1Url;
+        if (nextPageNum1 === 8 || nextPageNum1 === 9) {
+            nextPage1Url = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${nextPageNum1} ADD TEXT.png`;
+        } else if (nextPageNum1 <= totalPages) {
+            nextPage1Url = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${nextPageNum1} DONE.png`;
         }
         
-        const preloadNext = new Image();
-        preloadNext.src = nextPageUrl;
+        // Next right page
+        let nextPage2Url;
+        if (nextPageNum2 === 8 || nextPageNum2 === 9) {
+            nextPage2Url = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${nextPageNum2} ADD TEXT.png`;
+        } else if (nextPageNum2 <= totalPages) {
+            nextPage2Url = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${nextPageNum2} DONE.png`;
+        }
+        
+        // Preload if URLs exist
+        if (nextPage1Url) {
+            const preloadNext1 = new Image();
+            preloadNext1.src = nextPage1Url;
+        }
+        
+        if (nextPage2Url) {
+            const preloadNext2 = new Image();
+            preloadNext2.src = nextPage2Url;
+        }
     }
     
-    // Preload previous page if it exists
-    if (currentPageNum > 1) {
-        const prevPageNum = currentPageNum - 1;
-        let prevPageUrl;
+    // Preload previous spread if it exists
+    if (currentPageNum > 2) {
+        const prevPageNum1 = currentPageNum - 2;
+        const prevPageNum2 = currentPageNum - 3;
         
-        if (prevPageNum === 1) {
-            prevPageUrl = "https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Cover.png";
+        // Previous right page
+        let prevPage1Url;
+        if (prevPageNum1 === 8 || prevPageNum1 === 9) {
+            prevPage1Url = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${prevPageNum1} ADD TEXT.png`;
         } else {
-            const pageIndex = prevPageNum - 1;
-            if (pageIndex === 8 || pageIndex === 9) {
-                prevPageUrl = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${pageIndex} ADD TEXT.png`;
-            } else {
-                prevPageUrl = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${pageIndex} DONE.png`;
-            }
+            prevPage1Url = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${prevPageNum1} DONE.png`;
         }
         
-        const preloadPrev = new Image();
-        preloadPrev.src = prevPageUrl;
+        // Previous left page
+        let prevPage2Url;
+        if (prevPageNum2 === 8 || prevPageNum2 === 9) {
+            prevPage2Url = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${prevPageNum2} ADD TEXT.png`;
+        } else if (prevPageNum2 >= 1) {
+            prevPage2Url = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${prevPageNum2} DONE.png`;
+        }
+        
+        // Preload if URLs exist
+        if (prevPage1Url) {
+            const preloadPrev1 = new Image();
+            preloadPrev1.src = prevPage1Url;
+        }
+        
+        if (prevPage2Url) {
+            const preloadPrev2 = new Image();
+            preloadPrev2.src = prevPage2Url;
+        }
     }
 }
-    
-        // Function to add floating peanut elements
-        function addFloatingElements() {
-            // Add 5 floating peanut elements
-            for (let i = 0; i < 5; i++) {
-                const element = document.createElement('div');
-                element.className = 'floating-element';
-                
-                // Random positions
-                element.style.left = `${Math.random() * 80 + 10}%`;
-                element.style.top = `${Math.random() * 80 + 10}%`;
-                
-                // Add to overlay
-                document.getElementById('comicOverlay').appendChild(element);
-                
-                // Animate the element
-                animateElement(element);
-            }
-        }
-    
-        // Function to animate floating elements
-        function animateElement(element) {
-            // Random starting positions
-            let x = parseInt(element.style.left);
-            let y = parseInt(element.style.top);
-            
-            // Random speeds
-            const xSpeed = Math.random() * 0.3 - 0.15;
-            const ySpeed = Math.random() * 0.3 - 0.15;
-            
-            // Set up animation loop
-            function move() {
-                // Update position
-                x += xSpeed;
-                y += ySpeed;
-                
-                // Keep within bounds
-                if (x < 0) x = 0;
-                if (x > 90) x = 90;
-                if (y < 0) y = 0;
-                if (y > 90) y = 90;
-                
-                // Apply position
-                element.style.left = `${x}%`;
-                element.style.top = `${y}%`;
-                
-                // Continue animation if overlay is still open
-                if (document.getElementById('comicOverlay').style.display !== 'none') {
-                    requestAnimationFrame(move);
-                }
-            }
-            
-            // Start animation
-            move();
-        }
-    
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (document.getElementById('comicOverlay').style.display === 'flex') {
-                if (e.key === 'ArrowRight') {
-                    nextPage();
-                } else if (e.key === 'ArrowLeft') {
-                    prevPage();
-                } else if (e.key === 'Escape') {
-                    closeComic();
-                }
-            }
-        });
 
-        // Make sure DOM is loaded before initializing
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize any comic triggers
-            const comicTriggers = document.querySelectorAll('.comic-trigger');
-            comicTriggers.forEach(trigger => {
-                trigger.addEventListener('click', openComic);
-            });
-        });
+// Function to add floating peanut elements
+function addFloatingElements() {
+    // Add 5 floating peanut elements
+    for (let i = 0; i < 5; i++) {
+        const element = document.createElement('div');
+        element.className = 'floating-element';
+        
+        // Random positions
+        element.style.left = `${Math.random() * 80 + 10}%`;
+        element.style.top = `${Math.random() * 80 + 10}%`;
+        
+        // Add to overlay
+        document.getElementById('comicOverlay').appendChild(element);
+        
+        // Animate the element
+        animateElement(element);
+    }
+}
+
+// Function to animate floating elements
+function animateElement(element) {
+    // Random starting positions
+    let x = parseInt(element.style.left);
+    let y = parseInt(element.style.top);
+    
+    // Random speeds
+    const xSpeed = Math.random() * 0.3 - 0.15;
+    const ySpeed = Math.random() * 0.3 - 0.15;
+    
+    // Set up animation loop
+    function move() {
+        // Update position
+        x += xSpeed;
+        y += ySpeed;
+        
+        // Keep within bounds
+        if (x < 0) x = 0;
+        if (x > 90) x = 90;
+        if (y < 0) y = 0;
+        if (y > 90) y = 90;
+        
+        // Apply position
+        element.style.left = `${x}%`;
+        element.style.top = `${y}%`;
+        
+        // Continue animation if overlay is still open
+        if (document.getElementById('comicOverlay').style.display !== 'none') {
+            requestAnimationFrame(move);
+        }
+    }
+    
+    // Start animation
+    move();
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+    if (document.getElementById('comicOverlay').style.display === 'flex') {
+        if (e.key === 'ArrowRight') {
+            nextPage();
+        } else if (e.key === 'ArrowLeft') {
+            prevPage();
+        } else if (e.key === 'Escape') {
+            closeComic();
+        }
+    }
+});
+
+// Make sure DOM is loaded before initializing
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize any comic triggers
+    const comicTriggers = document.querySelectorAll('.comic-trigger');
+    comicTriggers.forEach(trigger => {
+        trigger.addEventListener('click', openComic);
+    });
+});
     </script>
 </body>
 </html>
