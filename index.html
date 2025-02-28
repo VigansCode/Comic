@@ -154,17 +154,54 @@
     right: 10px;
 }
 
-        .comic-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            padding: 5px 10px;
-            background-color: white;
-            color: black;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
+.comic-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1002; /* Above everything else */
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.comic-close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.comic-close {
+    position: absolute;
+    top: 10px;           /* Changed from -40px to 10px to put it inside */
+    right: 10px;         /* Changed from 0 to 10px for some padding */
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+    border: none;
+    border-radius: 50%;  /* Make it a circle */
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002;       /* Ensure it's above everything */
+    transition: background-color 0.3s;
+}
+
+.comic-close:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
 
         /* Clickable comic in grid */
         .comic-trigger {
@@ -1042,6 +1079,31 @@ function openComic() {
     
     // Add some floating peanut elements for effect
     addFloatingElements();
+    
+    // Add close button if it doesn't exist
+    if (!container.querySelector('.comic-close-btn')) {
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'comic-close-btn';
+        closeBtn.innerHTML = '×';
+        closeBtn.onclick = closeComic;
+        closeBtn.style.position = 'absolute';
+        closeBtn.style.top = '10px';
+        closeBtn.style.right = '10px';
+        closeBtn.style.width = '30px';
+        closeBtn.style.height = '30px';
+        closeBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+        closeBtn.style.borderRadius = '50%';
+        closeBtn.style.display = 'flex';
+        closeBtn.style.alignItems = 'center';
+        closeBtn.style.justifyContent = 'center';
+        closeBtn.style.color = '#000';
+        closeBtn.style.fontSize = '20px';
+        closeBtn.style.fontWeight = 'bold';
+        closeBtn.style.cursor = 'pointer';
+        closeBtn.style.zIndex = '1002';
+        closeBtn.style.border = 'none';
+        container.appendChild(closeBtn);
+    }
     
     // Trigger reflow
     void overlay.offsetWidth;
