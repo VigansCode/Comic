@@ -1080,35 +1080,219 @@ function closeComic() {
     }, 400);
 }
 
-// Function to navigate to next pages with animation
+// Function to navigate to next pages with seamless transition
 function nextPage() {
     if (currentPage < totalPages - 1) {
-        const currentSpread = document.querySelector('.comic-page-spread');
-        if (!currentSpread) return;
+        // Create and prepare the next pages first
+        const nextStartPage = currentPage + 2;
+        const container = document.querySelector('.comic-container');
         
-        // Add animation class
+        // Create a temporary container for the next spread
+        const nextSpread = document.createElement('div');
+        nextSpread.className = 'comic-page-spread next-spread';
+        nextSpread.style.position = 'absolute';
+        nextSpread.style.top = '0';
+        nextSpread.style.left = '0';
+        nextSpread.style.width = '100%';
+        nextSpread.style.height = '100%';
+        nextSpread.style.zIndex = '1'; // Lower z-index than current
+        
+        // Create the pages for the next spread
+        if (nextStartPage === 1) {
+            // Cover page case
+            const blankPage = document.createElement('div');
+            blankPage.className = 'comic-page left-page';
+            blankPage.style.backgroundColor = '#f5f5f5';
+            
+            const rightPage = document.createElement('img');
+            rightPage.className = 'comic-page right-page';
+            rightPage.src = "https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Cover.png";
+            
+            nextSpread.appendChild(blankPage);
+            nextSpread.appendChild(rightPage);
+        } else {
+            const leftPage = document.createElement('img');
+            leftPage.className = 'comic-page left-page';
+            
+            const rightPage = document.createElement('img');
+            rightPage.className = 'comic-page right-page';
+            
+            if (nextStartPage === 8 || nextStartPage === 9) {
+                leftPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${nextStartPage} ADD TEXT.png`;
+            } else {
+                leftPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${nextStartPage} DONE.png`;
+            }
+            
+            const rightPageIndex = nextStartPage + 1;
+            if (rightPageIndex <= totalPages) {
+                if (rightPageIndex === 8 || rightPageIndex === 9) {
+                    rightPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${rightPageIndex} ADD TEXT.png`;
+                } else {
+                    rightPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${rightPageIndex} DONE.png`;
+                }
+            } else {
+                rightPage.style.backgroundColor = '#f5f5f5';
+            }
+            
+            nextSpread.appendChild(leftPage);
+            nextSpread.appendChild(rightPage);
+        }
+        
+        // Add next spread to container first (behind current)
+        container.appendChild(nextSpread);
+        
+        // Now get the current spread and animate it
+        const currentSpread = document.querySelector('.comic-page-spread:not(.next-spread)');
+        currentSpread.style.zIndex = '2'; // Higher z-index to be on top during animation
         currentSpread.classList.add('flipping-next');
         
-        // Create the next spread BEFORE the animation finishes
+        // After animation is halfway complete but before it finishes
+        // we'll make the next spread visible so there's no gap
         setTimeout(() => {
-            loadComicPages(currentPage + 2);
-        }, 400); // Load before animation is complete (700ms)
+            nextSpread.style.zIndex = '3'; // Move above the animating current spread
+        }, 400);
+        
+        // After animation completes, clean up
+        setTimeout(() => {
+            currentSpread.remove();
+            nextSpread.classList.remove('next-spread');
+            nextSpread.style.position = '';
+            nextSpread.style.zIndex = '';
+            
+            // Update page number display
+            const pageNumberDisplay = document.createElement('div');
+            pageNumberDisplay.className = 'page-number-display';
+            pageNumberDisplay.textContent = `Pages ${nextStartPage}-${Math.min(nextStartPage + 1, totalPages)} of ${totalPages}`;
+            
+            // Remove any existing page number displays
+            const existingPageNumbers = document.querySelectorAll('.page-number-display');
+            existingPageNumbers.forEach(display => display.remove());
+            
+            // Add new page number display
+            container.appendChild(pageNumberDisplay);
+            
+            // Update current page tracker
+            currentPage = nextStartPage;
+            
+            // Show/hide navigation based on current page
+            const navPrev = container.querySelector('.comic-nav.comic-prev');
+            const navNext = container.querySelector('.comic-nav.comic-next');
+            if (navPrev) {
+                navPrev.style.visibility = currentPage > 1 ? 'visible' : 'hidden';
+            }
+            if (navNext) {
+                navNext.style.visibility = currentPage < totalPages - 1 ? 'visible' : 'hidden';
+            }
+            
+            // Preload next pages for smoother experience
+            preloadAdjacentPages(currentPage);
+        }, 800);
     }
 }
 
-// Function to navigate to previous pages with animation
+// Function to navigate to previous pages with seamless transition
 function prevPage() {
     if (currentPage > 1) {
-        const currentSpread = document.querySelector('.comic-page-spread');
-        if (!currentSpread) return;
+        // Create and prepare the previous pages first
+        const prevStartPage = currentPage - 2;
+        const container = document.querySelector('.comic-container');
         
-        // Add appropriate animation class
+        // Create a temporary container for the previous spread
+        const prevSpread = document.createElement('div');
+        prevSpread.className = 'comic-page-spread prev-spread';
+        prevSpread.style.position = 'absolute';
+        prevSpread.style.top = '0';
+        prevSpread.style.left = '0';
+        prevSpread.style.width = '100%';
+        prevSpread.style.height = '100%';
+        prevSpread.style.zIndex = '1'; // Lower z-index than current
+        
+        // Create the pages for the previous spread
+        if (prevStartPage === 1) {
+            // Cover page case
+            const blankPage = document.createElement('div');
+            blankPage.className = 'comic-page left-page';
+            blankPage.style.backgroundColor = '#f5f5f5';
+            
+            const rightPage = document.createElement('img');
+            rightPage.className = 'comic-page right-page';
+            rightPage.src = "https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Cover.png";
+            
+            prevSpread.appendChild(blankPage);
+            prevSpread.appendChild(rightPage);
+        } else {
+            const leftPage = document.createElement('img');
+            leftPage.className = 'comic-page left-page';
+            
+            const rightPage = document.createElement('img');
+            rightPage.className = 'comic-page right-page';
+            
+            if (prevStartPage === 8 || prevStartPage === 9) {
+                leftPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${prevStartPage} ADD TEXT.png`;
+            } else {
+                leftPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${prevStartPage} DONE.png`;
+            }
+            
+            const rightPageIndex = prevStartPage + 1;
+            if (rightPageIndex === 8 || rightPageIndex === 9) {
+                rightPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${rightPageIndex} ADD TEXT.png`;
+            } else {
+                rightPage.src = `https://raw.githubusercontent.com/VigansCode/Comic/main/Comic-Pages/Page ${rightPageIndex} DONE.png`;
+            }
+            
+            prevSpread.appendChild(leftPage);
+            prevSpread.appendChild(rightPage);
+        }
+        
+        // Add previous spread to container first (behind current)
+        container.appendChild(prevSpread);
+        
+        // Now get the current spread and animate it
+        const currentSpread = document.querySelector('.comic-page-spread:not(.prev-spread)');
+        currentSpread.style.zIndex = '2'; // Higher z-index to be on top during animation
         currentSpread.classList.add('flipping-prev');
         
-        // Create the previous spread BEFORE the animation finishes
+        // After animation is halfway complete but before it finishes
+        // we'll make the prev spread visible so there's no gap
         setTimeout(() => {
-            loadComicPages(currentPage - 2);
-        }, 400); // Load before animation is complete (700ms)
+            prevSpread.style.zIndex = '3'; // Move above the animating current spread
+        }, 400);
+        
+        // After animation completes, clean up
+        setTimeout(() => {
+            currentSpread.remove();
+            prevSpread.classList.remove('prev-spread');
+            prevSpread.style.position = '';
+            prevSpread.style.zIndex = '';
+            
+            // Update page number display
+            const pageNumberDisplay = document.createElement('div');
+            pageNumberDisplay.className = 'page-number-display';
+            pageNumberDisplay.textContent = `Pages ${prevStartPage}-${Math.min(prevStartPage + 1, totalPages)} of ${totalPages}`;
+            
+            // Remove any existing page number displays
+            const existingPageNumbers = document.querySelectorAll('.page-number-display');
+            existingPageNumbers.forEach(display => display.remove());
+            
+            // Add new page number display
+            container.appendChild(pageNumberDisplay);
+            
+            // Update current page tracker
+            currentPage = prevStartPage;
+            
+            // Show/hide navigation based on current page
+            const navPrev = container.querySelector('.comic-nav.comic-prev');
+            const navNext = container.querySelector('.comic-nav.comic-next');
+            if (navPrev) {
+                navPrev.style.visibility = currentPage > 1 ? 'visible' : 'hidden';
+            }
+            if (navNext) {
+                navNext.style.visibility = currentPage < totalPages - 1 ? 'visible' : 'hidden';
+            }
+            
+            // Preload previous pages for smoother experience
+            preloadAdjacentPages(currentPage);
+        }, 800);
     }
 }
 
