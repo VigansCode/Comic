@@ -1031,7 +1031,6 @@
         // Comic viewer functionality
         let currentPage = 1;
         const totalPages = 32; // Adjust based on actual number of pages
-        let isAnimating = false; // Flag to prevent multiple clicks during animation
     
 // Function to open the comic viewer with animation
 function openComic() {
@@ -1081,93 +1080,19 @@ function closeComic() {
     }, 400);
 }
 
-// Function to navigate to next pages with animation
+// Function to navigate to next pages - immediate change without animation
 function nextPage() {
-    if (currentPage < totalPages - 1 && !isAnimating) {
-        isAnimating = true; // Prevent multiple clicks
-        
-        // Load the next pages immediately but make them initially hidden
-        const nextStartPage = currentPage + 2;
-        const newSpread = createPageSpread(nextStartPage);
-        newSpread.style.opacity = '0';
-        newSpread.style.position = 'absolute';
-        newSpread.style.top = '0';
-        newSpread.style.left = '0';
-        newSpread.style.width = '100%';
-        newSpread.style.height = '100%';
-        
-        const container = document.querySelector('.comic-container');
-        const currentSpread = document.querySelector('.comic-page-spread');
-        
-        // Add new pages to container
-        container.appendChild(newSpread);
-        
-        // Start animation on current pages
-        currentSpread.classList.add('flipping-next');
-        
-        // Start fading in new pages halfway through current animation
-        setTimeout(() => {
-            newSpread.style.opacity = '1';
-            newSpread.style.transition = 'opacity 0.3s ease-in';
-        }, 350);
-        
-        // After animation completes, clean up
-        setTimeout(() => {
-            // Remove old pages and position new ones properly
-            currentSpread.remove();
-            newSpread.style.position = '';
-            
-            // Update page display
-            updatePageDisplay(nextStartPage);
-            
-            // Reset animation flag
-            isAnimating = false;
-        }, 750);
+    if (currentPage < totalPages - 1) {
+        // Simply load the next pages immediately
+        loadComicPages(currentPage + 2);
     }
 }
 
-// Function to navigate to previous pages with animation
+// Function to navigate to previous pages - immediate change without animation
 function prevPage() {
-    if (currentPage > 1 && !isAnimating) {
-        isAnimating = true; // Prevent multiple clicks
-        
-        // Load the previous pages immediately but make them initially hidden
-        const prevStartPage = currentPage - 2;
-        const newSpread = createPageSpread(prevStartPage);
-        newSpread.style.opacity = '0';
-        newSpread.style.position = 'absolute';
-        newSpread.style.top = '0';
-        newSpread.style.left = '0';
-        newSpread.style.width = '100%';
-        newSpread.style.height = '100%';
-        
-        const container = document.querySelector('.comic-container');
-        const currentSpread = document.querySelector('.comic-page-spread');
-        
-        // Add new pages to container
-        container.appendChild(newSpread);
-        
-        // Start animation on current pages
-        currentSpread.classList.add('flipping-prev');
-        
-        // Start fading in new pages halfway through current animation
-        setTimeout(() => {
-            newSpread.style.opacity = '1';
-            newSpread.style.transition = 'opacity 0.3s ease-in';
-        }, 350);
-        
-        // After animation completes, clean up
-        setTimeout(() => {
-            // Remove old pages and position new ones properly
-            currentSpread.remove();
-            newSpread.style.position = '';
-            
-            // Update page display
-            updatePageDisplay(prevStartPage);
-            
-            // Reset animation flag
-            isAnimating = false;
-        }, 750);
+    if (currentPage > 1) {
+        // Simply load the previous pages immediately
+        loadComicPages(currentPage - 2);
     }
 }
 
@@ -1222,40 +1147,10 @@ function createPageSpread(startPageNum) {
     return pageSpread;
 }
 
-// Helper function to update page display
-function updatePageDisplay(startPageNum) {
-    const container = document.querySelector('.comic-container');
-    
-    // Update page number display
-    const existingPageNumbers = document.querySelectorAll('.page-number-display');
-    existingPageNumbers.forEach(display => display.remove());
-    
-    const pageNumberDisplay = document.createElement('div');
-    pageNumberDisplay.className = 'page-number-display';
-    pageNumberDisplay.textContent = `Pages ${startPageNum}-${Math.min(startPageNum + 1, totalPages)} of ${totalPages}`;
-    container.appendChild(pageNumberDisplay);
-    
-    // Update current page tracker
-    currentPage = startPageNum;
-    
-    // Show/hide navigation based on current page
-    const navPrev = container.querySelector('.comic-nav.comic-prev');
-    const navNext = container.querySelector('.comic-nav.comic-next');
-    
-    if (navPrev) {
-        navPrev.style.visibility = currentPage > 1 ? 'visible' : 'hidden';
-    }
-    
-    if (navNext) {
-        navNext.style.visibility = currentPage < totalPages - 1 ? 'visible' : 'hidden';
-    }
-    
-    // Preload adjacent spreads
-    preloadAdjacentPages(startPageNum);
-}
-
-// Function to load comic pages initially
+// Function to load comic pages as spreads (two pages side by side)
 function loadComicPages(startPageNum) {
+    console.log("Loading pages starting from", startPageNum); // Debugging
+    
     const container = document.querySelector('.comic-container');
     if (!container) {
         console.error("Comic container not found");
@@ -1266,7 +1161,11 @@ function loadComicPages(startPageNum) {
     const allSpreads = document.querySelectorAll('.comic-page-spread');
     allSpreads.forEach(spread => spread.remove());
     
-    // Create and add new spread
+    // Remove any existing page number displays
+    const existingPageNumbers = document.querySelectorAll('.page-number-display');
+    existingPageNumbers.forEach(display => display.remove());
+    
+    // Create new page spread container
     const pageSpread = createPageSpread(startPageNum);
     
     // Ensure navigation elements exist
@@ -1293,8 +1192,21 @@ function loadComicPages(startPageNum) {
     // Insert the new page spread before navigation elements
     container.insertBefore(pageSpread, navPrev);
     
-    // Update page display
-    updatePageDisplay(startPageNum);
+    // Add page number display
+    const pageNumberDisplay = document.createElement('div');
+    pageNumberDisplay.className = 'page-number-display';
+    pageNumberDisplay.textContent = `Pages ${startPageNum}-${Math.min(startPageNum + 1, totalPages)} of ${totalPages}`;
+    container.appendChild(pageNumberDisplay);
+    
+    // Update current page tracker
+    currentPage = startPageNum;
+    
+    // Show/hide navigation based on current page
+    navPrev.style.visibility = currentPage > 1 ? 'visible' : 'hidden';
+    navNext.style.visibility = currentPage < totalPages - 1 ? 'visible' : 'hidden';
+    
+    // Preload adjacent spreads
+    preloadAdjacentPages(startPageNum);
 }
 
 // Function to preload adjacent pages
