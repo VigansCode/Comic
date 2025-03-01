@@ -7,6 +7,38 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         /* All previous styles remain exactly the same until browse section */
+        .centered-nav {
+        justify-content: center;
+        padding: 15px 20px; /* Slightly increased padding for better height */
+    }
+    
+    .centered-nav a {
+        margin: 0 40px; /* Increased spacing between items */
+        position: relative;
+        font-size: 18px; /* Slightly larger font */
+        transition: color 0.3s;
+    }
+    
+    .centered-nav a:hover {
+        color: #0282F9; /* DC blue color on hover */
+    }
+    
+    /* Optional: Add underline effect on hover */
+    .centered-nav a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 3px;
+        bottom: -8px;
+        left: 0;
+        background-color: #0282F9;
+        transition: width 0.3s;
+    }
+    
+    .centered-nav a:hover::after {
+        width: 100%;
+    }
+       
         .comic-overlay {
     position: fixed;
     top: 0;
@@ -929,7 +961,7 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="top-nav">
+    <nav class="top-nav centered-nav">
         <a href="#">CHARACTERS</a>
         <a href="#">COMICS</a>
     </nav>
