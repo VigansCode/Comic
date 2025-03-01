@@ -676,37 +676,233 @@
     margin: 0;
 }
 
-.footer {
-    background-color: #000;
-    padding: 20px 0;
-    text-align: center;
+/* Enhanced Footer Styles */
+.enhanced-footer {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
 }
 
-.footer-content {
+.footer-main {
+    background-color: #0a0a0a;
+    padding: 60px 0 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Comic-style background effect */
+.footer-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(10, 10, 10, 0.97), rgba(10, 10, 10, 0.97)), 
+                      url('path-to-subtle-comic-pattern.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.footer-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 30px;
+    padding-right: 30px;
+}
+
+/* Logo Styling */
+.footer-logo-container {
+    margin-bottom: 20px;
 }
 
 .footer-logo {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 10px;
+    width: 70px;
+    height: auto;
+    display: block;
 }
 
-.footer-links {
-    margin-bottom: 10px;
+.tagline {
+    font-size: 14px;
+    color: #cccccc;
+    margin-top: 15px;
+    font-style: italic;
 }
 
-.footer-links a {
+/* Social Icons */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #0282F9;
     color: white;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: bold;
+    transition: all 0.3s ease;
 }
 
-.footer-links a:hover {
-    text-decoration: underline;
+.social-icon:hover {
+    background-color: white;
+    color: #0282F9;
+    transform: translateY(-3px);
+}
+
+.social-icon i {
+    font-size: 18px;
+}
+
+/* Column Headers */
+.footer-column h3 {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #0282F9;
+}
+
+/* Footer Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a, .legal-links a {
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover, .legal-links a:hover {
+    color: #0282F9;
+    transform: translateX(5px);
+}
+
+/* Newsletter Form */
+.newsletter-form {
+    display: flex;
+    margin-top: 15px;
+}
+
+.newsletter-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: none;
+    background-color: #222222;
+    color: white;
+    border-radius: 4px 0 0 4px;
+}
+
+.newsletter-button {
+    padding: 10px 15px;
+    background-color: #0282F9;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.newsletter-button:hover {
+    background-color: #0072e6;
+}
+
+/* Bottom Footer Bar */
+.footer-bottom {
+    background-color: black;
+    padding: 20px 0;
+    border-top: 1px solid #222222;
+}
+
+.footer-bottom-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.copyright p {
+    margin: 0;
+    font-size: 12px;
+    color: #888888;
+}
+
+/* Responsive adjustments */
+@media (max-width: 960px) {
+    .footer-column {
+        flex-basis: 50%;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 640px) {
+    .footer-column {
+        flex-basis: 100%;
+    }
+    
+    .footer-bottom-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .legal-links {
+        justify-content: center;
+    }
+}
+
+/* Batman-style divider */
+.footer-main::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #0282F9, #00B7EB, #0282F9);
 }
 
 .divider {
@@ -1008,24 +1204,77 @@
         <h2>DC COMICS TRAILERS, EXCLUSIVE INTERVIEWS & MORE</h2>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <img src="/dc-logo.png" alt="DC Logo" class="footer-logo">
-            <div class="footer-links">
+<!-- Enhanced Footer -->
+<footer class="enhanced-footer">
+    <div class="footer-main">
+        <div class="footer-container">
+            <!-- Column 1: Logo and Social -->
+            <div class="footer-column">
+                <div class="footer-logo-container">
+                    <img src="/dc-logo.png" alt="DC Logo" class="footer-logo">
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fa fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fa fa-youtube"></i></a>
+                </div>
+                <p class="tagline">DC GO! - The Future of Comics</p>
+            </div>
+            
+            <!-- Column 2: Quick Links -->
+            <div class="footer-column">
+                <h3>EXPLORE</h3>
+                <ul class="footer-links">
+                    <li><a href="#">CHARACTERS</a></li>
+                    <li><a href="#">COMICS</a></li>
+                    <li><a href="#">MOVIES & TV</a></li>
+                    <li><a href="#">GAMES</a></li>
+                    <li><a href="#">NEWS</a></li>
+                    <li><a href="#">SHOP</a></li>
+                </ul>
+            </div>
+            
+            <!-- Column 3: Company -->
+            <div class="footer-column">
+                <h3>COMPANY</h3>
+                <ul class="footer-links">
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">CAREERS</a></li>
+                    <li><a href="#">PRESS</a></li>
+                    <li><a href="#">HELP</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </div>
+            
+            <!-- Column 4: Newsletter -->
+            <div class="footer-column">
+                <h3>STAY CONNECTED</h3>
+                <p>Subscribe to our newsletter for exclusive updates and offers</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your email address" class="newsletter-input">
+                    <button class="newsletter-button">SUBSCRIBE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bottom bar with legal links and copyright -->
+    <div class="footer-bottom">
+        <div class="footer-container footer-bottom-container">
+            <div class="legal-links">
                 <a href="#">PRIVACY POLICY</a>
-                <span class="divider">|</span>
                 <a href="#">TERMS</a>
-                <span class="divider">|</span>
                 <a href="#">AD CHOICES</a>
-                <span class="divider">|</span>
                 <a href="#">ACCESSIBILITY</a>
-                <span class="divider">|</span>
                 <a href="#">MANAGE PREFERENCES</a>
             </div>
-            <p class="copyright">© & ™ DC. ALL RIGHTS RESERVED</p>
+            <div class="copyright">
+                <p>© & ™ DC. ALL RIGHTS RESERVED</p>
+            </div>
         </div>
-    </footer>
+    </div>
+</footer>
     
     <!-- Add the script tag here -->
     <script>
