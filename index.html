@@ -6,7 +6,96 @@
     <title>Dr Guff | Character Details</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+      I deeply apologize for the confusion and frustration. Here's the complete style tag from opening to closing:
+
+```html
+<style>
         /* All previous styles remain exactly the same until browse section */
+        /* Marvel-style header with DC content */
+.marvel-style-header {
+    font-family: Arial, sans-serif;
+}
+
+.top-bar {
+    background-color: #202020;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    display: inline-block;
+}
+
+.site-logo {
+    height: 60px;
+    width: auto;
+}
+
+.main-nav {
+    background-color: #202020;
+    border-top: 1px solid #333;
+    text-align: center;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links li {
+    margin: 0;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 12px 24px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #0282F9; /* DC blue on hover */
+}
+
+/* Active state indicator */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover::after {
+    background-color: #0282F9; /* DC blue underline on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-link {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+}
+        
         .centered-nav {
         justify-content: center;
         padding: 15px 20px; /* Slightly increased padding for better height */
@@ -961,10 +1050,26 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="top-nav centered-nav">
-        <a href="#">CHARACTERS</a>
-        <a href="#">COMICS</a>
-    </nav>
+    <header class="marvel-style-header">
+        <!-- Top black bar with logo -->
+        <div class="top-bar">
+            <div class="container">
+                <a href="#" class="logo">
+                    <img src="/dc-logo.png" alt="DC Logo" class="site-logo">
+                </a>
+            </div>
+        </div>
+        
+        <!-- Navigation bar -->
+        <nav class="main-nav">
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link">CHARACTERS</a></li>
+                    <li><a href="#" class="nav-link">COMICS</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
     <!-- Banner -->
     <div class="banner">
