@@ -6,9 +6,6 @@
     <title>Dr Guff | Character Details</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-      I deeply apologize for the confusion and frustration. Here's the complete style tag from opening to closing:
-
-```html
 <style>
         /* All previous styles remain exactly the same until browse section */
         /* Marvel-style header with DC content */
@@ -603,7 +600,262 @@
         /* Trailer Section */
         .trailers-section {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+
+        .stories-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        /* Featured Story */
+        .feature-story {
+            display: grid;
+            grid-template-columns: 55% 45%;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-story:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .story-image {
+            position: relative;
+            height: 100%;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .story-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #0282F9;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 3px;
+            letter-spacing: 0.5px;
+        }
+
+        .story-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-content h3 {
+            font-size: 24px;
+            margin: 0 0 15px;
+            line-height: 1.3;
+        }
+
+        .story-excerpt {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #444;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: #0282F9;
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 15px;
+            transition: color 0.2s;
+        }
+
+        .read-more:hover {
+            color: #0257b9;
+            text-decoration: underline;
+        }
+
+        .story-meta {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .story-date {
+            margin-right: 15px;
+        }
+
+        /* Stories Row */
+        .stories-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .story-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .story-image-small {
+            position: relative;
+            height: 180px;
+        }
+
+        .story-image-small img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .story-card h4 {
+            font-size: 16px;
+            margin: 15px;
+            line-height: 1.4;
+        }
+
+        .story-meta-small {
+            font-size: 12px;
+            color: #777;
+            margin: 0 15px 15px;
+            display: block;
+        }
+
+        /* Video Section */
+        .video-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        .video-section-header h3 {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .view-all {
+            color: #0282F9;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .video-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .video-card {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 135px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .video-card:hover .play-button {
+            background-color: rgba(2, 130, 249, 0.9);
+        }
+
+        .video-card h4 {
+            font-size: 14px;
+            margin: 0 0 5px;
+            line-height: 1.4;
+        }
+
+        .video-duration {
+            font-size: 12px;
+            color: #777;
+            margin: 0;
+        }
+
+        /* Responsive Adjustments for Stories Section */
+        @media (max-width: 992px) {
+            .feature-story {
+                grid-template-columns: 1fr;
+            }
+            
+            .story-image {
+                height: 300px;
+            }
+            
+            .video-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stories-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .story-image-small {
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .video-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-thumbnail {
+                height: 200px;
+            }
         }
 
         .trailer-grid {
@@ -1331,9 +1583,109 @@
         </div>
     </section>
 
-    <!-- Trailers Section -->
-    <section class="trailers-section">
-        <h2>DC COMICS TRAILERS, EXCLUSIVE INTERVIEWS & MORE</h2>
+<!-- Enhanced Trailers & Stories Section -->
+<section class="trailers-section" id="stories-section">
+    <h2>DC COMICS TRAILERS, EXCLUSIVE INTERVIEWS & MORE</h2>
+    
+    <div class="stories-grid">
+        <!-- Featured Story -->
+        <div class="feature-story">
+            <div class="story-image">
+                <img src="stories/dr-guff-interview.jpg" alt="Dr Guff Interview" onerror="this.src='/api/placeholder/400/225'; this.alt='Dr Guff Interview Placeholder'">
+                <div class="story-tag">EXCLUSIVE INTERVIEW</div>
+            </div>
+            <div class="story-content">
+                <h3>Inside the Mind of Dr Guff: The Eccentric Genius Behind DC GO!</h3>
+                <p class="story-excerpt">We sit down with the brilliant but unstable Dr Guff to discuss his latest inventions, his rivalry with Pioneer, and what's next for DC's most unpredictable character.</p>
+                <a href="#" class="read-more">READ MORE</a>
+                <div class="story-meta">
+                    <span class="story-date">MARCH 2, 2025</span>
+                    <span class="story-author">BY JAMES HOWARD</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- More Stories Grid -->
+        <div class="stories-row">
+            <!-- Story 1 -->
+            <div class="story-card">
+                <div class="story-image-small">
+                    <img src="stories/pioneer-origin.jpg" alt="Pioneer Origin Story" onerror="this.src='/api/placeholder/400/225'; this.alt='Pioneer Origin Story Placeholder'">
+                    <div class="story-tag">CHARACTER SPOTLIGHT</div>
+                </div>
+                <h4>Pioneer: From Tech Prodigy to Cosmic Explorer</h4>
+                <p class="story-meta-small">FEBRUARY 25, 2025</p>
+            </div>
+            
+            <!-- Story 2 -->
+            <div class="story-card">
+                <div class="story-image-small">
+                    <img src="stories/comic-creation.jpg" alt="Behind the Scenes" onerror="this.src='/api/placeholder/400/225'; this.alt='Comic Creation Placeholder'">
+                    <div class="story-tag">BEHIND THE SCENES</div>
+                </div>
+                <h4>The Art of DC GO!: Creating a New Universe</h4>
+                <p class="story-meta-small">FEBRUARY 18, 2025</p>
+            </div>
+            
+            <!-- Story 3 -->
+            <div class="story-card">
+                <div class="story-image-small">
+                    <img src="stories/mesmerise-powers.jpg" alt="Mesmerise Powers Explained" onerror="this.src='/api/placeholder/400/225'; this.alt='Mesmerise Powers Placeholder'">
+                    <div class="story-tag">POWER ANALYSIS</div>
+                </div>
+                <h4>Understanding Mesmerise's Hypnotic Abilities</h4>
+                <p class="story-meta-small">FEBRUARY 12, 2025</p>
+            </div>
+        </div>
+        
+        <!-- Video Trailers Section -->
+        <div class="video-section-header">
+            <h3>LATEST TRAILERS & VIDEOS</h3>
+            <a href="#" class="view-all">VIEW ALL</a>
+        </div>
+        
+        <div class="video-row">
+            <!-- Video 1 -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="videos/comic-trailer.jpg" alt="Comic Trailer" onerror="this.src='/api/placeholder/400/225'; this.alt='Comic Trailer Placeholder'">
+                    <div class="play-button">▶</div>
+                </div>
+                <h4>DC GO! Issue #2 - Official Trailer</h4>
+                <p class="video-duration">1:45</p>
+            </div>
+            
+            <!-- Video 2 -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="videos/character-reveal.jpg" alt="Character Reveal" onerror="this.src='/api/placeholder/400/225'; this.alt='Character Reveal Placeholder'">
+                    <div class="play-button">▶</div>
+                </div>
+                <h4>New Character Reveal: Backlash</h4>
+                <p class="video-duration">2:18</p>
+            </div>
+            
+            <!-- Video 3 -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="videos/creator-interview.jpg" alt="Creator Interview" onerror="this.src='/api/placeholder/400/225'; this.alt='Creator Interview Placeholder'">
+                    <div class="play-button">▶</div>
+                </div>
+                <h4>Meet the Creators: Studio Tour</h4>
+                <p class="video-duration">5:32</p>
+            </div>
+            
+            <!-- Video 4 -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="videos/art-process.jpg" alt="Art Process" onerror="this.src='/api/placeholder/400/225'; this.alt='Art Process Placeholder'">
+                    <div class="play-button">▶</div>
+                </div>
+                <h4>The Art of DC GO!: Digital Drawing Process</h4>
+                <p class="video-duration">8:45</p>
+            </div>
+        </div>
+    </div>
     </section>
 
 <!-- Enhanced Footer -->
