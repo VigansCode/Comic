@@ -9,41 +9,6 @@
 <style>
         /* All previous styles remain exactly the same until browse section */
         /* Marvel-style header with DC content */
-        /* Social Icons for Header */
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.social-icons {
-    display: flex;
-    gap: 15px;
-}
-
-.social-icon {
-    width: 24px;
-    height: 24px;
-}
-
-/* Social Icons for Footer */
-.footer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-.social-icons {
-    display: flex;
-    gap: 15px;
-    margin: 20px 0;
-}
-
-.social-icon {
-    width: 24px;
-    height: 24px;
-}
 .marvel-style-header {
     font-family: Arial, sans-serif;
 }
@@ -69,15 +34,18 @@
     width: auto;
 }
 
-.main-nav .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.main-nav {
+    background-color: #202020;
+    border-top: 1px solid #333;
+    text-align: center;
 }
 
 .nav-links {
-  display: flex;
-  gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .nav-links li {
@@ -1147,13 +1115,21 @@
 
 /* Social Icons */
 .social-icons {
-  display: flex;
-  gap: 15px;
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
 }
 
 .social-icon {
-  width: 24px;
-  height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #0282F9;
+    color: white;
+    transition: all 0.3s ease;
 }
 
 .social-icon:hover {
@@ -1324,35 +1300,27 @@
     </style>
 </head>
 <body>
-<!-- Top black bar with logo -->
-<div class="top-bar">
-    <div class="container">
-        <a href="#" class="logo">
-            <img src="/dc-logo.png" alt="DC Logo" class="site-logo">
-        </a>
+    <!-- Navigation -->
+    <header class="marvel-style-header">
+        <!-- Top black bar with logo -->
+        <div class="top-bar">
+            <div class="container">
+                <a href="#" class="logo">
+                    <img src="/dc-logo.png" alt="DC Logo" class="site-logo">
+                </a>
+            </div>
+        </div>
         
-<!-- Main navigation with both links and social icons -->
-<div class="main-nav">
-    <div class="container">
-      <div class="nav-links">
-        <a href="/characters" class="nav-link">CHARACTERS</a>
-        <a href="/comics" class="nav-link">COMICS</a>
-      </div>
-      
-      <!-- Social icons on the right -->
-      <div class="social-icons">
-        <a href="https://pumpfun.com" target="_blank">
-          <img src="icons/pumpfun comic.svg" alt="Pump Fun" class="social-icon">
-        </a>
-        <a href="https://dex.com" target="_blank">
-          <img src="icons/Dex comic.svg" alt="Dex" class="social-icon">
-        </a>
-        <a href="https://x.com" target="_blank">
-          <img src="icons/X Comic.svg" alt="X" class="social-icon">
-        </a>
-      </div>
-    </div>
-  </div>
+        <!-- Navigation bar -->
+        <nav class="main-nav">
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="#browse-characters" class="nav-link">CHARACTERS</a></li>
+                    <li><a href="#comics-section" class="nav-link">COMICS</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
     <!-- Banner -->
     <div class="banner">
@@ -1618,32 +1586,19 @@
 <!-- Enhanced Footer -->
 <footer class="marvel-style-footer">
     <div class="footer-container">
-      <div class="legal-links">
-        <a href="#">PRIVACY POLICY</a>
-        <a href="#">TERMS</a>
-        <a href="#">AD CHOICES</a>
-        <a href="#">ACCESSIBILITY</a>
-        <a href="#">MANAGE PREFERENCES</a>
-      </div>
-      
-      <div class="social-icons">
-        <a href="https://pumpfun.com" target="_blank">
-          <img src="icons/pumpfun comic.svg" alt="Pump Fun" class="social-icon">
-        </a>
-        <a href="https://dex.com" target="_blank">
-          <img src="icons/Dex comic.svg" alt="Dex" class="social-icon">
-        </a>
-        <a href="https://x.com" target="_blank">
-          <img src="icons/X Comic.svg" alt="X" class="social-icon">
-        </a>
-      </div>
-      
-      <div class="copyright">
-        <p>© ℗ DC. ALL RIGHTS RESERVED</p>
-      </div>
+        <div class="legal-links">
+            <a href="#">PRIVACY POLICY</a>
+            <a href="#">TERMS</a>
+            <a href="#">AD CHOICES</a>
+            <a href="#">ACCESSIBILITY</a>
+            <a href="#">MANAGE PREFERENCES</a>
+        </div>
+        <div class="copyright">
+            <p>© & ™ DC. ALL RIGHTS RESERVED</p>
+        </div>
     </div>
-  </footer>
-
+</footer>
+    
     <!-- Add the script tag here -->
     <script>
         function toggleFilter(element) {
