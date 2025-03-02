@@ -1740,6 +1740,28 @@ document.addEventListener('DOMContentLoaded', function() {
     comicTriggers.forEach(trigger => {
         trigger.addEventListener('click', openComic);
     });
+    
+    // Smooth scrolling for anchor links
+    const links = document.querySelectorAll('a[href^="#"]');
+    
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Only apply to links that actually point to an ID (not just "#")
+            if(this.getAttribute('href').length > 1) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Offset for header height
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
 });
     </script>
 </body>
