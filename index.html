@@ -94,21 +94,33 @@
     gap: 20px; /* Increased gap between icons */
 }
 
+/* Animation for header icons */
 .icon-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px; /* Increased padding */
-    transition: transform 0.2s;
+    width: 38px;
+    height: 38px;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: transparent; /* Start with transparent background */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
 }
 
 .icon-link:hover {
-    transform: scale(1.15);
+    background-color: #0282F9; /* DC blue background on hover */
+    transform: translateY(-3px) scale(1.05); /* Lift up and slightly enlarge */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
 }
 
 .nav-icon {
-    height: 28px; /* Increased from 22px to 28px */
+    height: 28px;
     width: auto;
+    transition: filter 0.3s ease; /* Add transition for color change */
+}
+
+.icon-link:hover .nav-icon {
+    filter: brightness(5); /* Make the icon brighter/whiter on hover */
 }
 
 /* Responsive adjustments */
