@@ -1117,9 +1117,9 @@ h2 {
 }
 
 .footer-content {
-    text-align: left;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    text-align: left;
 }
 
 .legal-links {
@@ -1186,8 +1186,9 @@ h2 {
     }
     
     .footer-content {
+        flex-direction: column;
+        align-items: center;
         text-align: center;
-        margin-bottom: 15px;
     }
     
     .legal-links {
@@ -1204,13 +1205,13 @@ h2 {
     }
 
     .footer-logo {
-    margin-bottom: 15px;
-}
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
 
     .footer-site-logo {
-    width: 120px; /* Smaller size for the footer */
-    height: auto;
-    object-fit: contain;
+        width: 70px; /* Even smaller on mobile */
+    }
 }
 
 @media (max-width: 480px) {
