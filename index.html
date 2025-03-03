@@ -28,8 +28,9 @@
 }
 
 .site-logo {
-    height: 60px;
+    height: auto;
     width: auto;
+    max-height: 60px; /* Keep this to maintain the header height */
 }
 
 .main-nav {
@@ -1376,13 +1377,14 @@ h2 {
 <!-- Modified Header with Icons -->
 <header class="marvel-style-header">
     <!-- Top black bar with logo -->
-    <div class="top-bar">
-        <div class="container">
-            <a href="#" class="logo">
-                <img src="/dc-logo.png" alt="DC Logo" class="site-logo">
-            </a>
-        </div>
+<!-- Top black bar with logo -->
+<div class="top-bar">
+    <div class="container">
+        <a href="#" class="logo">
+            <img src="https://raw.githubusercontent.com/VigansCode/Comic/main/sage.png" alt="Sage Comics Logo" class="site-logo">
+        </a>
     </div>
+</div>
     
     <!-- Navigation bar with icons -->
     <nav class="main-nav">
