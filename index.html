@@ -87,11 +87,16 @@
 /* Icons container at the right side */
 .nav-icons {
     position: absolute;
-    right: 0;
+    right: 15px; /* Increase this value to push further right */
     top: 50%;
     transform: translateY(-50%);
     display: flex;
-    gap: 20px; /* Increased gap between icons */
+    gap: 20px;
+}
+
+.container {
+    position: relative;
+    padding-right: 30px; /* Add some extra padding on the right side */
 }
 
 .icon-link {
@@ -130,6 +135,11 @@
         margin-top: 10px;
         transform: none;
     }
+
+    .container {
+    position: relative;
+    padding-right: 30px; /* Add some extra padding on the right side */
+}
     
     .nav-icon {
         height: 30px; /* Even larger on mobile for better tap targets */
