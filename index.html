@@ -1118,6 +1118,8 @@ h2 {
 
 .footer-content {
     text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 
 .legal-links {
@@ -1174,6 +1176,8 @@ h2 {
     width: auto;
 }
 
+
+
 /* Responsive adjustments for footer */
 @media (max-width: 768px) {
     .footer-container {
@@ -1196,7 +1200,17 @@ h2 {
     
     .footer-social {
         margin-top: 15px;
+
     }
+
+    .footer-logo {
+    margin-bottom: 15px;
+}
+
+    .footer-site-logo {
+    width: 120px; /* Smaller size for the footer */
+    height: auto;
+    object-fit: contain;
 }
 
 @media (max-width: 480px) {
@@ -1669,6 +1683,10 @@ h2 {
 <footer class="marvel-style-footer">
     <div class="footer-container">
         <div class="footer-content">
+            <!-- Add logo to the footer -->
+            <div class="footer-logo">
+                <img src="https://raw.githubusercontent.com/VigansCode/Comic/main/SAGE.png" alt="SAGE Comics Logo" class="footer-site-logo">
+            </div>
             <div class="legal-links">
                 <a href="#">PRIVACY POLICY</a>
                 <a href="#">TERMS</a>
