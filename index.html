@@ -101,26 +101,27 @@
     justify-content: center;
     width: 38px;
     height: 38px;
-    padding: 8px;
     border-radius: 50%;
-    background-color: transparent; /* Start with transparent background */
-    transition: all 0.3s ease; /* Smooth transition for all properties */
+    background-color: #0282F9; /* Start with blue background like footer */
+    transition: all 0.3s ease;
+    padding: 0; /* Remove padding to make size consistent */
 }
 
 .icon-link:hover {
-    background-color: #0282F9; /* DC blue background on hover */
-    transform: translateY(-3px) scale(1.05); /* Lift up and slightly enlarge */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    background-color: white; /* White background on hover */
+    transform: translateY(-3px); /* Lift effect on hover */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .nav-icon {
-    height: 28px;
+    height: 22px; /* Consistent size */
     width: auto;
-    transition: filter 0.3s ease; /* Add transition for color change */
+    filter: brightness(5); /* Make icon white initially */
+    transition: filter 0.3s ease;
 }
 
 .icon-link:hover .nav-icon {
-    filter: brightness(5); /* Make the icon brighter/whiter on hover */
+    filter: brightness(0.2); /* Make icon darker on hover */
 }
 
 /* Responsive adjustments */
@@ -144,11 +145,11 @@
     }
     
     .nav-icon {
-        height: 30px; /* Even larger on mobile for better tap targets */
+        height: 22px; /* Even larger on mobile for better tap targets */
     }
     
     .footer-icon {
-        height: 26px; /* Slightly larger on mobile */
+        height: 22px; /* Slightly larger on mobile */
     }
 }
         
@@ -1167,21 +1168,24 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px; /* Increased from 30px to 38px */
-    height: 38px; /* Increased from 30px to 38px */
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    background-color: #333;
+    background-color: #0282F9; /* Blue background to match header */
     transition: all 0.3s ease;
 }
 
 .social-icon:hover {
-    background-color: #0282F9;
+    background-color: white;
     transform: translateY(-3px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .footer-icon {
-    height: 24px; /* Increased from 18px to 24px */
+    height: 22px; /* Match nav-icon size */
     width: auto;
+    filter: brightness(5); /* Make icon white initially */
+    transition: filter 0.3s ease;
 }
 
 /* Responsive adjustments for footer */
