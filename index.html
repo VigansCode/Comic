@@ -1667,14 +1667,13 @@ h2 {
 
 <!-- Enhanced Footer with Right-Aligned Social Icons -->
 <footer class="marvel-style-footer">
-    <div class="footer-container" style="position: relative; padding-left: 0;">
-        <!-- Logo positioned at the extreme left edge of the page -->
+    <div class="footer-container" style="position: relative; max-width: 100%; width: 100%;">
+        <!-- Logo positioned at the extreme left edge of the screen -->
         <img src="https://raw.githubusercontent.com/VigansCode/Comic/main/SAGE.png" alt="SAGE Comics Logo" style="height: 30px; position: absolute; left: 20px; top: 50%; transform: translateY(-50%);">
-        <!-- Increase spacer to push content further right -->
-        <div style="width: 150px;"></div>
-        <div class="footer-content">
-            <!-- Policy links -->
-            <div style="margin-bottom: 10px;">
+        
+        <!-- Center the main content in the footer -->
+        <div style="display: flex; justify-content: center; width: 100%;">
+            <div class="footer-content" style="text-align: center; margin: 0 auto;">
                 <div class="legal-links">
                     <a href="#">PRIVACY POLICY</a>
                     <a href="#">TERMS</a>
@@ -1682,12 +1681,14 @@ h2 {
                     <a href="#">ACCESSIBILITY</a>
                     <a href="#">MANAGE PREFERENCES</a>
                 </div>
-            </div>
-            <div class="copyright">
-                <p>© & ™ DC. ALL RIGHTS RESERVED</p>
+                <div class="copyright">
+                    <p>© & ™ DC. ALL RIGHTS RESERVED</p>
+                </div>
             </div>
         </div>
-        <div class="footer-social">
+        
+        <!-- Social icons positioned at the right -->
+        <div class="footer-social" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%);">
             <a href="#" class="social-icon">
                 <img src="icons/Dex comic.svg" alt="Dex Comic" class="footer-icon">
             </a>
