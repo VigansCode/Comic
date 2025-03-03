@@ -94,34 +94,21 @@
     gap: 20px; /* Increased gap between icons */
 }
 
-/* Animation for header icons */
 .icon-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background-color: #0282F9; /* Start with blue background like footer */
-    transition: all 0.3s ease;
-    padding: 0; /* Remove padding to make size consistent */
+    padding: 8px; /* Increased padding */
+    transition: transform 0.2s;
 }
 
 .icon-link:hover {
-    background-color: white; /* White background on hover */
-    transform: translateY(-3px); /* Lift effect on hover */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.15);
 }
 
 .nav-icon {
-    height: 22px; /* Consistent size */
+    height: 28px; /* Increased from 22px to 28px */
     width: auto;
-    filter: brightness(5); /* Make icon white initially */
-    transition: filter 0.3s ease;
-}
-
-.icon-link:hover .nav-icon {
-    filter: brightness(0.2); /* Make icon darker on hover */
 }
 
 /* Responsive adjustments */
@@ -145,11 +132,11 @@
     }
     
     .nav-icon {
-        height: 22px; /* Even larger on mobile for better tap targets */
+        height: 30px; /* Even larger on mobile for better tap targets */
     }
     
     .footer-icon {
-        height: 22px; /* Slightly larger on mobile */
+        height: 26px; /* Slightly larger on mobile */
     }
 }
         
@@ -1168,24 +1155,21 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
+    width: 38px; /* Increased from 30px to 38px */
+    height: 38px; /* Increased from 30px to 38px */
     border-radius: 50%;
-    background-color: #0282F9; /* Blue background to match header */
+    background-color: #333;
     transition: all 0.3s ease;
 }
 
 .social-icon:hover {
-    background-color: white;
+    background-color: #0282F9;
     transform: translateY(-3px);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .footer-icon {
-    height: 22px; /* Match nav-icon size */
+    height: 24px; /* Increased from 18px to 24px */
     width: auto;
-    filter: brightness(5); /* Make icon white initially */
-    transition: filter 0.3s ease;
 }
 
 /* Responsive adjustments for footer */
