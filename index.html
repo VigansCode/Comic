@@ -87,18 +87,11 @@
 /* Icons container at the right side */
 .nav-icons {
     position: absolute;
-    right: 0; /* Set to 0 to push completely to the edge */
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
-    gap: 20px;
-    padding-right: 20px; /* Add padding inside the nav-icons container instead */
-}
-
-/* Remove any potential container right padding that might affect edge alignment */
-.container {
-    position: relative;
-    padding-right: 0; /* Ensure no padding restricts the icons from reaching the edge */
+    gap: 20px; /* Increased gap between icons */
 }
 
 .icon-link {
@@ -136,13 +129,7 @@
         justify-content: center;
         margin-top: 10px;
         transform: none;
-        padding-right: 0; /* Remove padding on mobile */
     }
-
-    .container {
-    position: relative;
-    padding-right: 30px; /* Add some extra padding on the right side */
-}
     
     .nav-icon {
         height: 30px; /* Even larger on mobile for better tap targets */
