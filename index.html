@@ -6,10 +6,7 @@
     <title>Dr Guff | Character Details</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-<style>
-        /* All previous styles remain exactly the same until browse section */
-        /* Marvel-style header with DC content */
-.marvel-style-header {
+        .marvel-style-header {
     font-family: Arial, sans-serif;
 }
 
@@ -46,6 +43,7 @@
     margin: 0;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .nav-links li {
@@ -85,47 +83,87 @@
     background-color: #0282F9; /* DC blue underline on hover */
 }
 
+/* Icons container at the right side */
+.nav-icons {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 15px;
+}
+
+.icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    transition: transform 0.2s;
+}
+
+.icon-link:hover {
+    transform: scale(1.15);
+}
+
+.nav-icon {
+    height: 22px;
+    width: auto;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
     .nav-link {
         padding: 12px 15px;
         font-size: 14px;
     }
+    
+    .nav-icons {
+        position: static;
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+        transform: none;
+    }
 }
         
-        .centered-nav {
-        justify-content: center;
-        padding: 15px 20px; /* Slightly increased padding for better height */
-    }
-    
-    .centered-nav a {
-        margin: 0 40px; /* Increased spacing between items */
-        position: relative;
-        font-size: 18px; /* Slightly larger font */
-        transition: color 0.3s;
-    }
-    
-    .centered-nav a:hover {
-        color: #0282F9; /* DC blue color on hover */
-    }
-    
-    /* Optional: Add underline effect on hover */
-    .centered-nav a::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 3px;
-        bottom: -8px;
-        left: 0;
-        background-color: #0282F9;
-        transition: width 0.3s;
-    }
-    
-    .centered-nav a:hover::after {
-        width: 100%;
-    }
-       
-        .comic-overlay {
+.centered-nav {
+    justify-content: center;
+    padding: 15px 20px; /* Slightly increased padding for better height */
+}
+
+.centered-nav a {
+    margin: 0 40px; /* Increased spacing between items */
+    position: relative;
+    font-size: 18px; /* Slightly larger font */
+    transition: color 0.3s;
+}
+
+.centered-nav a:hover {
+    color: #0282F9; /* DC blue color on hover */
+}
+
+/* Optional: Add underline effect on hover */
+.centered-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -8px;
+    left: 0;
+    background-color: #0282F9;
+    transition: width 0.3s;
+}
+
+.centered-nav a:hover::after {
+    width: 100%;
+}
+   
+.comic-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -260,11 +298,11 @@
     z-index: 1001; /* Ensure they're above other elements */
 }
 
-        .comic-nav:hover {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
+.comic-nav:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
 
-        .comic-prev {
+.comic-prev {
     left: 10px;
 }
 
@@ -321,18 +359,18 @@
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-        /* Clickable comic in grid */
-        .comic-trigger {
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
+/* Clickable comic in grid */
+.comic-trigger {
+    cursor: pointer;
+    transition: transform 0.3s;
+}
 
-        .comic-trigger:hover {
-            transform: scale(1.05);
-        }
+.comic-trigger:hover {
+    transform: scale(1.05);
+}
 
-        /* Floating peanut style elements */
-        .floating-element {
+/* Floating peanut style elements */
+.floating-element {
     position: absolute;
     width: 30px;
     height: 50px;
@@ -342,7 +380,7 @@
     pointer-events: none;
 }
 
-        .filter-group {
+.filter-group {
     margin-bottom: 15px;
     border-bottom: 1px solid #eee;
     padding-bottom: 15px;
@@ -378,39 +416,39 @@
     padding: 5px 0;
 }
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-        }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
 
-        /* Navigation */
-        .top-nav {
-            background: #fff;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #eee;
-        }
+/* Navigation */
+.top-nav {
+    background: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
 
-        .top-nav a {
-            color: #000;
-            text-decoration: none;
-            margin-right: 20px;
-            font-weight: bold;
-        }
+.top-nav a {
+    color: #000;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+}
 
-        /* Banner */
-        .banner {
-            position: relative;
-            width: 100%;
-            height: 600px;
-            background-color: #333;
-            overflow: hidden;
-        }
+/* Banner */
+.banner {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background-color: #333;
+    overflow: hidden;
+}
 
-        .banner-image {
+.banner-image {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -423,41 +461,41 @@
     opacity: 1;
 }
 
-        .banner-content {
-            position: absolute;
-            bottom: 80px;
-            left: 60px;
-            color: white;
-        }
+.banner-content {
+    position: absolute;
+    bottom: 80px;
+    left: 60px;
+    color: white;
+}
 
-        .banner-tag {
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
+.banner-tag {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
 
-        .banner-title {
-            font-size: 32px;
-            font-weight: bold;
-            max-width: 600px;
-            margin-bottom: 10px;
-        }
+.banner-title {
+    font-size: 32px;
+    font-weight: bold;
+    max-width: 600px;
+    margin-bottom: 10px;
+}
 
-        .banner-description {
-            max-width: 500px;
-            margin-bottom: 20px;
-        }
+.banner-description {
+    max-width: 500px;
+    margin-bottom: 20px;
+}
 
-        .banner-button {
-            display: inline-block;
-            padding: 8px 20px;
-            background: white;
-            color: black;
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 14px;
-        }
+.banner-button {
+    display: inline-block;
+    padding: 8px 20px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 14px;
+}
 
-        /* Banner Navigation Arrows */
+/* Banner Navigation Arrows */
 .banner-nav {
     position: absolute;
     top: 50%;
@@ -488,45 +526,45 @@
     right: 20px;
 }
 
-        /* Featured Video Section */
-        .featured-video {
-            background: #0282F9;
-            padding: 40px 0;
-            color: white;
-        }
+/* Featured Video Section */
+.featured-video {
+    background: #0282F9;
+    padding: 40px 0;
+    color: white;
+}
 
-        .video-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            gap: 30px;
-        }
+.video-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 30px;
+}
 
-        .video-player {
-            flex: 1;
-            background: #000;
-            aspect-ratio: 16/9;
-        }
+.video-player {
+    flex: 1;
+    background: #000;
+    aspect-ratio: 16/9;
+}
 
-        .video-info {
-            flex: 1;
-            padding: 20px;
-        }
+.video-info {
+    flex: 1;
+    padding: 20px;
+}
 
-        /* Comics Grid */
-        .comics-grid {
-            max-width: 1200px;
-            margin: 40px auto;
-        }
+/* Comics Grid */
+.comics-grid {
+    max-width: 1200px;
+    margin: 40px auto;
+}
 
-        .comics-row {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-            margin-bottom: 40px;
-        }
+.comics-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
 
-        .comic-card {
+.comic-card {
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
@@ -587,363 +625,363 @@
     border-radius: 4px;
 }
 
-        .free-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-        }
+.free-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
 
-        /* Trailer Section */
-        .trailers-section {
-            max-width: 1200px;
-            margin: 40px auto 60px;
-            padding: 0 20px;
-        }
+/* Trailer Section */
+.trailers-section {
+    max-width: 1200px;
+    margin: 40px auto 60px;
+    padding: 0 20px;
+}
 
-        .stories-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            margin-top: 30px;
-        }
+.stories-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 30px;
+}
 
-        /* Featured Story */
-        .feature-story {
-            display: grid;
-            grid-template-columns: 55% 45%;
-            background-color: #f8f8f8;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+/* Featured Story */
+.feature-story {
+    display: grid;
+    grid-template-columns: 55% 45%;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .feature-story:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
+.feature-story:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
 
-        .story-image {
-            position: relative;
-            height: 100%;
-        }
+.story-image {
+    position: relative;
+    height: 100%;
+}
 
-        .story-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.story-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        .story-tag {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: #0282F9;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 3px;
-            letter-spacing: 0.5px;
-        }
+.story-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #0282F9;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+}
 
-        .story-content {
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-        }
+.story-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
 
-        .story-content h3 {
-            font-size: 24px;
-            margin: 0 0 15px;
-            line-height: 1.3;
-        }
+.story-content h3 {
+    font-size: 24px;
+    margin: 0 0 15px;
+    line-height: 1.3;
+}
 
-        .story-excerpt {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            color: #444;
-            flex-grow: 1;
-        }
+.story-excerpt {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #444;
+    flex-grow: 1;
+}
 
-        .read-more {
-            display: inline-block;
-            color: #0282F9;
-            font-weight: bold;
-            text-decoration: none;
-            margin-bottom: 15px;
-            transition: color 0.2s;
-        }
+.read-more {
+    display: inline-block;
+    color: #0282F9;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 15px;
+    transition: color 0.2s;
+}
 
-        .read-more:hover {
-            color: #0257b9;
-            text-decoration: underline;
-        }
+.read-more:hover {
+    color: #0257b9;
+    text-decoration: underline;
+}
 
-        .story-meta {
-            font-size: 12px;
-            color: #777;
-        }
+.story-meta {
+    font-size: 12px;
+    color: #777;
+}
 
-        .story-date {
-            margin-right: 15px;
-        }
+.story-date {
+    margin-right: 15px;
+}
 
-        /* Stories Row */
-        .stories-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
+/* Stories Row */
+.stories-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
 
-        .story-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
+.story-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
 
-        .story-card:hover {
-            transform: translateY(-5px);
-        }
+.story-card:hover {
+    transform: translateY(-5px);
+}
 
-        .story-image-small {
-            position: relative;
-            height: 180px;
-        }
+.story-image-small {
+    position: relative;
+    height: 180px;
+}
 
-        .story-image-small img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.story-image-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        .story-card h4 {
-            font-size: 16px;
-            margin: 15px;
-            line-height: 1.4;
-        }
+.story-card h4 {
+    font-size: 16px;
+    margin: 15px;
+    line-height: 1.4;
+}
 
-        .story-meta-small {
-            font-size: 12px;
-            color: #777;
-            margin: 0 15px 15px;
-            display: block;
-        }
+.story-meta-small {
+    font-size: 12px;
+    color: #777;
+    margin: 0 15px 15px;
+    display: block;
+}
 
-        /* Video Section */
-        .video-section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 10px;
-        }
+/* Video Section */
+.video-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
 
-        .video-section-header h3 {
-            font-size: 18px;
-            margin: 0;
-        }
+.video-section-header h3 {
+    font-size: 18px;
+    margin: 0;
+}
 
-        .view-all {
-            color: #0282F9;
-            font-weight: bold;
-            text-decoration: none;
-            font-size: 14px;
-        }
+.view-all {
+    color: #0282F9;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+}
 
-        .video-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
+.video-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
 
-        .video-card {
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
+.video-card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
 
-        .video-card:hover {
-            transform: translateY(-5px);
-        }
+.video-card:hover {
+    transform: translateY(-5px);
+}
 
-        .video-thumbnail {
-            position: relative;
-            height: 135px;
-            border-radius: 6px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
+.video-thumbnail {
+    position: relative;
+    height: 135px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
 
-        .video-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50px;
-            height: 50px;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-            transition: background-color 0.3s;
-        }
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
 
-        .video-card:hover .play-button {
-            background-color: rgba(2, 130, 249, 0.9);
-        }
+.video-card:hover .play-button {
+    background-color: rgba(2, 130, 249, 0.9);
+}
 
-        .video-card h4 {
-            font-size: 14px;
-            margin: 0 0 5px;
-            line-height: 1.4;
-        }
+.video-card h4 {
+    font-size: 14px;
+    margin: 0 0 5px;
+    line-height: 1.4;
+}
 
-        .video-duration {
-            font-size: 12px;
-            color: #777;
-            margin: 0;
-        }
+.video-duration {
+    font-size: 12px;
+    color: #777;
+    margin: 0;
+}
 
-        /* Responsive Adjustments for Stories Section */
-        @media (max-width: 992px) {
-            .feature-story {
-                grid-template-columns: 1fr;
-            }
-            
-            .story-image {
-                height: 300px;
-            }
-            
-            .video-row {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+/* Responsive Adjustments for Stories Section */
+@media (max-width: 992px) {
+    .feature-story {
+        grid-template-columns: 1fr;
+    }
+    
+    .story-image {
+        height: 300px;
+    }
+    
+    .video-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
-        @media (max-width: 768px) {
-            .stories-row {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .story-image-small {
-                height: 220px;
-            }
-        }
+@media (max-width: 768px) {
+    .stories-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .story-image-small {
+        height: 220px;
+    }
+}
 
-        @media (max-width: 576px) {
-            .video-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .video-thumbnail {
-                height: 200px;
-            }
-        }
+@media (max-width: 576px) {
+    .video-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-thumbnail {
+        height: 200px;
+    }
+}
 
-        .trailer-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
+.trailer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
 
-        .trailer-card {
-            text-align: center;
-        }
+.trailer-card {
+    text-align: center;
+}
 
-        .trailer-card img {
-            width: 100%;
-            aspect-ratio: 16/9;
-            object-fit: cover;
-        }
+.trailer-card img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
 
-        /* Browse Characters Section - Updated */
-        .browse-section {
-            max-width: 1200px;
-            margin: 40px auto;
-            display: flex;
-            gap: 30px;
-        }
+/* Browse Characters Section - Updated */
+.browse-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    gap: 30px;
+}
 
-        .filters {
-            width: 250px;
-        }
+.filters {
+    width: 250px;
+}
 
-        .filter-input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
+.filter-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
 
-        .filter-group {
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 15px;
-        }
+.filter-group {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
 
-        .filter-group h3 {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            margin: 0;
-            font-size: 16px;
-        }
+.filter-group h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin: 0;
+    font-size: 16px;
+}
 
-        .browse-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+.browse-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
-        .view-controls {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
+.view-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
 
-        .view-toggle {
-            display: flex;
-            gap: 5px;
-        }
+.view-toggle {
+    display: flex;
+    gap: 5px;
+}
 
-        .view-toggle button {
-            padding: 5px 10px;
-            background: none;
-            border: 1px solid #ddd;
-            cursor: pointer;
-        }
+.view-toggle button {
+    padding: 5px 10px;
+    background: none;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
 
-        .view-toggle button.active {
-            background: #eee;
-        }
+.view-toggle button.active {
+    background: #eee;
+}
 
-        .sort-dropdown {
-            padding: 5px 10px;
-            border: 1px solid #ddd;
-        }
+.sort-dropdown {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+}
 
-        .character-content {
+.character-content {
     flex: 1;
     padding-left: 30px;
 }
@@ -979,18 +1017,18 @@
     border-radius: 4px;
 }
 
-        .character-grid {
-            flex: 1;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
+.character-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
 
-        .character-card {
-            text-align: center;
-        }
+.character-card {
+    text-align: center;
+}
 
-        .character-card img {
+.character-card img {
     width: 100%;
     aspect-ratio: 1;
     object-fit: cover;
@@ -999,17 +1037,17 @@
     background-color: #eee;
 }
 
-        .character-card h3 {
-            font-size: 16px;
-            margin: 0;
-        }
+.character-card h3 {
+    font-size: 16px;
+    margin: 0;
+}
 
-        h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
 
-        .character-detail {
+.character-detail {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
@@ -1300,27 +1338,32 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <header class="marvel-style-header">
-        <!-- Top black bar with logo -->
-        <div class="top-bar">
-            <div class="container">
-                <a href="#" class="logo">
-                    <img src="/dc-logo.png" alt="DC Logo" class="site-logo">
-                </a>
-            </div>
+<!-- Modified Header with Icons -->
+<header class="marvel-style-header">
+    <!-- Top black bar with logo -->
+    <div class="top-bar">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="/dc-logo.png" alt="DC Logo" class="site-logo">
+            </a>
         </div>
-        
-        <!-- Navigation bar -->
-        <nav class="main-nav">
-            <div class="container">
-                <ul class="nav-links">
-                    <li><a href="#browse-characters" class="nav-link">CHARACTERS</a></li>
-                    <li><a href="#comics-section" class="nav-link">COMICS</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    </div>
+    
+    <!-- Navigation bar with icons -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#browse-characters" class="nav-link">CHARACTERS</a></li>
+                <li><a href="#comics-section" class="nav-link">COMICS</a></li>
+                <li class="nav-icons">
+                    <a href="#" class="icon-link"><img src="icons/Dex comic.svg" alt="Dex Comic" class="nav-icon"></a>
+                    <a href="#" class="icon-link"><img src="icons/X Comic.svg" alt="X Comic" class="nav-icon"></a>
+                    <a href="#" class="icon-link"><img src="icons/pumpfun comic.svg" alt="Pumpfun Comic" class="nav-icon"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
 
     <!-- Banner -->
     <div class="banner">
