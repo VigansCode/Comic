@@ -6,7 +6,8 @@
     <title>Dr Guff | Character Details</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .marvel-style-header {
+        
+.marvel-style-header {
     font-family: Arial, sans-serif;
 }
 
@@ -162,7 +163,7 @@
 .centered-nav a:hover::after {
     width: 100%;
 }
-   
+       
 .comic-overlay {
     position: fixed;
     top: 0;
@@ -1087,12 +1088,11 @@ h2 {
     margin: 0;
 }
 
-/* Enhanced Footer Styles */
+/* Enhanced Footer Styles with Right-Aligned Social Icons */
 .marvel-style-footer {
     background-color: #202020;
     color: #ffffff;
     padding: 15px 0;
-    text-align: center;
     font-family: Arial, sans-serif;
     width: 100%;
 }
@@ -1101,12 +1101,18 @@ h2 {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-content {
+    text-align: left;
 }
 
 .legal-links {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     margin-bottom: 10px;
 }
 
@@ -1114,13 +1120,10 @@ h2 {
     color: #cccccc;
     text-decoration: none;
     font-size: 12px;
-    padding: 0 15px;
-    border-right: 1px solid #444;
-    transition: color 0.3s ease;
-}
-
-.legal-links a:last-child {
+    padding: 0;
+    margin-right: 15px;
     border-right: none;
+    transition: color 0.3s ease;
 }
 
 .legal-links a:hover {
@@ -1133,14 +1136,67 @@ h2 {
     color: #888888;
 }
 
-@media (max-width: 640px) {
+/* Footer Social Icons on the right */
+.footer-social {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: #0282F9;
+    transform: translateY(-3px);
+}
+
+.footer-icon {
+    height: 18px;
+    width: auto;
+}
+
+/* Responsive adjustments for footer */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-content {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .legal-links {
+        justify-content: center;
+    }
+    
+    .legal-links a {
+        margin: 0 8px 8px;
+    }
+    
+    .footer-social {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
     .legal-links {
         flex-direction: column;
         gap: 10px;
     }
     
     .legal-links a {
-        border-right: none;
+        margin: 0;
     }
 }
 
@@ -1149,35 +1205,6 @@ h2 {
     color: #cccccc;
     margin-top: 15px;
     font-style: italic;
-}
-
-/* Social Icons */
-.social-icons {
-    display: flex;
-    gap: 15px;
-    margin: 20px 0;
-}
-
-.social-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: #0282F9;
-    color: white;
-    transition: all 0.3s ease;
-}
-
-.social-icon:hover {
-    background-color: white;
-    color: #0282F9;
-    transform: translateY(-3px);
-}
-
-.social-icon i {
-    font-size: 18px;
 }
 
 /* Column Headers */
@@ -1628,18 +1655,31 @@ h2 {
         </div>
     </section>
 
-<!-- Enhanced Footer -->
+<!-- Enhanced Footer with Right-Aligned Social Icons -->
 <footer class="marvel-style-footer">
     <div class="footer-container">
-        <div class="legal-links">
-            <a href="#">PRIVACY POLICY</a>
-            <a href="#">TERMS</a>
-            <a href="#">AD CHOICES</a>
-            <a href="#">ACCESSIBILITY</a>
-            <a href="#">MANAGE PREFERENCES</a>
+        <div class="footer-content">
+            <div class="legal-links">
+                <a href="#">PRIVACY POLICY</a>
+                <a href="#">TERMS</a>
+                <a href="#">AD CHOICES</a>
+                <a href="#">ACCESSIBILITY</a>
+                <a href="#">MANAGE PREFERENCES</a>
+            </div>
+            <div class="copyright">
+                <p>© & ™ DC. ALL RIGHTS RESERVED</p>
+            </div>
         </div>
-        <div class="copyright">
-            <p>© & ™ DC. ALL RIGHTS RESERVED</p>
+        <div class="footer-social">
+            <a href="#" class="social-icon">
+                <img src="icons/Dex comic.svg" alt="Dex Comic" class="footer-icon">
+            </a>
+            <a href="#" class="social-icon">
+                <img src="icons/X Comic.svg" alt="X Comic" class="footer-icon">
+            </a>
+            <a href="#" class="social-icon">
+                <img src="icons/pumpfun comic.svg" alt="Pumpfun Comic" class="footer-icon">
+            </a>
         </div>
     </div>
 </footer>
