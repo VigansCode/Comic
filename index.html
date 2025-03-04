@@ -1477,6 +1477,20 @@
     </style>
 </head>
 <body>
+    <div class="sticky-nav-bar" id="stickyNavBar">
+        <div class="sticky-nav-container">
+            <div class="sticky-nav-links">
+                <a href="#story-section" class="sticky-nav-link">THE STORY</a>
+                <a href="#comics-section" class="sticky-nav-link">COMICS</a>
+                <a href="#browse-characters" class="sticky-nav-link">CHARACTERS</a>
+            </div>
+            <div class="sticky-nav-icons">
+                <a href="#"><img src="icons/Dex comic.svg" alt="Dex Comic" class="sticky-nav-icon"></a>
+                <a href="#"><img src="icons/X Comic.svg" alt="X Comic" class="sticky-nav-icon"></a>
+                <a href="#"><img src="icons/pumpfun comic.svg" alt="Pumpfun Comic" class="sticky-nav-icon"></a>
+            </div>
+        </div>
+    </div>
 <!-- Modified Header with Icons -->
 <header class="marvel-style-header">
 <!-- Top black bar with logo -->
@@ -2214,7 +2228,53 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Sticky Navigation Bar Functionality
+    const stickyNavBar = document.getElementById('stickyNavBar');
+    if (stickyNavBar) {
+        const header = document.querySelector('.marvel-style-header');
+        let headerBottom = header.getBoundingClientRect().bottom;
+        
+        // Update header bottom position on window resize
+        window.addEventListener('resize', function() {
+            headerBottom = header.getBoundingClientRect().bottom;
+        });
+        
+        // Show/hide sticky nav based on scroll position
+        window.addEventListener('scroll', function() {
+            const scrollPos = window.scrollY;
+            
+            // If we've scrolled past the header
+            if (scrollPos > headerBottom) {
+                stickyNavBar.classList.add('visible');
+            } else {
+                stickyNavBar.classList.remove('visible');
+            }
+        });
+        
+        // Smooth scrolling for anchor links in sticky nav
+        const stickyNavLinks = document.querySelectorAll('.sticky-nav-link');
+        
+        stickyNavLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const navHeight = stickyNavBar.offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    
+                    window.scrollTo({
+                        top: targetPosition - navHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    }
 });
-    </script>
+</script>
 </body>
 </html>
