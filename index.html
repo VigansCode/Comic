@@ -173,87 +173,103 @@
         .centered-nav a:hover::after {
             width: 100%;
         }
-        
-        /* STICKY NAVIGATION STYLES */
-        .sticky-nav-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #202020;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .sticky-nav-bar.visible {
-            transform: translateY(0);
-        }
-        
-        .sticky-nav-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 50px;
-            padding: 0 20px;
-        }
-        
-        .sticky-nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-        }
-        
-        .sticky-nav-link {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-        
-        .sticky-nav-link:hover {
-            color: #0282F9;
-        }
-        
-        .sticky-nav-icons {
-            position: absolute;
-            right: 20px;
-            display: flex;
-            gap: 15px;
-        }
-        
-        .sticky-nav-icon {
-            height: 20px;
-            width: auto;
-            filter: brightness(0) invert(1);
-            transition: transform 0.2s;
-        }
-        
-        .sticky-nav-icon:hover {
-            transform: scale(1.2);
-        }
-        
-        @media (max-width: 768px) {
-            .sticky-nav-container {
-                flex-direction: column;
-                height: auto;
-                padding: 10px 0;
-            }
-            
-            .sticky-nav-links {
-                margin-bottom: 10px;
-                gap: 20px;
-            }
-            
-            .sticky-nav-icons {
-                position: static;
-                margin-top: 5px;
-            }
-        }
+
+/* STICKY NAVIGATION STYLES */
+.sticky-nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #202020;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.sticky-nav-bar.visible {
+    transform: translateY(0);
+}
+
+.sticky-nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    padding: 0 20px;
+    position: relative; /* Important for absolute positioning of icons */
+}
+
+.sticky-nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.sticky-nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.sticky-nav-link:hover {
+    color: #0282F9;
+}
+
+.sticky-nav-icons {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.sticky-nav-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.sticky-nav-icon-link:hover {
+    transform: scale(1.15);
+}
+
+.sticky-nav-icon {
+    height: 20px;
+    width: auto;
+    filter: brightness(0) invert(1); /* Make SVG icons white */
+}
+
+@media (max-width: 768px) {
+    .sticky-nav-container {
+        padding: 0 10px;
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+    }
+    
+    .sticky-nav-links {
+        margin-bottom: 10px;
+        gap: 20px;
+    }
+    
+    .sticky-nav-icons {
+        position: static;
+        margin-top: 5px;
+        gap: 10px;
+    }
+    
+    .sticky-nav-icon {
+        height: 18px;
+    }
+}
                
         .comic-overlay {
             position: fixed;
