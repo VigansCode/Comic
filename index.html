@@ -90,6 +90,21 @@
         .nav-link:hover::after {
             background-color: #0282F9; /* DC blue underline on hover */
         }
+
+        .copyable {
+  cursor: pointer;
+  color: #0282F9;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.copyable:hover {
+  text-decoration: underline;
+}
+
+.copyable:active {
+  transform: scale(0.95);
+}
         
         /* Icons container at the right side */
         .nav-icons {
@@ -1526,6 +1541,7 @@
                 <a href="#story-section" class="sticky-nav-link">THE STORY</a>
                 <a href="#comics-section" class="sticky-nav-link">COMICS</a>
                 <a href="#browse-characters" class="sticky-nav-link">CHARACTERS</a>
+                <a href="#" class="sticky-nav-link">CA: <span class="copyable" onclick="copyToClipboard('soon'); event.stopPropagation();">soon</span></a>
             </div>
             <div class="sticky-nav-icons">
                 <!-- Display the actual logos without any filters -->
@@ -1546,6 +1562,7 @@
             <li><a href="#story-section" class="nav-link">THE STORY</a></li>
             <li><a href="#comics-section" class="nav-link">COMICS</a></li>
             <li><a href="#browse-characters" class="nav-link">CHARACTERS</a></li>
+            <li><a href="#" class="nav-link">CA: <span class="copyable" onclick="copyToClipboard('soon'); event.stopPropagation();">soon</span></a></li>
             <li class="nav-icons">
                 <a href="https://dexscreener.com" class="icon-link"><img src="icons/Dex comic.svg" alt="Dex Comic" class="nav-icon"></a>
                 <a href="https://x.com/SageComics" class="icon-link" target="_blank"><img src="icons/X Comic.svg" alt="X Comic" class="nav-icon"></a>
@@ -2138,6 +2155,34 @@ function animateElement(element) {
     
     // Start animation
     move();
+}
+
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      // Show a small tooltip or indicator that copying succeeded
+      const tooltip = document.createElement('div');
+      tooltip.style.position = 'fixed';
+      tooltip.style.top = '10px';
+      tooltip.style.left = '50%';
+      tooltip.style.transform = 'translateX(-50%)';
+      tooltip.style.padding = '8px 16px';
+      tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+      tooltip.style.color = 'white';
+      tooltip.style.borderRadius = '4px';
+      tooltip.style.zIndex = '10000';
+      tooltip.textContent = 'Copied!';
+      
+      document.body.appendChild(tooltip);
+      
+      // Remove tooltip after 2 seconds
+      setTimeout(() => {
+        tooltip.style.opacity = '0';
+        tooltip.style.transition = 'opacity 0.5s';
+        setTimeout(() => document.body.removeChild(tooltip), 500);
+      }, 1500);
+    })
+    .catch(err => console.error('Failed to copy: ', err));
 }
 
 // Keyboard navigation
