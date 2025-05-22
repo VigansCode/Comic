@@ -1559,14 +1559,14 @@
 <nav class="main-nav">
     <div class="container">
         <ul class="nav-links">
-            <li><a href="#" class="nav-link">CA: <span class="copyable" onclick="copyToClipboard('TBA'); event.stopPropagation();">TBA</span></a></li>
+            <li><a href="#" class="nav-link">CA: <span class="copyable" onclick="copyToClipboard('2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pump'); event.stopPropagation();">2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pump</span></a></li>
             <li><a href="#story-section" class="nav-link">THE STORY</a></li>
             <li><a href="#comics-section" class="nav-link">COMICS</a></li>
             <li><a href="#browse-characters" class="nav-link">CHARACTERS</a></li>
             <li class="nav-icons">
                 <a href="https://dexscreener.com" class="icon-link"><img src="icons/Dex comic.svg" alt="Dex Comic" class="nav-icon"></a>
                 <a href="https://x.com/SageComics" class="icon-link" target="_blank"><img src="icons/X Comic.svg" alt="X Comic" class="nav-icon"></a>
-                <a href="https://pump.fun" class="icon-link" target="_blank"><img src="icons/pumpfun comic.svg" alt="Pumpfun Comic" class="nav-icon"></a>
+                <a href="https://pump.fun/coin/2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pump?include-nsfw=true" class="icon-link" target="_blank"><img src="icons/pumpfun comic.svg" alt="Pumpfun Comic" class="nav-icon"></a>
             </li>
         </ul>
     </div>
@@ -1583,7 +1583,7 @@
         
         <!-- Navigation Arrows -->
         <button class="banner-nav banner-prev" onclick="prevBanner()">❮</button>
-        <button class="banner-nav banner-next" onclick="nextBanner()">❯</button>
+        <button class="banner-nav banner-next" onclick="nex2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pumpnner()">❯</button>
         
         <!-- Banner content -->
         <div class="banner-content">
@@ -1805,27 +1805,27 @@
         }
         
         // Banner code
-        let currentBanner = 0;
+        let curren2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pumpnner = 0;
         const banners = document.querySelectorAll('.banner-image');
     
         function showBanner(index) {
-            banners[currentBanner].classList.remove('active');
-            currentBanner = index;
-            if (currentBanner >= banners.length) currentBanner = 0;
-            if (currentBanner < 0) currentBanner = banners.length - 1;
-            banners[currentBanner].classList.add('active');
+            banners[curren2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pumpnner].classList.remove('active');
+            curren2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pumpnner = index;
+            if (curren2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pumpnner >= banners.length) curren2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pumpnner = 0;
+            if (curren2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pumpnner < 0) curren2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pumpnner = banners.length - 1;
+            banners[curren2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pumpnner].classList.add('active');
         }
     
-        function nextBanner() {
-            showBanner(currentBanner + 1);
+        function nex2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pumpnner() {
+            showBanner(curren2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pumpnner + 1);
         }
     
         function prevBanner() {
-            showBanner(currentBanner - 1);
+            showBanner(curren2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pumpnner - 1);
         }
     
         // Optional: Auto-advance every 5 seconds
-        setInterval(nextBanner, 5000);
+        setInterval(nex2Xz77ed1pwa6JCirA7kEFm8sPjbiFXNBg653BiW4pumpnner, 5000);
     
         // Comic viewer functionality
         let currentPage = 1;
